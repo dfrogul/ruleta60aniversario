@@ -1,137 +1,976 @@
 <!doctype html>
 <html lang="gl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Reto 60 Aniversario</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>O Reto das Mesas · 60 aniversario</title>
 <style>
-:root{--bg:#071810;--panel:#0d2a1d;--green:#087044;--green2:#16a364;--gold:#d9b84e;--white:#f7faf8;--muted:#b8c9c0;--red:#ca3a3a;--silver:#cbd5e1;--wheat:#b7791f}*{box-sizing:border-box}[hidden]{display:none!important}html,body{margin:0;cursor:none;min-height:100%;font-family:Segoe UI,Inter,Arial,sans-serif;background:radial-gradient(circle at 20% 15%,#124831 0,transparent 30%),linear-gradient(145deg,#06140e,#020806);color:var(--white)}button,input{font:inherit}button{cursor:pointer}body.show-cursor{cursor:default}body.show-cursor button{cursor:pointer}.app{min-height:100vh;padding:22px;display:grid;grid-template-rows:auto 1fr;gap:18px}.top{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:16px 22px;border:1px solid #ffffff18;border-radius:22px;background:linear-gradient(110deg,#082419e8,#103b2ae0);box-shadow:0 16px 42px #0006,inset 0 1px 0 #ffffff12}.brand{display:flex;gap:18px;align-items:center;min-width:0}.seal{width:94px;height:76px;flex:0 0 auto;display:grid;place-items:center;border-right:1px solid #d9b84e55;padding-right:18px}.seal img{display:block;max-width:76px;max-height:68px;object-fit:contain;filter:drop-shadow(0 6px 14px #0007)}.seal-fallback{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--gold);color:var(--gold);font-size:23px;font-weight:950;background:#d9b84e12;box-shadow:0 0 30px #d9b84e25}h1{margin:0;font-size:clamp(27px,3vw,44px);letter-spacing:-.025em;line-height:1.02}.sub{margin:8px 0 0;color:#d4e2da;font-size:clamp(14px,1.4vw,17px);letter-spacing:.015em}.progress{padding:11px 17px;border:1px solid #ffffff24;border-radius:999px;background:#06140ecc;font-weight:800}.progress b{color:var(--gold);font-size:20px}.layout{display:grid;grid-template-columns:1fr;gap:22px}.screen,.control{border:1px solid #ffffff20;border-radius:25px;background:#071810c7;box-shadow:0 24px 60px #0008;backdrop-filter:blur(10px)}.screen{position:relative;min-height:700px;overflow:hidden;display:grid;place-items:center;padding:28px}.scene{display:none;width:100%;height:100%;place-items:center;text-align:center}.scene.active{display:grid;animation:fade .35s ease}.eyebrow{color:var(--gold);font-weight:900;letter-spacing:.2em;text-transform:uppercase}.mega{margin:12px 0;font-size:clamp(52px,9vw,125px);line-height:.9;text-transform:uppercase;text-shadow:0 0 35px #16a36440}.message{font-size:clamp(19px,2.5vw,31px);color:var(--muted)}.next-btn,.action{border:0;border-radius:16px;padding:17px 27px;background:linear-gradient(135deg,var(--green2),var(--green));color:white;font-weight:950;letter-spacing:.04em;box-shadow:0 12px 30px #16a36435}.next-btn{font-size:22px;margin-top:25px}.roulette-wrap{width:min(64vh,610px,88%);aspect-ratio:1;position:relative;display:grid;place-items:center;filter:drop-shadow(0 24px 30px #0009)}canvas{width:100%;height:100%;border-radius:50%;will-change:transform}.pointer{position:absolute;z-index:5;top:-8px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-top:58px solid var(--red);filter:drop-shadow(0 5px 4px #0009)}.hub{position:absolute;z-index:4;width:20%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#dbe5df);color:#072016;border:7px solid #ffffff66;font-weight:950;font-size:clamp(14px,2vw,23px)}.buzzer{margin-top:20px;width:min(430px,90%);aspect-ratio:3.7;border:0;border-radius:999px;background:radial-gradient(circle at 50% 30%,#ff5b5b,#b41313 65%,#610707);color:white;font-size:clamp(20px,3vw,32px);font-weight:950;letter-spacing:.05em;border:10px solid #490707;box-shadow:0 14px 0 #260303,0 25px 40px #0009,inset 0 5px 10px #ffffff55}.buzzer:active{transform:translateY(10px);box-shadow:0 4px 0 #260303,0 15px 25px #0008}.buzzer:disabled{filter:grayscale(1);opacity:.5}.alert-card{animation:alarmPulse 1.15s ease-in-out 12}@keyframes alarmPulse{0%,100%{box-shadow:0 0 20px #ef444422}50%{box-shadow:0 0 95px #ef444477;border-color:#ef4444}}.mission-card{width:min(920px,94%);padding:clamp(30px,5vw,65px);border-radius:30px;border:2px solid var(--gold);background:linear-gradient(145deg,#113b29,#071810);box-shadow:0 0 70px #d9b84e20}.mission-icon{font-size:75px}.mission-text{font-size:clamp(26px,4vw,49px);font-weight:900;line-height:1.12;margin:20px 0}.mission-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}.fail{background:linear-gradient(135deg,#e14b4b,#8f1818)}.locked{font-size:65px}.control{padding:22px;display:none;flex-direction:column;gap:16px}.control.show{display:flex;position:fixed;z-index:80;right:18px;top:18px;bottom:18px;width:min(380px,calc(100vw - 36px));overflow:auto;background:#071810f5}.control h2{margin:0}.box{padding:15px;border-radius:15px;background:#102b20;border:1px solid #ffffff18}.box label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}.control input{width:100%;padding:10px;border-radius:10px;border:1px solid #ffffff22;background:#06140e;color:white}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{padding:13px;border-radius:13px;background:#102b20;text-align:center}.stat b{display:block;color:var(--gold);font-size:25px}.stat span{color:var(--muted);font-size:12px}.log{margin:0;padding-left:22px;max-height:260px;overflow:auto;line-height:1.65;color:#dce8e1;font-size:13px}.presenter{margin-top:auto;border-top:1px solid #ffffff20;padding-top:15px}.mini{width:100%;border:1px solid #ffffff25;border-radius:11px;padding:11px;background:#fff;color:#0b3b28;font-weight:850}.video-intro{position:fixed;z-index:120;inset:0;display:grid;place-items:center;padding:24px;background:#020806;cursor:default}.video-intro.hidden{display:none}.video-shell{width:min(1180px,96vw);text-align:center}.video-logo{max-width:120px;max-height:90px;object-fit:contain;margin-bottom:15px}.video-title{margin:0 0 18px;font-size:clamp(28px,4vw,54px);color:#fff}.intro-video{width:100%;max-height:72vh;border-radius:22px;background:#000;border:1px solid #d9b84e55;box-shadow:0 25px 80px #000}.video-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.video-btn{border:0;border-radius:14px;padding:14px 24px;background:linear-gradient(135deg,#16a364,#087044);color:#fff;font-weight:950;font-size:17px}.video-btn.secondary{background:#17271f;border:1px solid #ffffff30}.video-note{margin:12px 0 0;color:#b8c9c0;font-size:13px}.fail-overlay{position:fixed;z-index:60;inset:0;display:none;place-items:center;text-align:center;padding:25px;background:#160303ef;backdrop-filter:blur(10px);overflow:hidden}.fail-overlay.show{display:grid;animation:failFade .25s ease}.fail-card{width:min(850px,94vw);padding:clamp(38px,7vw,80px);border:3px solid #ef4444;border-radius:32px;background:linear-gradient(145deg,#3a0808,#130202);box-shadow:0 0 100px #ef444455;animation:failShake .75s ease both}.fail-icon{font-size:clamp(70px,12vw,135px);filter:grayscale(.25)}.fail-title{margin:10px 0;font-size:clamp(45px,8vw,96px);line-height:.92;color:#ff5b5b;text-transform:uppercase}.fail-text{font-size:clamp(20px,3vw,34px);color:#ffe4e4}.fail-close{margin-top:25px;border:0;border-radius:14px;padding:15px 28px;background:#ef4444;color:white;font-weight:950;font-size:18px}@keyframes failFade{from{opacity:0}}@keyframes failShake{0%{opacity:0;transform:scale(.7)}25%{opacity:1;transform:scale(1.04) translateX(-18px) rotate(-1deg)}40%{transform:translateX(16px) rotate(1deg)}55%{transform:translateX(-12px)}70%{transform:translateX(9px)}85%{transform:translateX(-4px)}100%{transform:scale(1) translateX(0)}}.overlay{position:fixed;z-index:40;inset:0;display:none;place-items:center;text-align:center;padding:25px;background:#020906ef;backdrop-filter:blur(12px);overflow:hidden}.overlay.show{display:grid;animation:fade .3s}.popup{position:relative;z-index:42;width:min(900px,94vw);padding:clamp(35px,6vw,75px);border:2px solid var(--pc,var(--gold));border-radius:32px;background:linear-gradient(145deg,#102b20,#06140e);box-shadow:0 0 90px color-mix(in srgb,var(--pc) 30%,transparent);animation:pop .7s cubic-bezier(.17,.89,.32,1.3)}.popup .icon{font-size:90px}.popup h2{margin:8px 0;font-size:clamp(48px,8vw,95px);line-height:.9;color:var(--pc)}.popup p{font-size:clamp(20px,3vw,33px);margin:22px 0}.confetti{position:fixed;z-index:41;top:-30px;width:12px;height:22px;animation:fall var(--d) linear forwards;background:var(--c)}.rolling-name{font-size:clamp(50px,10vw,130px);font-weight:950;text-transform:uppercase;color:white;animation:pulse .12s infinite alternate}.flash{animation:flash .55s ease 2}@keyframes fade{from{opacity:0}}@keyframes pop{from{opacity:0;transform:scale(.5) rotate(-3deg)}70%{transform:scale(1.04)}to{opacity:1;transform:scale(1)}}@keyframes pulse{to{transform:scale(1.025);color:var(--gold)}}@keyframes flash{50%{filter:brightness(2.4)}}@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--r));opacity:.9}}.corner-countdown{position:absolute;top:clamp(12px,2.5vh,24px);right:clamp(12px,2vw,24px);z-index:8;width:min(12vh,100px);aspect-ratio:1;border-radius:16px;display:none;place-items:center;background:#06140ef2;border:3px solid var(--gold);color:var(--gold);font-size:min(7vh,52px);font-weight:950;box-shadow:0 0 42px #d9b84e38}.corner-countdown.show{display:grid}.corner-countdown.tick{animation:counterTick .45s ease}@keyframes counterTick{50%{transform:scale(1.12);background:var(--gold);color:#071810}}.tables-map{width:100%;height:100%;min-height:0;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));align-items:center;justify-items:center;gap:clamp(3px,1vh,12px) clamp(2px,.7vw,10px);padding:clamp(4px,1vh,12px) clamp(2px,1vw,16px)}.table-dot{width:min(13.5vw,17vh,150px);max-width:92%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;padding:7px;text-align:center;background:radial-gradient(circle at 34% 28%,#17945e,#075e3b 68%,#043d27);border:clamp(2px,.28vw,4px) solid #8ccbae;color:#fff;font-size:clamp(9px,min(1.35vw,2.1vh),19px);font-weight:950;letter-spacing:.035em;box-shadow:0 8px 20px #0007,inset 0 1px 0 #ffffff2c;transition:transform .16s,background .16s,box-shadow .16s,opacity .3s,border-color .3s}.table-dot.active{color:#171103;background:radial-gradient(circle at 35% 28%,#fff3ae,#d9b84e 62%,#946c10);border-color:#fff1a8;transform:scale(1.16);box-shadow:0 0 16px #ffe58d,0 0 45px #d9b84ed8,0 12px 24px #0008;z-index:5}.table-dot.chosen{border-color:var(--gold);box-shadow:0 0 0 4px #d9b84e38,0 8px 20px #0007}.tp1{grid-column:2/span 2;grid-row:1}.tp2{grid-column:4/span 2;grid-row:1}.tp3{grid-column:6/span 2;grid-row:1}.tp4{grid-column:8/span 2;grid-row:1}.tp5,.tp10,.tp15{grid-column:1/span 2}.tp6,.tp11,.tp16{grid-column:3/span 2}.tp7,.tp12,.tp17{grid-column:5/span 2}.tp8,.tp13,.tp18{grid-column:7/span 2}.tp9,.tp14,.tp19{grid-column:9/span 2}.tp5,.tp6,.tp7,.tp8,.tp9{grid-row:2}.tp10,.tp11,.tp12,.tp13,.tp14{grid-row:3}.tp15,.tp16,.tp17,.tp18,.tp19{grid-row:4}@media(max-aspect-ratio:4/5){.tables-map{gap:3px;padding:4px}.table-dot{width:min(18vw,13vh,92px);font-size:clamp(7px,2vw,12px)}.corner-countdown{width:72px;font-size:36px}}@media(max-width:970px){.layout{grid-template-columns:1fr}.screen{min-height:650px}.control{min-height:300px}}@media(max-width:560px){.app{padding:10px}.progress{display:none}.screen{min-height:590px;padding:15px}.seal{width:72px;height:58px;padding-right:12px}.seal img{max-width:55px;max-height:52px}.seal-fallback{width:50px;height:50px;font-size:18px}.mission-actions{flex-direction:column}.action{width:100%}}
+:root{
+  --dark:#032821;
+  --dark2:#021d18;
+  --mid:#004B3A;
+  --brand:#007853;
+  --fluor:#00AA81;
+  --yellow:#F3CA12;
+  --white:#FFFFFF;
+  --soft:#DDECE7;
+  --muted:rgba(255,255,255,.72);
+  --line:rgba(255,255,255,.16);
+  --shadow:0 26px 70px rgba(0,0,0,.36);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--dark);color:var(--white);font-family:"Open Sans",Tahoma,Arial,sans-serif}
+body{overflow:hidden}
+body.cursor-hidden,body.cursor-hidden *{cursor:none!important}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.42;cursor:not-allowed;filter:grayscale(.3)}
+button:focus-visible,select:focus-visible{outline:4px solid rgba(243,202,18,.42);outline-offset:3px}
+[hidden]{display:none!important}
+
+.app{min-height:100vh;display:grid;grid-template-rows:auto 1fr;padding:20px;gap:16px;background:
+  radial-gradient(circle at 18% 10%,rgba(0,120,83,.32),transparent 30%),
+  radial-gradient(circle at 86% 90%,rgba(0,170,129,.15),transparent 28%),
+  linear-gradient(145deg,var(--dark) 0%,var(--dark2) 100%)}
+.topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:10px 14px;min-height:92px;position:relative}
+.top-actions{display:flex;align-items:center;gap:10px;justify-self:start;flex-wrap:wrap}
+.top-control{border:1px solid rgba(255,255,255,.22);background:rgba(0,75,58,.72);color:var(--white);border-radius:999px;padding:10px 15px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.top-control.voice-off,.top-control.audio-off{background:rgba(255,255,255,.09);color:var(--soft)}
+.brandmark{display:flex;align-items:center;justify-content:center;min-width:0;justify-self:center}
+.brand-logo-slot{width:220px;height:76px;display:grid;place-items:center}
+.brand-logo-slot img{display:block;max-height:74px;max-width:210px;object-fit:contain}
+.brand-logo-slot img.logo-missing{visibility:hidden}
+.round-pill{display:flex;align-items:baseline;gap:9px;padding:10px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(0,75,58,.58);backdrop-filter:blur(8px);font-weight:700;letter-spacing:.03em;white-space:nowrap;justify-self:end}
+.round-pill strong{font-size:clamp(24px,2.4vw,36px);color:var(--yellow);font-weight:800}
+.round-pill span{font-size:clamp(12px,1.1vw,16px);color:var(--soft);text-transform:uppercase;letter-spacing:.14em}
+
+.stage{position:relative;min-height:0;border:1px solid rgba(255,255,255,.12);border-radius:28px;overflow:hidden;background:rgba(2,29,24,.68);box-shadow:var(--shadow);backdrop-filter:blur(8px)}
+.scene{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:clamp(22px,4vw,58px)}
+.scene.active{display:grid;animation:sceneIn .30s ease both}
+@keyframes sceneIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-size:clamp(13px,1.35vw,18px);font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--fluor)}
+.display{margin:10px 0 0;font-size:clamp(52px,8vw,118px);font-weight:800;line-height:.92;letter-spacing:-.035em;text-transform:uppercase}
+.lead{max-width:1000px;margin:20px auto 0;font-size:clamp(20px,2.2vw,34px);line-height:1.25;color:var(--soft);font-weight:400}
+.hand{font-family:"Gochi Hand","Segoe Print","Bradley Hand",cursive;font-weight:400;letter-spacing:.01em;text-transform:none}
+
+.primary,.secondary,.positive,.neutral,.danger-soft{border:0;border-radius:16px;padding:16px 26px;font-weight:700;text-transform:uppercase;letter-spacing:.055em;font-size:clamp(14px,1.3vw,18px);transition:transform .16s ease,filter .16s ease,box-shadow .16s ease}
+.primary{background:var(--yellow);color:var(--dark);box-shadow:0 12px 28px rgba(243,202,18,.22)}
+.primary:hover:not(:disabled),.positive:hover:not(:disabled),.secondary:hover:not(:disabled),.neutral:hover:not(:disabled){filter:brightness(1.04);transform:translateY(-1px)}
+.secondary{background:var(--white);color:var(--dark);border:1px solid rgba(255,255,255,.2)}
+.positive{background:var(--fluor);color:var(--dark);box-shadow:0 12px 28px rgba(0,170,129,.18)}
+.neutral{background:rgba(255,255,255,.09);color:var(--white);border:1px solid rgba(255,255,255,.22)}
+.danger-soft{background:transparent;color:#ffdede;border:1px solid rgba(255,150,150,.35)}
+.actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px}
+
+.hero-card{position:relative;overflow:hidden;width:min(1060px,94%);padding:clamp(28px,4vw,54px);border-radius:28px;border:1px solid rgba(255,255,255,.15);background:linear-gradient(145deg,rgba(0,75,58,.94),rgba(3,40,33,.98));box-shadow:0 18px 60px rgba(0,0,0,.28)}
+.hero-card.accent{border-color:rgba(243,202,18,.66);box-shadow:0 0 0 1px rgba(243,202,18,.08),0 24px 70px rgba(0,0,0,.36)}
+
+/* Intro */
+.video-intro{position:fixed;inset:0;z-index:200;background:var(--dark);display:grid;place-items:center;padding:22px}
+.video-intro.hidden{display:none}
+.video-shell{width:min(1180px,96vw);text-align:center}
+.video-brand{display:flex;justify-content:center;margin-bottom:12px}
+.video-brand img{max-height:78px;max-width:180px;object-fit:contain}
+.intro-utility-links{position:absolute;right:28px;bottom:22px;display:flex;gap:16px;align-items:center}
+.intro-config-link,.intro-panel-link,.panel-open-link{color:rgba(255,255,255,.66);font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;background:none;border:0;padding:4px 0;font-weight:400}
+.intro-config-link:hover,.intro-panel-link:hover,.panel-open-link:hover{color:#fff}
+.panel-open-link{position:fixed;right:24px;bottom:18px;z-index:180}
+.video-title{margin:0 0 16px;font-size:clamp(30px,4vw,54px);font-weight:800}
+.intro-video{width:100%;max-height:70vh;border-radius:22px;background:#000;border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow)}
+.video-controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px;transition:opacity .18s ease,transform .18s ease}
+.video-intro.playing .video-controls{opacity:0;pointer-events:none;transform:translateY(8px)}
+.video-note{margin:12px 0 0;color:var(--muted);font-size:13px}
+
+.draw-alert{position:absolute;inset:0;z-index:40;display:none;place-items:center;border-radius:28px;background:linear-gradient(145deg,#073b31,#021d18)}.draw-alert.show{display:grid}.draw-alert-content{display:grid;place-items:center;gap:10px;text-align:center}.draw-alert-label{font-size:24px;font-weight:800;letter-spacing:.22em;color:var(--fluor)}.draw-alert-title{font-size:clamp(42px,6vw,88px);font-weight:800}.draw-alert-count{width:160px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--yellow);color:var(--dark);font-size:110px;font-weight:900;box-shadow:0 0 52px rgba(243,202,18,.35);animation:countPulse .82s ease-in-out infinite}.draw-alert-go{font-size:28px;font-weight:800;color:var(--yellow)}@keyframes countPulse{0%,100%{transform:scale(.94)}50%{transform:scale(1.04)}}
+/* Mesas */
+.rolling-wrap{width:100%;height:100%;display:grid;grid-template-rows:auto minmax(0,1fr);gap:18px}
+.tables-map{width:100%;height:100%;min-height:0;position:relative;padding:8px}
+.table-dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(1);width:min(13.2vw,17vh,150px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;padding:10px;text-align:center;background:radial-gradient(circle at 34% 28%,#0b8e67,#007853 70%,#00563d);border:3px solid rgba(255,255,255,.36);color:#fff;font-size:clamp(10px,min(1.3vw,2vh),19px);font-weight:800;letter-spacing:.035em;box-shadow:0 10px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .16s ease,opacity .2s ease,filter .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}
+.table-dot.vip{opacity:.38;filter:saturate(.35);border-style:dashed}
+.table-dot.tried{background:radial-gradient(circle at 34% 28%,#087257,#004B3A 72%,#03362e);border-color:rgba(255,255,255,.22)}
+.table-dot.tried::before{content:"·";position:absolute;left:50%;bottom:5px;transform:translateX(-50%);font-size:28px;color:var(--yellow);line-height:1}
+.table-dot.won{background:radial-gradient(circle at 35% 28%,#fff6b7,#F3CA12 65%,#bb9708);border-color:#fff4a2;color:var(--dark);box-shadow:0 0 0 4px rgba(243,202,18,.12),0 10px 24px rgba(0,0,0,.26)}
+.table-dot.won::after{content:"✓";position:absolute;right:-3px;top:-5px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--dark);color:var(--yellow);font-weight:900;font-size:17px;border:2px solid var(--yellow)}
+.table-dot.active{opacity:1;filter:none;color:var(--dark);background:radial-gradient(circle at 35% 28%,#fff7c8,#F3CA12 62%,#c19b09);border-color:#fff6be;transform:translate(-50%,-50%) scale(1.15);box-shadow:0 0 20px rgba(243,202,18,.75),0 0 54px rgba(243,202,18,.34),0 14px 30px rgba(0,0,0,.35);z-index:5}
+
+/* Misión */
+.mission-shell{width:min(1080px,96%);display:grid;place-items:center}
+.table-label{font-size:clamp(16px,1.8vw,24px);font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:.16em}
+.mission-title{margin:14px 0 12px;font-size:clamp(48px,7vw,104px);font-weight:800;line-height:.95;letter-spacing:-.04em;text-transform:uppercase}
+.mission-copy{max-width:970px;margin:0 auto;color:var(--soft);font-size:clamp(22px,2.5vw,38px);line-height:1.22}
+.timer-wrap{display:grid;place-items:center;margin:24px 0 4px;gap:10px}
+.timer-ring{--p:100;width:clamp(104px,12vw,156px);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:conic-gradient(var(--yellow) calc(var(--p)*1%),rgba(255,255,255,.12) 0);box-shadow:0 0 36px rgba(243,202,18,.12);transition:filter .18s ease}
+.timer-ring::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--dark);border:1px solid rgba(255,255,255,.12)}
+.timer-ring.timeup{filter:brightness(1.25);animation:timePulse .7s ease 2}
+@keyframes timePulse{50%{transform:scale(1.08)}}
+.timer-core{position:relative;z-index:2;width:58%;aspect-ratio:1;display:grid;place-items:center}
+.timer-icon-slot{width:100%;aspect-ratio:1;display:grid;place-items:center;border-radius:12px;overflow:hidden}
+.timer-icon-slot img{width:100%;height:100%;object-fit:contain;display:block}
+.timer-icon-slot.missing{border:1px dashed rgba(255,255,255,.22);background:rgba(255,255,255,.035)}
+.timer-inline-btn{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:var(--soft);border-radius:999px;padding:7px 12px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.timer-message{min-height:1.4em;color:var(--yellow);font-size:clamp(16px,1.5vw,22px);font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.result-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+
+/* Estados */
+.success-word,.case-word{font-size:clamp(68px,10vw,150px);font-weight:800;line-height:.9;letter-spacing:-.045em;text-transform:uppercase}
+.success-word{color:var(--fluor);text-shadow:0 0 42px rgba(0,170,129,.28)}
+.case-word{color:var(--yellow);font-family:"Gochi Hand","Segoe Print","Bradley Hand",cursive;text-transform:none;font-weight:700}
+.state-sub{margin-top:20px;font-size:clamp(24px,3vw,42px);font-weight:700}
+.state-small{margin-top:10px;font-size:clamp(16px,1.6vw,23px);color:var(--soft)}
+
+/* Ruleta */
+.wheel-layout{width:100%;height:100%;display:grid;place-items:center;grid-template-rows:minmax(0,1fr)}
+.roulette-wrap{width:min(64vh,610px,86vw);aspect-ratio:1;position:relative;display:grid;place-items:center;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
+#wheel{width:100%;height:100%;border-radius:50%;will-change:transform}
+.pointer{position:absolute;z-index:5;top:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-top:54px solid var(--yellow);filter:drop-shadow(0 5px 4px rgba(0,0,0,.35))}
+.hub{position:absolute;z-index:4;width:21%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--white);color:var(--dark);border:7px solid rgba(255,255,255,.45);font-weight:800;font-size:clamp(13px,1.7vw,22px);line-height:1.05;text-transform:uppercase}
+
+/* Premio */
+.prize-card{width:min(970px,94%);padding:clamp(34px,5vw,68px);border-radius:30px;background:linear-gradient(145deg,#075342,#032821);border:2px solid var(--yellow);box-shadow:0 0 70px rgba(243,202,18,.13),0 26px 70px rgba(0,0,0,.35);position:relative;overflow:hidden}
+.prize-category{color:var(--yellow);font-size:clamp(18px,2vw,28px);font-weight:800;text-transform:uppercase;letter-spacing:.15em}
+.prize-name{margin:15px 0 0;font-size:clamp(54px,8vw,110px);font-weight:800;line-height:.94;letter-spacing:-.045em;text-transform:uppercase}
+.prize-table{margin-top:18px;font-size:clamp(18px,2vw,28px);font-weight:700;color:var(--fluor);text-transform:uppercase;letter-spacing:.09em}
+.prize-quip{margin:18px auto 0;max-width:780px;color:var(--soft);font-size:clamp(17px,1.7vw,24px);line-height:1.3}
+.confetti{position:fixed;z-index:250;top:-24px;width:10px;height:18px;animation:fall var(--d) linear forwards;background:var(--c);pointer-events:none}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--r));opacity:.9}}
+
+/* Panel de control: permanece no mesmo HTML e proxéctase se se abre */
+.control-panel{position:fixed;z-index:300;right:18px;top:18px;bottom:18px;width:min(430px,calc(100vw - 36px));display:none;flex-direction:column;gap:14px;padding:20px;border-radius:22px;background:rgba(3,40,33,.985);border:1px solid rgba(255,255,255,.18);box-shadow:var(--shadow);overflow:auto}
+.control-panel.show{display:none!important}
+.control-panel h2{margin:0;font-size:23px}.control-note{font-size:12px;color:var(--muted);line-height:1.45}.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{padding:12px;border-radius:13px;background:rgba(255,255,255,.07);text-align:center}.stat b{display:block;color:var(--yellow);font-size:23px}.stat span{font-size:11px;color:var(--muted)}
+.panel-section{padding:13px;border-radius:14px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10)}
+.panel-section h3{margin:0 0 9px;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--fluor)}
+.panel-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.panel-actions.one{grid-template-columns:1fr}
+.panel-btn{width:100%;padding:10px 11px;border-radius:11px;border:1px solid rgba(255,255,255,.22);background:var(--white);color:var(--dark);font-weight:700;font-size:12px}
+.panel-btn.alt{background:rgba(255,255,255,.08);color:var(--white)}
+.panel-btn.warn{background:rgba(243,202,18,.12);color:var(--yellow);border-color:rgba(243,202,18,.34)}
+.panel-btn.danger{background:rgba(150,20,20,.18);color:#ffdede;border-color:rgba(255,120,120,.25)}
+.panel-select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:#052f27;color:#fff;margin-bottom:8px}
+.panel-status{font-size:12px;color:var(--soft);margin:0 0 8px;line-height:1.4}
+.log{margin:0;padding-left:20px;color:var(--soft);line-height:1.55;font-size:12px;max-height:220px;overflow:auto}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:var(--soft);margin:5px 0}.toggle-row input{width:18px;height:18px}
+
+
+/* Pantalla de espera entre participacións */
+.espera-mark{font-size:clamp(52px,8vw,118px);font-weight:800;letter-spacing:-.04em;line-height:.92;text-transform:uppercase;color:var(--yellow)}
+.espera-copy{margin-top:18px;color:var(--soft);font-size:clamp(20px,2.3vw,34px)}
+
+/* Configuración visual */
+.config-overlay{position:fixed;z-index:450;inset:0;display:none;background:rgba(2,29,24,.985);padding:18px;overflow:auto}
+.config-overlay.show{display:block}
+.config-shell{width:min(1500px,100%);min-height:calc(100vh - 36px);margin:0 auto;border:1px solid rgba(255,255,255,.16);border-radius:24px;background:linear-gradient(145deg,rgba(0,75,58,.98),rgba(3,40,33,.99));box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;gap:18px}
+.config-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.config-head h2{margin:0;font-size:clamp(26px,3vw,40px)}
+.config-head p{margin:6px 0 0;color:var(--muted);max-width:850px;line-height:1.4}
+.config-tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.13);padding-bottom:10px}
+.config-tab{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.055);color:var(--soft);border-radius:999px;padding:10px 16px;font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.config-tab.active{background:var(--yellow);color:var(--dark);border-color:var(--yellow)}
+.config-tab-panel{display:none}
+.config-tab-panel.active{display:block}
+.config-section{border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.045);padding:16px;min-width:0}
+.config-section h3{margin:0 0 6px;font-size:18px}
+.config-section .help{margin:0 0 14px;color:var(--muted);font-size:12px;line-height:1.45}
+.config-map{height:420px;position:relative;border-radius:16px;border:1px dashed rgba(255,255,255,.28);background:radial-gradient(circle at 50% 50%,rgba(0,170,129,.09),transparent 52%),rgba(2,29,24,.7);overflow:hidden;margin-bottom:14px;touch-action:none}
+.config-table-chip{position:absolute;transform:translate(-50%,-50%);width:86px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:7px;background:var(--brand);border:2px solid rgba(255,255,255,.5);font-weight:800;font-size:11px;cursor:grab;user-select:none;touch-action:none;box-shadow:0 8px 18px rgba(0,0,0,.28)}
+.config-table-chip.vip{opacity:.48;border-style:dashed}
+.config-table-chip.dragging{cursor:grabbing;z-index:20;box-shadow:0 0 0 4px rgba(243,202,18,.22),0 12px 28px rgba(0,0,0,.4)}
+.config-table-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:330px;overflow:auto;padding-right:3px}
+.config-table-row{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px;border-radius:11px;background:rgba(255,255,255,.055)}
+.config-table-row .num{font-size:11px;color:var(--muted);font-weight:800}
+.config-input,.config-select{width:100%;min-width:0;padding:9px 10px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:#052f27;color:#fff}
+.config-check{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--soft);white-space:nowrap}
+.config-check input{width:17px;height:17px}
+.config-prize-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.config-count{font-size:13px;color:var(--soft)}
+.config-count strong{color:var(--yellow);font-size:20px}
+.config-total-awards{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);margin-bottom:12px}.config-total-awards label{font-size:12px;color:var(--soft);font-weight:800;text-transform:uppercase;letter-spacing:.05em}.config-total-awards input{width:100px;padding:9px 10px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:#052f27;color:#fff;font-weight:800}.config-total-awards small{color:var(--muted);font-size:11px}
+.config-prize-list,.config-mission-list{display:flex;flex-direction:column;gap:9px;max-height:675px;overflow:auto;padding-right:3px}
+.config-prize-row{display:grid;grid-template-columns:150px minmax(180px,1fr) 120px auto;gap:8px;padding:10px;border-radius:12px;background:rgba(255,255,255,.055);align-items:center}
+.config-prize-row .quip{grid-column:1 / span 3}
+.config-mission-row{display:grid;grid-template-columns:minmax(170px,.8fr) 130px 90px auto;gap:8px;padding:10px;border-radius:12px;background:rgba(255,255,255,.055);align-items:center}
+.config-mission-row .instruction{grid-column:1 / span 3}
+.config-mission-row .timed-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--soft);white-space:nowrap}
+.config-mission-row .timed-wrap input{width:17px;height:17px}
+.config-row-actions{display:flex;gap:6px;align-items:center}
+.config-mini{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;border-radius:9px;padding:9px 10px;font-size:11px;font-weight:800;cursor:pointer}
+.config-mini.remove{color:#ffdede;border-color:rgba(255,130,130,.28)}
+.config-footer{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;position:sticky;bottom:0;padding-top:12px;background:linear-gradient(180deg,transparent,rgba(3,40,33,.98) 30%)}
+@media(max-width:1080px){.config-prize-list,.config-mission-list{max-height:none}.config-table-list{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.topbar{grid-template-columns:1fr auto}.brandmark{grid-column:1/-1;grid-row:1;order:-1}.top-actions{grid-column:1}.round-pill{grid-column:2}.config-table-list{grid-template-columns:1fr}.config-prize-row,.config-mission-row{grid-template-columns:1fr}.config-prize-row .quip,.config-mission-row .instruction{grid-column:auto}.config-row-actions{justify-content:flex-end}.intro-utility-links{right:16px;bottom:12px;gap:12px}}
+
+.toast{position:fixed;z-index:500;left:50%;bottom:24px;transform:translate(-50%,18px);padding:12px 18px;border-radius:999px;background:#fff;color:var(--dark);font-weight:700;box-shadow:0 12px 38px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.22s ease}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:850px){.app{padding:10px}.topbar{min-height:78px;padding:6px 8px;gap:10px}.brandmark img{max-height:58px;max-width:170px}.stage{border-radius:20px}.scene{padding:18px}.table-dot{width:min(17vw,13vh,105px);font-size:clamp(8px,1.7vw,12px)}}
+@media(max-width:560px){.round-pill span{display:none}.top-actions{gap:6px}.top-control{padding:8px 10px;font-size:10px}.actions,.result-actions{flex-direction:column}.actions button,.result-actions button{width:100%}.hero-card{width:100%}.panel-actions{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
 <div id="videoIntro" class="video-intro">
   <div class="video-shell">
-    <img class="video-logo" src="logo-60-aniversario.png" alt="60 aniversario" onerror="this.hidden=true">
-    <h2 class="video-title">O Reto das Mesas</h2>
+    <div class="video-brand">
+      <img src="logo-60-aniversario.png" alt="60 aniversario" onerror="this.style.visibility='hidden'">
+    </div>
+    <h1 class="video-title">O Reto das Mesas</h1>
     <video id="instructionsVideo" class="intro-video" preload="auto" playsinline>
       <source src="instrucions-xogo.mp4" type="video/mp4">
     </video>
-    <div class="video-actions">
-      <button id="playVideoBtn" class="video-btn">REPRODUCIR INSTRUCIÓNS</button>
-      <button id="startGameBtn" class="video-btn secondary">COMEZAR O XOGO</button>
+    <div class="video-controls">
+      <button id="playVideoBtn" class="primary">REPRODUCIR INSTRUCIÓNS</button>
+      <button id="startGameBtn" class="secondary">COMEZAR O XOGO</button>
     </div>
     <p id="videoNote" class="video-note">Barra espazadora: reproducir ou pausar · Enter: comezar o xogo</p>
+  </div>
+  <div class="intro-utility-links">
+    <a href="#" id="introConfigBtn" class="intro-config-link">Configuración</a>
+    <a href="#" id="introPanelBtn" class="intro-panel-link">Panel</a>
   </div>
 </div>
 
 <div class="app">
-<header class="top"><div class="brand"><div class="seal"><img src="logo-60-aniversario.png" alt="60 aniversario" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="seal-fallback" hidden>60</div></div><div><h1>O Reto das Mesas</h1><p class="sub">60 aniversario · Misión, pulsador e ruleta</p></div></div><div class="progress">Seleccións: <b id="roundCount">0 / 7</b></div></header>
-<div class="layout">
-<main class="screen"><div id="cornerCountdown" class="corner-countdown">10</div>
-<section id="idle" class="scene active"><div><div class="eyebrow">Próxima selección</div><div id="countdown" class="mega">LISTOS</div><button id="selectBtn" class="next-btn">SELECCIONAR MESA</button></div></section>
-<section id="announcement" class="scene"><div class="mission-card alert-card"><div class="eyebrow">Atención</div><div class="mega" style="font-size:clamp(48px,8vw,105px)">COMEZA A PROBA</div><div class="message">Prepárense todas as mesas</div></div></section><section id="replacementAnnouncement" class="scene"><div class="mission-card alert-card"><div class="eyebrow">A misión non foi superada</div><div class="mega" style="font-size:clamp(43px,7vw,92px)">ESCOLLERASE OUTRA MESA</div><div class="message">O premio desta rolda segue en xogo</div></div></section><section id="rolling" class="scene"><div style="width:100%;height:100%;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr)"><div class="eyebrow">Seleccionando mesa</div><div id="tablesMap" class="tables-map"></div><div id="rollingName" hidden></div></div></section>
-<section id="mission" class="scene"><div class="mission-card"><div class="eyebrow">Mesa seleccionada</div><div id="missionTable" class="mega" style="font-size:clamp(40px,7vw,86px)"></div><div class="mission-icon">🎯</div><div id="missionText" class="mission-text"></div><div class="mission-actions"><button id="passMission" class="action">✅ MISIÓN SUPERADA</button><button id="failMission" class="action fail">❌ MISIÓN NON SUPERADA</button></div></div></section>
-<section id="unlock" class="scene"><div><div class="locked">🔓</div><div class="eyebrow">Ruleta desbloqueada</div><div id="captainTable" class="mega" style="font-size:clamp(40px,7vw,82px)"></div><div class="message">Dirección da mesa, premede o botón para xirar a ruleta</div><button id="buzzer" class="buzzer">XIRAR RULETA</button></div></section>
-<section id="wheelScene" class="scene"><div style="width:100%;display:grid;place-items:center"><div class="roulette-wrap"><div class="pointer"></div><canvas id="wheel" width="900" height="900"></canvas><div class="hub">60<br>AÑOS</div></div><div class="message">A ruleta está xirando...</div></div></section>
-<section id="finished" class="scene"><div><div style="font-size:90px">🏆</div><div class="mega">XOGO REMATADO</div><div class="message">As sete mesas participantes xa foron seleccionadas</div></div></section>
-</main>
-<aside id="presenterPanel" class="control"><h2>Panel de control</h2><div class="stats"><div class="stat"><b id="selectedStat">0</b><span>premios entregados</span></div><div class="stat"><b id="prizesStat">7</b><span>premios pendentes</span></div></div><div class="box"><label>Conta atrás opcional antes de seleccionar</label><input id="seconds" type="number" value="5" min="0" max="60"></div><div class="box"><label>Estado</label><strong id="stateText">Preparado para comezar</strong></div><div class="box"><label>Historial</label><ol id="log" class="log"><li>Aínda non hai resultados.</li></ol></div><div class="presenter"><button id="reset" class="mini">RESTABLECER PROBA</button></div></aside>
-</div></div>
-<div id="failOverlay" class="fail-overlay" role="dialog" aria-modal="true"><div class="fail-card"><div class="fail-icon">👎</div><div class="eyebrow" style="color:#ff8b8b">Resultado da proba</div><h2 class="fail-title">MISIÓN NON SUPERADA</h2><p class="fail-text">A ruleta permanece bloqueada</p><button id="failContinue" class="fail-close">CONTINUAR</button></div></div>
-<div id="prizeOverlay" class="overlay"><div class="popup"><div id="prizeIcon" class="icon">🏆</div><div class="eyebrow">Premio desbloqueado!</div><h2 id="prizeTitle"></h2><p id="prizeDesc"></p><button id="continueBtn" class="action">CONTINUAR</button></div></div>
+  <header class="topbar">
+    <div class="top-actions">
+      <button id="instructionsBtn" class="top-control">INSTRUCIÓNS</button>
+      <button id="configBtn" class="top-control">CONFIGURACIÓN</button>
+      <button id="audioQuickBtn" class="top-control">AUDIO: ON</button>
+      <button id="voiceQuickBtn" class="top-control">VOZ: ON</button>
+    </div>
+    <div class="brandmark">
+      <div class="brand-logo-slot">
+        <img src="logo-60-aniversario.png" alt="60 aniversario" onerror="this.classList.add('logo-missing')">
+      </div>
+    </div>
+    <div class="round-pill"><span>Premio</span><strong id="roundCount">1 / 7</strong></div>
+  </header>
+
+  <main class="stage">
+    <section id="idle" class="scene active">
+      <div class="hero-card accent">
+        <div id="drawAlert" class="draw-alert" aria-hidden="true">
+          <div class="draw-alert-content">
+            <div class="draw-alert-label">ATENCIÓN</div>
+            <div class="draw-alert-title">COMEZA O SORTEO</div>
+            <div id="drawAlertCount" class="draw-alert-count">5</div>
+            <div class="draw-alert-go">PREPARADOS?</div>
+          </div>
+        </div>
+        <div class="eyebrow" id="idleEyebrow">PREMIO 1 DE 7</div>
+        <div class="display">LISTOS?</div>
+        <p class="lead hand">Quen será a seguinte mesa?</p>
+        <div class="actions"><button id="selectBtn" class="primary">SELECCIONAR MESA</button></div>
+      </div>
+    </section>
+
+    <section id="rolling" class="scene">
+      <div class="rolling-wrap">
+        <div class="eyebrow">Seleccionando mesa</div>
+        <div id="tablesMap" class="tables-map"></div>
+      </div>
+    </section>
+
+    <section id="selected" class="scene">
+      <div>
+        <div class="eyebrow">Mesa seleccionada</div>
+        <div id="selectedTableName" class="display">CORAXE</div>
+        <div class="lead hand">Esta vai para vós.</div>
+      </div>
+    </section>
+
+    <section id="mission" class="scene">
+      <div class="mission-shell">
+        <div id="missionTable" class="table-label">CORAXE</div>
+        <div id="missionTitle" class="mission-title">10 LOCALIDADES</div>
+        <p id="missionText" class="mission-copy"></p>
+        <div id="timerWrap" class="timer-wrap" hidden>
+          <div id="timerRing" class="timer-ring" style="--p:100">
+            <div class="timer-core" aria-label="Indicador visual de tempo">
+              <div class="timer-icon-slot">
+                <img src="espiga_caixa_rural.png" alt="" onerror="this.style.display='none';this.parentElement.classList.add('missing')">
+              </div>
+            </div>
+          </div>
+          <button id="timerInlineBtn" class="timer-inline-btn" hidden>PAUSAR TEMPO</button>
+          <div id="timerMessage" class="timer-message" hidden>Tempo agotado</div>
+        </div>
+        <div id="missionStartActions" class="actions"></div>
+        <div id="missionResultActions" class="result-actions" hidden>
+          <button id="passMission" class="positive">MISIÓN SUPERADA</button>
+          <button id="failMission" class="secondary">MISIÓN NON SUPERADA</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="success" class="scene">
+      <div>
+        <div class="success-word">CONSEGUIDO!</div>
+        <div class="state-sub">Ruleta desbloqueada</div>
+        <div id="successTable" class="state-small"></div>
+        <div class="actions"><button id="successContinueBtn" class="primary">CONTINUAR Á RULETA</button></div>
+      </div>
+    </section>
+
+    <section id="fail" class="scene">
+      <div class="hero-card accent">
+        <div class="case-word">Case!</div>
+        <div class="state-sub">O PREMIO SEGUE EN XOGO</div>
+        <div class="state-small">O sorteo segue aberto.</div>
+        <div class="actions"><button id="selectAgainBtn" class="primary">SELECCIONAR OUTRA MESA</button><button id="failEsperaBtn" class="secondary">IR Á PANTALLA DE ESPERA</button></div>
+      </div>
+    </section>
+
+    <section id="unlock" class="scene">
+      <div>
+        <div class="eyebrow">Ruleta desbloqueada</div>
+        <div id="captainTable" class="display" style="font-size:clamp(48px,7vw,98px)">CORAXE</div>
+        <p class="lead">Dirección da mesa, premede o botón para xirar a ruleta.</p>
+        <div class="actions"><button id="buzzer" class="primary">XIRAR RULETA</button></div>
+      </div>
+    </section>
+
+    <section id="wheelScene" class="scene">
+      <div class="wheel-layout">
+        <div class="roulette-wrap">
+          <div class="pointer"></div>
+          <canvas id="wheel" width="900" height="900"></canvas>
+          <div class="hub">60<br>ANOS</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prize" class="scene">
+      <div class="prize-card">
+        <div id="prizeCategory" class="prize-category"></div>
+        <div id="prizeName" class="prize-name"></div>
+        <div id="prizeTable" class="prize-table"></div>
+        <div id="prizeQuip" class="prize-quip"></div>
+        <div class="actions"><button id="continueBtn" class="primary">CONTINUAR XOGANDO</button></div>
+      </div>
+    </section>
+
+
+    <section id="espera" class="scene">
+      <div class="hero-card accent">
+        <div class="eyebrow">O Reto das Mesas</div>
+        <div class="espera-mark">SEGUIMOS NUN INTRE</div>
+        <p id="esperaCopy" class="espera-copy hand">En cando estedes preparados, seguimos</p>
+        <div class="actions"><button id="esperaReturnBtn" class="primary">CONTINUAR XOGANDO</button></div>
+      </div>
+    </section>
+
+    <section id="finished" class="scene">
+      <div class="hero-card accent">
+        <div class="eyebrow">O Reto das Mesas</div>
+        <div id="finishedCountText" class="display" style="font-size:clamp(54px,8vw,110px)">PREMIOS ENTREGADOS</div>
+        <p class="lead hand">60 aniversario</p>
+      </div>
+    </section>
+  </main>
+</div>
+<a href="#" id="panelLink" class="panel-open-link">Panel</a>
+
+
+<div id="configPanel" class="config-overlay" aria-hidden="true">
+  <div class="config-shell">
+    <div class="config-head">
+      <div>
+        <h2>Configuración do xogo</h2>
+        <p>Os cambios gárdanse neste navegador. As mesas pódense renomear e mover arrastrándoas no plano. Na ruleta, cada fila de premio equivale exactamente a un segmento.</p>
+      </div>
+    </div>
+
+    <div class="config-tabs" role="tablist">
+      <button class="config-tab active" data-config-tab="tables" type="button">MESAS</button>
+      <button class="config-tab" data-config-tab="prizes" type="button">PREMIOS</button>
+      <button class="config-tab" data-config-tab="missions" type="button">RETOS</button>
+    </div>
+
+    <div id="configTabTables" class="config-tab-panel active">
+      <section class="config-section">
+        <h3>Mesas e distribución</h3>
+        <p class="help">Arrastra as mesas no recadro para modificar a súa posición. Cambia o nome na lista inferior. O estado VIP tamén pode modificarse.</p>
+        <div id="configTableEditor" class="config-map"></div>
+        <div id="configTableList" class="config-table-list"></div>
+      </section>
+    </div>
+
+    <div id="configTabPrizes" class="config-tab-panel">
+      <section class="config-section">
+        <h3>Premios e segmentos da ruleta</h3>
+        <p class="help">Cada premio cargado crea un segmento independente. A ruleta mestura automaticamente as categorías para evitar que os premios do mesmo tipo aparezan agrupados.</p>
+        <div class="config-total-awards">
+          <label for="configTotalAwards">Premios totais do xogo / roldas</label>
+          <input id="configTotalAwards" type="number" min="1" max="99" value="7">
+          <small>Este número define cantos premios se entregan e, polo tanto, cantas roldas ten o xogo. Non pode superar o número de segmentos cargados.</small>
+        </div>
+        <div class="config-prize-toolbar">
+          <div id="configPrizeCount" class="config-count">Segmentos: <strong>0</strong></div>
+          <button id="addPrizeBtn" class="panel-btn">ENGADIR PREMIO</button>
+        </div>
+        <div id="configPrizeList" class="config-prize-list"></div>
+      </section>
+    </div>
+
+    <div id="configTabMissions" class="config-tab-panel">
+      <section class="config-section">
+        <h3>Retos</h3>
+        <p class="help">Podes editar o título, a instrución, o tipo e o tempo de cada reto, ademais de engadir, duplicar ou eliminar probas.</p>
+        <div class="config-prize-toolbar">
+          <div id="configMissionCount" class="config-count">Retos: <strong>0</strong></div>
+          <button id="addMissionBtn" class="panel-btn">ENGADIR RETO</button>
+        </div>
+        <div id="configMissionList" class="config-mission-list"></div>
+      </section>
+    </div>
+
+    <div class="config-footer">
+      <button id="resetConfigBtn" class="neutral">RESTABLECER CONFIGURACIÓN BASE</button>
+      <button id="cancelConfigBtn" class="secondary">VOLVER SEN GARDAR</button>
+      <button id="saveConfigBtn" class="primary">GARDAR CAMBIOS</button>
+    </div>
+  </div>
+</div>
+
+<aside id="presenterPanel" class="control-panel">
+  <h2>Panel de control</h2>
+  <div class="control-note">Este panel ábrese nunha xanela auxiliar independente da proxección principal.</div>
+
+  <div class="control-grid">
+    <div class="stat"><b id="awardedStat">0</b><span>premios entregados</span></div>
+    <div class="stat"><b id="remainingStat">7</b><span>premios pendentes</span></div>
+    <div class="stat"><b id="currentTableStat">—</b><span>mesa actual</span></div>
+    <div class="stat"><b id="stateStat">LISTOS</b><span>estado</span></div>
+  </div>
+
+  <div class="panel-section">
+    <h3>Seguridade e recuperación</h3>
+    <div class="panel-actions">
+      <button id="undoBtn" class="panel-btn warn">DESFACER ÚLTIMA ACCIÓN</button>
+      <button id="skipAnimationBtn" class="panel-btn alt">SALTAR ANIMACIÓN</button>
+      <button id="repeatSelectionBtn" class="panel-btn alt">REPETIR SORTEO DE MESA</button>
+      <button id="changeMissionBtn" class="panel-btn alt">CAMBIAR MISIÓN</button>
+    </div>
+  </div>
+
+  <div class="panel-section">
+    <h3>Temporizador</h3>
+    <div class="panel-actions">
+      <button id="pauseTimerBtn" class="panel-btn alt">PAUSAR / RETOMAR</button>
+      <button id="restartTimerBtn" class="panel-btn alt">REINICIAR TEMPO</button>
+    </div>
+  </div>
+
+  <div class="panel-section">
+    <h3>Audio</h3>
+    <label class="toggle-row"><span>Efectos de son</span><input id="soundToggle" type="checkbox" checked></label>
+    <label class="toggle-row"><span>Voz sintética</span><input id="voiceToggle" type="checkbox" checked></label>
+  </div>
+
+  <div class="panel-section">
+    <h3>Xestión manual de mesas</h3>
+    <select id="tableAdminSelect" class="panel-select"></select>
+    <p id="tableAdminStatus" class="panel-status"></p>
+    <div class="panel-actions">
+      <button id="tableFreshBtn" class="panel-btn alt">MARCAR SEN PARTICIPAR</button>
+      <button id="tableTriedBtn" class="panel-btn alt">MARCAR XA PARTICIPOU</button>
+      <button id="tableWonBtn" class="panel-btn alt">MARCAR PREMIADA</button>
+    </div>
+  </div>
+
+  <div class="panel-section">
+    <h3>Xestión manual de premios</h3>
+    <select id="prizeAdminSelect" class="panel-select"></select>
+    <p id="prizeAdminStatus" class="panel-status"></p>
+    <div class="panel-actions">
+      <button id="prizePendingBtn" class="panel-btn alt">DEVOLVER Á RULETA</button>
+      <button id="prizeAwardedBtn" class="panel-btn alt">MARCAR ENTREGADO</button>
+    </div>
+  </div>
+
+  <div class="panel-section">
+    <h3>Historial</h3>
+    <ol id="log" class="log"><li>Aínda non hai resultados.</li></ol>
+  </div>
+
+  <div class="panel-actions one">
+    <button id="panelEsperaBtn" class="panel-btn alt">IR Á PANTALLA DE ESPERA</button>
+    <button id="returnIntroBtn" class="panel-btn alt">VOLVER Á INTRO</button>
+    <button id="reset" class="panel-btn danger">RESTABLECER TODA A PROBA</button>
+    <button id="closePanel" class="panel-btn">PECHAR PANEL</button>
+  </div>
+</aside>
+
+<div id="toast" class="toast"></div>
+
 <script>
 (()=>{"use strict";
-const TABLES=["ORIXE","LATIDO","PALABRA","PEGADA","XEITO","APERTA","ENCONTRO","OFICIO","CAMIÑO","CORAXE","MEMORIA","LAZOS","PEGADAS","ORGULLO","LEGADO","IMPULSO","PORVIR","XUNTOS","GRAZAS"];
-const MISSIONS=["Toda a mesa debe cantar xunta o retrouso dunha canción coñecida.","Inventade e berrade un lema para o 60 aniversario.","Facede unha onda perfecta, dun extremo ao outro da mesa.","Escollede unha persoa para imitar durante 20 segundos a un director ou directora de oficina.","Toda a mesa debe brindar e berrar: Por outros 60 anos!","Representade unha escena de atención a un cliente sen utilizar palabras.","Conseguide que toda a sala siga o voso aplauso durante 10 segundos.","Cantade Parabéns para ti cambiando a letra por Caixa Rural Galega.","En 20 segundos, nomeade entre todos dez localidades de Galicia.","Creade un anuncio de Caixa Rural Galega de 20 segundos.","Todas as persoas da mesa deben poñerse de pé por orde de aniversario, de xaneiro a decembro.","Interpretade xuntos un retrouso usando só a sílaba la."];
-const SEGMENTS=[
-{category:"ESPIGA OURO",description:"Cheque Amazon de 50 €",popupText:"Porque o futuro tamén se compra cun clic. Levades un cheque Amazon por valor de cincuenta euros.",color:"#facc15",textColor:"#172033",icon:"🏆"},
-{category:"ESPIGA PRATA",description:"Botella de viño",popupText:"Para celebrar esta gran fazaña como corresponde. Unha botella de viño para brindar polos próximos sesenta anos.",color:"#64748b",textColor:"#ffffff",icon:"🍷"},
-{category:"ESPIGA PRATA",description:"Sobre de xamón",popupText:"Porque toda misión superada merece unha recompensa seria. Un magnífico sobre de xamón.",color:"#dbe4ee",textColor:"#172033",icon:"🥓"},
-{category:"ESPIGA PRATA",description:"Pack de conservas",popupText:"Un pequeno tesouro en lata. Que aproveite tanto como a proba que acabades de superar.",color:"#94a3b8",textColor:"#172033",icon:"🥫"},
-{category:"ESPIGA CENTEO",description:"Mirlitón",popupText:"Porque a discreción está claramente sobrevalorada. Levades un mirlitón para facervos notar.",color:"#c2410c",textColor:"#ffffff",icon:"🎺"},
-{category:"ESPIGA CENTEO",description:"Calcetíns de ovos fritidos",popupText:"Para que os vosos pés vaian vestidos con auténtico estilo. Calcetíns de ovos fritidos.",color:"#f97316",textColor:"#ffffff",icon:"🧦"},
-{category:"ESPIGA CENTEO",description:"Mini pandeireta",popupText:"Por se a festa decae. Agora xa tedes ferramenta oficial para volver animala.",color:"#b7791f",textColor:"#ffffff",icon:"🥁"}
-];
-let availableTables=TABLES.slice(2),pendingPrizes=SEGMENTS.map((p,i)=>({...p,id:i})),usedMissions=[],history=[],currentTable="",currentMission="",rotation=0,running=false;
-const ids=["idle","announcement","replacementAnnouncement","rolling","mission","unlock","wheelScene","finished"];const $=id=>document.getElementById(id);const canvas=$("wheel"),ctx=canvas.getContext("2d");
-const intro=$("videoIntro"),instructionsVideo=$("instructionsVideo"),playVideoBtn=$("playVideoBtn"),startGameBtn=$("startGameBtn"),videoNote=$("videoNote"),cornerCountdown=$("cornerCountdown"),tablesMap=$("tablesMap");let introActive=true;
-TABLES.forEach((name,i)=>{const el=document.createElement("div");el.className=`table-dot tp${i+1}`;el.dataset.table=name;el.textContent=name;tablesMap.appendChild(el)});
-function tableEl(name){return tablesMap.querySelector(`[data-table="${name}"]`)}
-function refreshChosenTables(){tablesMap.querySelectorAll(".table-dot").forEach(el=>el.classList.toggle("chosen",!availableTables.includes(el.dataset.table)&&!TABLES.slice(0,2).includes(el.dataset.table)))}
-function updateVideoButton(){playVideoBtn.textContent=instructionsVideo.paused?"REPRODUCIR INSTRUCIÓNS":"PAUSAR VÍDEO"}
-function toggleVideo(){if(instructionsVideo.paused){instructionsVideo.play().then(updateVideoButton).catch(()=>{videoNote.textContent="Preme REPRODUCIR INSTRUCIÓNS para activar o vídeo e o son."})}else{instructionsVideo.pause();updateVideoButton()}}
-function closeIntro(){instructionsVideo.pause();instructionsVideo.currentTime=0;intro.classList.add("hidden");introActive=false;document.body.classList.remove("show-cursor")}
+/* ============================================================
+   CONFIGURACIÓN BASE
+   - As mesas teñen un id estable, nome, VIP e posición x/y (%).
+   - Cada entrada de DEFAULT_PRIZES é UN segmento da ruleta.
+   - O panel CONFIGURACIÓN permite editar todo isto e gardalo
+     en localStorage sen tocar o código.
+   ============================================================ */
+const SETTINGS={
+  failedTableWeight:0.5,
+  defaultAwards:7,
+  selectionDurationMs:5600,
+  finalTableHoldMs:1000,
+  selectedHoldMs:2100,
+  wheelDurationMs:6200,
+  configKey:"reto-mesas-60-config-v6",
+  sessionKey:"reto-mesas-60-session-v6",
+  undoKey:"reto-mesas-60-undo-v6",
+  maxUndo:12
+};
 
-function scene(id){ids.forEach(x=>$(x).classList.toggle("active",x===id))}function rnd(max){if(max<=1)return 0;const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%max}
-function voice(text){try{speechSynthesis.cancel();const voices=speechSynthesis.getVoices();const preferred=voices.find(v=>v.lang.toLowerCase().startsWith("gl"))||voices.find(v=>/galician|galeg/i.test(v.name))||voices.find(v=>v.lang.toLowerCase().startsWith("es")&&/female|mujer|helena|elvira|monica|paulina|sabina/i.test(v.name))||voices.find(v=>v.lang.toLowerCase().startsWith("es"));const u=new SpeechSynthesisUtterance(text);if(preferred)u.voice=preferred;u.lang=preferred?.lang||"gl-ES";u.rate=.78;u.pitch=.72;u.volume=1;speechSynthesis.speak(u)}catch(e){}}
-function booSound(){try{const A=window.AudioContext||window.webkitAudioContext,a=new A(),master=a.createGain(),filter=a.createBiquadFilter();filter.type="lowpass";filter.frequency.value=850;filter.Q.value=.8;filter.connect(master);master.connect(a.destination);master.gain.setValueAtTime(.0001,a.currentTime);master.gain.exponentialRampToValueAtTime(.34,a.currentTime+.08);master.gain.setValueAtTime(.34,a.currentTime+1.8);master.gain.exponentialRampToValueAtTime(.0001,a.currentTime+3.2);for(let i=0;i<18;i++){const o=a.createOscillator(),g=a.createGain(),start=a.currentTime+Math.random()*.45;o.type=i%3===0?"sawtooth":"triangle";o.frequency.setValueAtTime(105+Math.random()*85,start);o.frequency.linearRampToValueAtTime(72+Math.random()*45,start+2.3);g.gain.value=.018+Math.random()*.018;o.connect(g);g.connect(filter);o.start(start);o.stop(start+2.6)}setTimeout(()=>a.close(),3600)}catch(e){}}
-// Sons do sorteo de mesas. Reutilízase un único AudioContext para evitar cortes.
-let selectionAudioContext=null;
-function getSelectionAudioContext(){
-  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
-  if(!AudioContextClass)return null;
-  if(!selectionAudioContext)selectionAudioContext=new AudioContextClass();
-  if(selectionAudioContext.state==="suspended")selectionAudioContext.resume();
-  return selectionAudioContext
-}
-function tableTickSound(progress=0){
+const DEFAULT_TABLES=[
+  {id:"t1",name:"ORIXE",vip:true,x:20,y:13},{id:"t2",name:"LATIDO",vip:true,x:40,y:13},{id:"t3",name:"PALABRA",vip:false,x:60,y:13},{id:"t4",name:"PEGADA",vip:false,x:80,y:13},
+  {id:"t5",name:"XEITO",vip:false,x:10,y:38},{id:"t6",name:"APERTA",vip:false,x:30,y:38},{id:"t7",name:"ENCONTRO",vip:false,x:50,y:38},{id:"t8",name:"OFICIO",vip:false,x:70,y:38},{id:"t9",name:"CAMIÑO",vip:false,x:90,y:38},
+  {id:"t10",name:"CORAXE",vip:false,x:10,y:63},{id:"t11",name:"MEMORIA",vip:false,x:30,y:63},{id:"t12",name:"LAZOS",vip:false,x:50,y:63},{id:"t13",name:"PEGADAS",vip:false,x:70,y:63},{id:"t14",name:"ORGULLO",vip:false,x:90,y:63},
+  {id:"t15",name:"LEGADO",vip:false,x:10,y:87},{id:"t16",name:"IMPULSO",vip:false,x:30,y:87},{id:"t17",name:"PORVIR",vip:false,x:50,y:87},{id:"t18",name:"XUNTOS",vip:false,x:70,y:87},{id:"t19",name:"GRAZAS",vip:false,x:90,y:87}
+];
+
+const DEFAULT_MISSIONS=[
+  {id:"cancion",title:"RETROUSO EXPRESS",instruction:"Toda a mesa debe cantar xunta durante uns segundos o retrouso dunha canción coñecida.",duration:12,timed:true,type:"musical"},
+  {id:"lema",title:"LEMA 60",instruction:"Inventade e berrade xuntos un lema para celebrar o 60 aniversario.",duration:20,timed:true,type:"creativa"},
+  {id:"onda",title:"A ONDA",instruction:"Facede unha onda perfecta dun extremo ao outro da mesa.",duration:12,timed:true,type:"coordinacion"},
+  {id:"brinde",title:"POR OUTROS 60",instruction:"Toda a mesa debe brindar e berrar ao mesmo tempo: Por outros 60 anos!",duration:12,timed:true,type:"celebracion"},
+  {id:"mimica",title:"ATENCIÓN SEN PALABRAS",instruction:"Representade unha pequena escena de atención a un cliente sen utilizar palabras.",duration:15,timed:true,type:"representacion"},
+  {id:"aplauso",title:"CONTAXIA A SALA",instruction:"Conseguide que o resto da sala siga o voso aplauso.",duration:15,timed:true,type:"sala"},
+  {id:"localidades",title:"10 LOCALIDADES",instruction:"Nomeade entre toda a mesa dez localidades de Galicia.",duration:20,timed:true,type:"galicia"},
+  {id:"anuncio",title:"SPOT EXPRESS",instruction:"Creade e representade un anuncio de Caixa Rural Galega en poucos segundos.",duration:15,timed:true,type:"creativa"},
+  {id:"pose",title:"60 ANOS XUNTOS",instruction:"Creade unha pose conxunta que represente 60 anos xuntos e mantédea uns segundos.",duration:15,timed:true,type:"visual"},
+  {id:"xesto",title:"MESMO XESTO",instruction:"Sen poñervos de acordo falando, intentade rematar todos facendo o mesmo xesto.",duration:15,timed:true,type:"coordinacion"},
+  {id:"seispalabras",title:"EN 6 PALABRAS",instruction:"Definide entre toda a mesa os próximos 60 anos utilizando exactamente seis palabras.",duration:20,timed:true,type:"creativa"},
+  {id:"grito",title:"GRITO DE MESA",instruction:"Inventade un grito de celebración propio e facédeo todos á vez.",duration:15,timed:true,type:"celebracion"},
+  {id:"tresverdes",title:"TRES COUSAS VERDES",instruction:"Nomeade rapidamente tres cousas verdes que non teñan relación coa banca.",duration:10,timed:true,type:"rapida"},
+  {id:"cadea",title:"CADEA GALEGA",instruction:"Construíde unha cadea de cinco palabras relacionadas con Galicia, unha persoa tras outra.",duration:18,timed:true,type:"galicia"},
+  {id:"silencio",title:"BRINDE EN SILENCIO",instruction:"Facede un brinde perfectamente coordinado sen pronunciar unha soa palabra.",duration:12,timed:true,type:"coordinacion"},
+  {id:"memoria",title:"UNHA PALABRA",instruction:"Escollede entre todos unha única palabra que resuma estes 60 anos e berrádea xuntos.",duration:15,timed:true,type:"creativa"},
+  {id:"ritmo",title:"RITMO DE MESA",instruction:"Creade un ritmo curto usando só palmas e golpes suaves sobre a mesa e repetídeo xuntos.",duration:15,timed:true,type:"musical"},
+  {id:"saludo",title:"SAÚDO OFICIAL",instruction:"Inventade un saúdo propio da mesa e executádeo todos ao mesmo tempo.",duration:15,timed:true,type:"visual"}
+];
+
+/* 24 premios = 24 segmentos iniciais. Pódense cambiar no panel. */
+const DEFAULT_PRIZES=[
+  {id:"p01",category:"ESPIGA OURO",name:"CHEQUE AMAZON 50 €",quip:"Porque o futuro tamén se compra cun clic.",theme:"gold"},
+  {id:"p02",category:"ESPIGA OURO",name:"CHEQUE AMAZON 50 €",quip:"Porque o futuro tamén se compra cun clic.",theme:"gold"},
+  {id:"p03",category:"ESPIGA OURO",name:"CHEQUE AMAZON 50 €",quip:"Porque o futuro tamén se compra cun clic.",theme:"gold"},
+  {id:"p04",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
+  {id:"p05",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
+  {id:"p06",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
+  {id:"p07",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
+  {id:"p08",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
+  {id:"p09",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
+  {id:"p10",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
+  {id:"p11",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
+  {id:"p12",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
+  {id:"p13",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
+  {id:"p14",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
+  {id:"p15",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
+  {id:"p16",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
+  {id:"p17",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
+  {id:"p18",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
+  {id:"p19",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
+  {id:"p20",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
+  {id:"p21",category:"ESPIGA CENTEO",name:"CALCETÍNS DE OVOS FRITIDOS",quip:"Estilo indiscutible ata nos pés.",theme:"green"},
+  {id:"p22",category:"ESPIGA CENTEO",name:"CALCETÍNS DE OVOS FRITIDOS",quip:"Estilo indiscutible ata nos pés.",theme:"green"},
+  {id:"p23",category:"ESPIGA CENTEO",name:"MINI PANDEIRETA",quip:"Unha ferramenta oficial para manter a festa viva.",theme:"green"},
+  {id:"p24",category:"ESPIGA CENTEO",name:"MINI PANDEIRETA",quip:"Unha ferramenta oficial para manter a festa viva.",theme:"green"}
+];
+
+const $=id=>document.getElementById(id);
+const clone=x=>JSON.parse(JSON.stringify(x));
+let TABLES=clone(DEFAULT_TABLES),PRIZES=clone(DEFAULT_PRIZES),MISSIONS=clone(DEFAULT_MISSIONS),GAME_TOTAL=SETTINGS.defaultAwards;
+
+function loadConfig(){
   try{
-    const a=getSelectionAudioContext();if(!a)return;
-    const o=a.createOscillator(),g=a.createGain();
-    o.type="square";
-    // O ton sobe lixeiramente durante o sorteo para aumentar a tensión.
-    o.frequency.setValueAtTime(760+progress*300,a.currentTime);
-    g.gain.setValueAtTime(.0001,a.currentTime);
-    g.gain.exponentialRampToValueAtTime(.075,a.currentTime+.006);
-    g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+.055);
-    o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.06)
+    const raw=localStorage.getItem(SETTINGS.configKey);if(!raw)return;
+    const cfg=JSON.parse(raw);
+    if(Array.isArray(cfg.tables)&&cfg.tables.length)TABLES=cfg.tables.map((t,i)=>({id:t.id||`t${i+1}`,name:String(t.name||`MESA ${i+1}`),vip:!!t.vip,x:Number.isFinite(+t.x)?+t.x:50,y:Number.isFinite(+t.y)?+t.y:50}));
+    if(Array.isArray(cfg.prizes)&&cfg.prizes.length)PRIZES=cfg.prizes.map((p,i)=>({id:p.id||`p-${i+1}`,category:String(p.category||"PREMIO"),name:String(p.name||`PREMIO ${i+1}`),quip:String(p.quip||""),theme:["gold","silver","green"].includes(p.theme)?p.theme:"green"}));
+    if(Array.isArray(cfg.missions)&&cfg.missions.length)MISSIONS=cfg.missions.map((m,i)=>({id:m.id||`m-${i+1}`,title:String(m.title||`RETO ${i+1}`),instruction:String(m.instruction||""),duration:Math.max(1,Number(m.duration)||15),timed:m.timed!==false,type:String(m.type||"xeral")}));
+    GAME_TOTAL=Math.max(1,Number(cfg.totalAwards)||SETTINGS.defaultAwards);
   }catch(e){}
 }
-function selectedTableSound(){
-  try{
-    const a=getSelectionAudioContext();if(!a)return;
-    const g=a.createGain();g.connect(a.destination);
-    g.gain.setValueAtTime(.0001,a.currentTime);
-    g.gain.exponentialRampToValueAtTime(.18,a.currentTime+.02);
-    g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+1.05);
-    [523,659,784,1047].forEach((f,i)=>{
-      const o=a.createOscillator();o.type="sine";o.frequency.value=f;o.connect(g);
-      o.start(a.currentTime+i*.11);o.stop(a.currentTime+.72+i*.11)
-    })
+loadConfig();
+
+const SCENES=["idle","rolling","selected","mission","success","fail","unlock","wheelScene","prize","espera","finished"];
+const canvas=$("wheel"),ctx=canvas.getContext("2d");
+const intro=$("videoIntro"),video=$("instructionsVideo");
+
+let tableState={},prizeStatus={},usedMissionIds=[],history=[];
+let currentTable="",currentMissionId="",currentPrizeId="";
+let stableScene="idle",runtimeScene="idle",introActive=true,running=false,animationType="",skipAnimation=false,wheelRotation=0;
+let soundEnabled=true,voiceEnabled=true,undoStack=[],wheelOrder=[];
+let timer={status:"idle",totalMs:0,remainingMs:0};
+let timerRAF=null,timerStartedAt=0,timerStartRemaining=0,lastTimerSave=0,audioCtx=null,cursorTimer=null;
+let configDraftTables=[],configDraftPrizes=[],configDraftMissions=[],configDraftTotalAwards=SETTINGS.defaultAwards;
+let controlWindow=null;
+
+function tableById(id){return TABLES.find(t=>t.id===id)||null;}
+function tableName(id){return tableById(id)?.name||"—";}
+function initFreshState(){
+  tableState=Object.fromEntries(TABLES.map(t=>[t.id,{attempts:0,won:false,vip:!!t.vip}]));
+  prizeStatus=Object.fromEntries(PRIZES.map(p=>[p.id,"pending"]));
+  usedMissionIds=[];history=[];currentTable="";currentMissionId="";currentPrizeId="";stableScene="idle";runtimeScene="idle";introActive=true;running=false;animationType="";skipAnimation=false;wheelRotation=0;soundEnabled=true;voiceEnabled=true;timer={status:"idle",totalMs:0,remainingMs:0};
+}
+initFreshState();
+rebuildWheelOrder?.();
+
+function pendingPrizes(){return PRIZES.filter(p=>prizeStatus[p.id]==="pending");}
+function awardedCount(){return PRIZES.filter(p=>prizeStatus[p.id]==="awarded").length;}
+function gameTarget(){return Math.max(1,Math.min(GAME_TOTAL,PRIZES.length));}
+function gameComplete(){return awardedCount()>=gameTarget()||!pendingPrizes().length;}
+function currentRound(){return Math.min(gameTarget(),awardedCount()+1);}
+function shuffleArray(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=randInt(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
+/*
+  A orde da ruleta é FIXA durante toda a partida. Só se reconstrúe cando
+  cambia a configuración dos premios (ou cando se detecta unha orde antiga
+  incompatible). As categorías repártense cun algoritmo determinista de
+  reparto proporcional para evitar bloques do mesmo tipo.
+*/
+function rebuildWheelOrder(){
+  const grouped=new Map();
+  PRIZES.forEach((p,index)=>{
+    const key=(p.category||"PREMIO").trim().toUpperCase();
+    if(!grouped.has(key))grouped.set(key,{key,items:[],count:0,used:0,order:grouped.size});
+    const g=grouped.get(key);g.items.push({id:p.id,index});g.count++;
+  });
+  const groups=[...grouped.values()];
+  const total=PRIZES.length;
+  const categorySequence=[];
+  let lastKey=null;
+  for(let pos=0;pos<total;pos++){
+    let candidates=groups.filter(g=>g.used<g.count);
+    const alternatives=candidates.filter(g=>g.key!==lastKey);
+    if(alternatives.length)candidates=alternatives;
+    candidates.sort((a,b)=>{
+      const deficitA=((pos+1)*a.count/total)-a.used;
+      const deficitB=((pos+1)*b.count/total)-b.used;
+      if(Math.abs(deficitB-deficitA)>1e-9)return deficitB-deficitA;
+      const remainingB=b.count-b.used,remainingA=a.count-a.used;
+      if(remainingB!==remainingA)return remainingB-remainingA;
+      return a.order-b.order;
+    });
+    const chosen=candidates[0];
+    if(!chosen)break;
+    categorySequence.push(chosen.key);chosen.used++;lastKey=chosen.key;
+  }
+  const queues=new Map(groups.map(g=>[g.key,g.items.map(x=>x.id)]));
+  wheelOrder=categorySequence.map(key=>queues.get(key).shift()).filter(Boolean);
+}
+function wheelOrderIsValid(){
+  if(wheelOrder.length!==PRIZES.length)return false;
+  const ids=new Set(PRIZES.map(p=>p.id));
+  const orderIds=new Set(wheelOrder);
+  return orderIds.size===PRIZES.length&&wheelOrder.every(id=>ids.has(id));
+}
+function wheelItems(){if(!wheelOrderIsValid())rebuildWheelOrder();const byId=new Map(PRIZES.map(p=>[p.id,p]));return wheelOrder.map(id=>byId.get(id)).filter(Boolean);}
+
+function currentMission(){return MISSIONS.find(m=>m.id===currentMissionId)||null;}
+function currentPrize(){return PRIZES.find(p=>p.id===currentPrizeId)||null;}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+function randFloat(){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}
+function randInt(max){return max>0?Math.floor(randFloat()*max):0;}
+function uid(prefix="id"){return `${prefix}-${Date.now()}-${Math.floor(Math.random()*100000)}`;}
+
+function getAudioContext(){if(!soundEnabled)return null;const A=window.AudioContext||window.webkitAudioContext;if(!A)return null;if(!audioCtx)audioCtx=new A();if(audioCtx.state==="suspended")audioCtx.resume();return audioCtx;}
+function beep(kind="tick"){
+  try{const a=getAudioContext();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);const now=a.currentTime;
+    if(kind==="win"){o.type="sine";o.frequency.setValueAtTime(660,now);o.frequency.linearRampToValueAtTime(900,now+.22);g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(.16,now+.015);g.gain.exponentialRampToValueAtTime(.0001,now+.42);o.start();o.stop(now+.45);}
+    else if(kind==="softfail"){o.type="triangle";o.frequency.setValueAtTime(420,now);o.frequency.linearRampToValueAtTime(310,now+.28);g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(.10,now+.015);g.gain.exponentialRampToValueAtTime(.0001,now+.38);o.start();o.stop(now+.4);}
+    else{o.type="square";o.frequency.value=690;g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(.045,now+.005);g.gain.exponentialRampToValueAtTime(.0001,now+.055);o.start();o.stop(now+.06);}
   }catch(e){}
 }
-function alarm(){try{const A=window.AudioContext||window.webkitAudioContext,a=new A(),g=a.createGain();g.connect(a.destination);g.gain.setValueAtTime(.0001,a.currentTime);g.gain.exponentialRampToValueAtTime(.34,a.currentTime+.03);for(let i=0;i<4;i++){const o=a.createOscillator();o.type="square";o.frequency.setValueAtTime(760,a.currentTime+i*.38);o.frequency.linearRampToValueAtTime(520,a.currentTime+i*.38+.27);o.connect(g);o.start(a.currentTime+i*.38);o.stop(a.currentTime+i*.38+.3)}g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+1.65);setTimeout(()=>a.close(),1900)}catch(e){}}
-function tones(type="alert"){try{const A=window.AudioContext||window.webkitAudioContext,a=new A(),g=a.createGain();g.connect(a.destination);g.gain.setValueAtTime(.0001,a.currentTime);g.gain.exponentialRampToValueAtTime(.3,a.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+1.5);const notes=type==="win"?[523,659,784,1046]:[220,330,220];notes.forEach((f,i)=>{const o=a.createOscillator();o.type=type==="win"?"sine":"sawtooth";o.frequency.value=f;o.connect(g);o.start(a.currentTime+i*.18);o.stop(a.currentTime+.45+i*.18)});setTimeout(()=>a.close(),1900)}catch(e){}}
-function draw(){const n=SEGMENTS.length,s=canvas.width,c=s/2,r=c-18,arc=Math.PI*2/n;ctx.clearRect(0,0,s,s);SEGMENTS.forEach((p,i)=>{const a=-Math.PI/2+i*arc;ctx.beginPath();ctx.moveTo(c,c);ctx.arc(c,c,r,a,a+arc);ctx.closePath();ctx.fillStyle=p.color;ctx.fill();ctx.lineWidth=7;ctx.strokeStyle="#fff";ctx.stroke();ctx.save();ctx.translate(c,c);ctx.rotate(a+arc/2);ctx.textAlign="right";ctx.textBaseline="middle";ctx.fillStyle=p.textColor||"#fff";ctx.shadowColor="#000";ctx.shadowBlur=7;ctx.font="900 35px Segoe UI";ctx.fillText(p.category,r-55,0);ctx.restore()});ctx.beginPath();ctx.arc(c,c,r,0,Math.PI*2);ctx.lineWidth=17;ctx.strokeStyle="#fff";ctx.stroke()}
-function update(){const wins=history.filter(h=>h.prize).length;$("roundCount").textContent=`${wins} / 7`;$("selectedStat").textContent=wins;$("prizesStat").textContent=pendingPrizes.length;$("log").innerHTML=history.length?history.map((h,i)=>`<li><b>${h.table}</b>: ${h.result}${h.prize?` · ${h.prize.category}`:""}</li>`).join(""):"<li>Aínda non hai resultados.</li>"}
-async function startSelection(){if(running||pendingPrizes.length===0)return;if(availableTables.length===0){scene("finished");$("stateText").textContent="Non quedan mesas dispoñibles";return}running=true;$("selectBtn").disabled=true;showAnnouncement()}
-async function announcementCountdown(sceneId,seconds,onStart){scene(sceneId);cornerCountdown.classList.add("show");if(onStart)onStart();for(let n=seconds;n>=0;n--){cornerCountdown.textContent=n;cornerCountdown.classList.remove("tick");void cornerCountdown.offsetWidth;cornerCountdown.classList.add("tick");if(n>0)await new Promise(r=>setTimeout(r,1000))}cornerCountdown.classList.remove("show");rollTables()}
-function showAnnouncement(){$("stateText").textContent="Anuncio da proba";announcementCountdown("announcement",10,()=>{alarm();setTimeout(()=>voice("Atención. Comeza a proba."),650);setTimeout(alarm,4200);setTimeout(()=>voice("Prepárense todas as mesas."),4900);setTimeout(alarm,7900)})}
-function showReplacementAnnouncement(){$("stateText").textContent="Selección dunha nova mesa";announcementCountdown("replacementAnnouncement",9,()=>{alarm();setTimeout(()=>voice("A misión non foi superada. Escollerase outra mesa."),650);setTimeout(()=>voice("O premio desta rolda segue en xogo."),4200)})}
-async function runCountdown(){showAnnouncement()}
-async function rollTables(){scene("rolling");$("stateText").textContent="Seleccionando mesa";refreshChosenTables();tones();const winnerIndex=rnd(availableTables.length),winner=availableTables[winnerIndex];const candidates=[...availableTables];let previous="";const total=46+rnd(9);for(let tick=0;tick<total;tick++){tablesMap.querySelectorAll(".active").forEach(el=>el.classList.remove("active"));let name;do{name=candidates[rnd(candidates.length)]}while(candidates.length>1&&name===previous);previous=name;tableEl(name).classList.add("active");const p=tick/(total-1);tableTickSound(p);const delay=p<.18?185-p*500:p<.70?76:82+Math.pow((p-.70)/.30,3)*560;await new Promise(r=>setTimeout(r,Math.max(68,delay)))}tablesMap.querySelectorAll(".active").forEach(el=>el.classList.remove("active"));tableEl(winner).classList.add("active");currentTable=availableTables.splice(winnerIndex,1)[0];selectedTableSound();setTimeout(()=>{voice(`Atención. Mesa ${currentTable}, seleccionada.`);setTimeout(()=>{tableEl(currentTable).classList.remove("active");refreshChosenTables();showMission()},2300)},500)}
-function showMission(){let pool=MISSIONS.filter(m=>!usedMissions.includes(m));if(!pool.length){usedMissions=[];pool=[...MISSIONS]}currentMission=pool[rnd(pool.length)];usedMissions.push(currentMission);$("missionTable").textContent="MESA "+currentTable;$("missionText").textContent=currentMission;$("stateText").textContent="Misión en curso";scene("mission")}
-function pass(){$("captainTable").textContent="MESA "+currentTable;$("stateText").textContent="Ruleta desbloqueada";tones("win");voice("Misión superada. Ruleta desbloqueada.");scene("unlock")}
-function fail(){history.push({table:currentTable,result:"Misión non superada",mission:currentMission});update();$("failOverlay").classList.add("show");$("stateText").textContent="Misión non superada";booSound();setTimeout(()=>voice("Misión non superada. A ruleta permanece bloqueada."),1150);$("failContinue").focus()}
-function spin(){if(!pendingPrizes.length||$("buzzer").disabled)return;$("buzzer").disabled=true;tones();scene("wheelScene");$("stateText").textContent="Ruleta xirando";const pi=rnd(pendingPrizes.length),winner=pendingPrizes[pi],vi=winner.id,arc=360/SEGMENTS.length,target=360-((vi+.5)*arc),startRotation=rotation,norm=((startRotation%360)+360)%360,fix=(target-norm+360)%360,endRotation=startRotation+(11+rnd(4))*360+fix,duration=10000,startTime=performance.now();canvas.style.transition="none";function animate(now){const t=Math.min(1,(now-startTime)/duration);const eased=1-Math.pow(1-t,4.2);rotation=startRotation+(endRotation-startRotation)*eased;canvas.style.transform=`rotate(${rotation}deg)`;if(t<1){requestAnimationFrame(animate)}else{rotation=endRotation;canvas.style.transform=`rotate(${rotation}deg)`;pendingPrizes.splice(pi,1);history.push({table:currentTable,result:"Misión superada",mission:currentMission,prize:winner});update();showPrize(winner)}}requestAnimationFrame(animate)}
-function confetti(){const colors=["#d9b84e","#fff","#16a364","#ef4444","#60a5fa"];for(let i=0;i<160;i++){const e=document.createElement("i");e.className="confetti";e.style.setProperty("--c",colors[rnd(colors.length)]);e.style.left=Math.random()*100+"vw";e.style.setProperty("--d",(2.4+Math.random()*2.7)+"s");e.style.setProperty("--x",(-180+Math.random()*360)+"px");e.style.setProperty("--r",(-800+Math.random()*1600)+"deg");e.style.animationDelay=Math.random()*.5+"s";$("prizeOverlay").append(e);setTimeout(()=>e.remove(),5600)}}
-function showPrize(p){
-  $("prizeOverlay").style.setProperty("--pc",p.color);
-  $("prizeIcon").textContent=p.icon;
-  $("prizeTitle").textContent=p.category;
-  // Mostra o nome real do premio e, debaixo, o comentario con retranca.
-  $("prizeDesc").innerHTML=`<strong>${p.description}</strong><br><br>${p.popupText}`;
-  $("prizeOverlay").classList.add("show");
-  tones("win");
-  confetti();
-  $("stateText").textContent="Premio conseguido";
-  // A voz espera un segundo e le todo: mesa, categoría, premio e comentario.
-  setTimeout(()=>voice(`Mesa ${currentTable}. Parabéns. Conseguistes unha ${p.category}. ${p.description}. ${p.popupText}`),1000)
+function speak(text){if(!voiceEnabled)return;try{speechSynthesis.cancel();const voices=speechSynthesis.getVoices();const preferred=voices.find(v=>v.lang.toLowerCase().startsWith("gl"))||voices.find(v=>v.lang.toLowerCase().startsWith("es"));const u=new SpeechSynthesisUtterance(text);if(preferred)u.voice=preferred;u.lang=preferred?.lang||"gl-ES";u.rate=.86;u.pitch=.92;u.volume=1;speechSynthesis.speak(u);}catch(e){}}
+function setVoiceEnabled(value){voiceEnabled=!!value;if(!voiceEnabled)try{speechSynthesis.cancel();}catch(e){}updateUI();saveSession();}
+function setSoundEnabled(value){soundEnabled=!!value;updateUI();saveSession();}
+
+function showToast(text){const t=$("toast");t.textContent=text;t.classList.add("show");clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove("show"),2600);}
+function showCursor(){document.body.classList.remove("cursor-hidden");clearTimeout(cursorTimer);cursorTimer=setTimeout(()=>document.body.classList.add("cursor-hidden"),2200);}
+document.addEventListener("mousemove",showCursor);document.addEventListener("mousedown",showCursor);showCursor();
+
+/* ---------------- Persistencia / undo ---------------- */
+function syncTimerRemaining(){if(timer.status==="running"){const elapsed=performance.now()-timerStartedAt;timer.remainingMs=Math.max(0,timerStartRemaining-elapsed);if(timer.remainingMs<=0)timer.status="finished";}}
+function captureState(){syncTimerRemaining();return {version:6,introActive,stableScene,wheelOrder:[...wheelOrder],tableState:clone(tableState),prizeStatus:clone(prizeStatus),usedMissionIds:[...usedMissionIds],history:clone(history),currentTable,currentMissionId,currentPrizeId,wheelRotation,soundEnabled,voiceEnabled,timer:clone(timer)};}
+function saveSession(){try{localStorage.setItem(SETTINGS.sessionKey,JSON.stringify(captureState()));localStorage.setItem(SETTINGS.undoKey,JSON.stringify(undoStack.slice(-SETTINGS.maxUndo)));}catch(e){}}
+function pushUndo(label){const snap=captureState();snap._label=label;undoStack.push(snap);if(undoStack.length>SETTINGS.maxUndo)undoStack.shift();saveSession();updatePanelButtons();}
+function reconcileState(rawTableState={},rawPrizeStatus={}){
+  tableState=Object.fromEntries(TABLES.map(t=>{const old=rawTableState[t.id]||{};return [t.id,{attempts:Number(old.attempts)||0,won:!!old.won,vip:!!t.vip}];}));
+  prizeStatus=Object.fromEntries(PRIZES.map(p=>[p.id,rawPrizeStatus[p.id]==="awarded"?"awarded":"pending"]));
+  if(currentTable&&!tableById(currentTable))currentTable="";
+  if(currentPrizeId&&!PRIZES.some(p=>p.id===currentPrizeId))currentPrizeId="";
 }
-function nextRound(){$("prizeOverlay").classList.remove("show");$("prizeOverlay").querySelectorAll(".confetti").forEach(e=>e.remove());$("buzzer").disabled=false;running=false;if(pendingPrizes.length===0){scene("finished");$("stateText").textContent="Xogo rematado";voice("Las siete mesas han participado. Xogo rematado.")}else{scene("idle");$("selectBtn").disabled=false;$("stateText").textContent="Preparado para a seguinte mesa"}}
-function reset(){if(!confirm("Restablecer toda a proba?"))return;availableTables=TABLES.slice(2);pendingPrizes=SEGMENTS.map((p,i)=>({...p,id:i}));usedMissions=[];history=[];currentTable="";rotation=0;canvas.style.transition="none";canvas.style.transform="rotate(0deg)";$("buzzer").disabled=false;running=false;tablesMap.querySelectorAll(".table-dot").forEach(el=>el.classList.remove("active","chosen"));cornerCountdown.classList.remove("show");update();scene("idle");$("selectBtn").disabled=false;$("stateText").textContent="Preparado para comezar"}
-playVideoBtn.onclick=toggleVideo;startGameBtn.onclick=closeIntro;instructionsVideo.onended=()=>{playVideoBtn.textContent="REPRODUCIR DE NOVO";videoNote.textContent="Instrucións rematadas. Preme COMEZAR O XOGO."};instructionsVideo.onerror=()=>{videoNote.textContent="Non se atopou instrucions-xogo.mp4. Podes comezar o xogo ou revisar o nome do ficheiro.";playVideoBtn.disabled=true};
-$("selectBtn").onclick=startSelection;$("passMission").onclick=pass;$("failMission").onclick=fail;$("buzzer").onclick=spin;$("continueBtn").onclick=nextRound;$("reset").onclick=reset;$("failContinue").onclick=()=>{$("failOverlay").classList.remove("show");$("buzzer").disabled=false;running=true;showReplacementAnnouncement()};
-let cursorTimer;function showCursor(){document.body.classList.add("show-cursor");clearTimeout(cursorTimer);cursorTimer=setTimeout(()=>document.body.classList.remove("show-cursor"),1800)}document.addEventListener("mousemove",showCursor);document.addEventListener("mousedown",showCursor);
-document.addEventListener("keydown",e=>{if(introActive){if(e.code==="Space"){e.preventDefault();toggleVideo()}if(e.key==="Enter"){e.preventDefault();closeIntro()}return}if(e.code==="Space"){e.preventDefault();if($("failOverlay").classList.contains("show")){$("failContinue").click();return}if($("prizeOverlay").classList.contains("show")){nextRound();return}if($("idle").classList.contains("active")){startSelection();return}if($("mission").classList.contains("active")){pass();return}if($("unlock").classList.contains("active")){spin();return}}if(e.key.toLowerCase()==="n"&&$("mission").classList.contains("active")){e.preventDefault();fail();return}if(e.key.toLowerCase()==="c"){$("presenterPanel").classList.toggle("show");showCursor()}if(e.key==="Escape"){$("presenterPanel").classList.remove("show")}});draw();update();})();
+function restoreState(s,{fromUndo=false}={}){
+  cancelTimer();document.querySelectorAll(".confetti").forEach(e=>e.remove());running=false;animationType="";skipAnimation=false;
+  introActive=!!s.introActive;stableScene=s.stableScene||"idle";wheelOrder=[...(s.wheelOrder||[])];usedMissionIds=[...(s.usedMissionIds||[])];history=clone(s.history||[]);currentTable=s.currentTable||"";currentMissionId=s.currentMissionId||"";currentPrizeId=s.currentPrizeId||"";wheelRotation=Number(s.wheelRotation)||0;soundEnabled=s.soundEnabled!==false;voiceEnabled=s.voiceEnabled!==false;timer=clone(s.timer||{status:"idle",totalMs:0,remainingMs:0});
+  reconcileState(s.tableState||{},s.prizeStatus||{});if(timer.status==="running")timer.status="paused";canvas.style.transform=`rotate(${wheelRotation}deg)`;renderTablesMap();populateAdminSelects();rebuildWheelOrder();drawWheel();
+  if(introActive){intro.classList.remove("hidden");}else{intro.classList.add("hidden");renderStableScene();}updateUI();saveSession();if(fromUndo)showToast("Acción desfeita");
+}
+function undo(){if(running){showToast("Agarda a que remate ou salta a animación");return;}const s=undoStack.pop();if(!s){showToast("Non hai accións para desfacer");return;}restoreState(s,{fromUndo:true});}
+function loadSession(){try{const raw=localStorage.getItem(SETTINGS.sessionKey);const u=localStorage.getItem(SETTINGS.undoKey);if(u)undoStack=JSON.parse(u)||[];if(!raw)return false;const s=JSON.parse(raw);if(!s||s.version!==6)return false;restoreState(s);return true;}catch(e){return false;}}
+window.addEventListener("beforeunload",saveSession);
+
+/* ---------------- Escenas ---------------- */
+function scene(id,{stable=true}={}){SCENES.forEach(x=>$(x).classList.toggle("active",x===id));runtimeScene=id;if(stable){stableScene=id;saveSession();}updateUI();}
+function stateLabel(){const map={idle:"LISTOS",rolling:"SORTEO",selected:"MESA",mission:"MISIÓN",success:"SUPERADA",fail:"CASE",unlock:"RULETA",wheelScene:"XIRANDO",prize:"PREMIO",espera:"ESPERA",finished:"REMATADO"};return map[runtimeScene]||runtimeScene.toUpperCase();}
+
+/* ---------------- Intro ---------------- */
+function updateVideoButton(){$("playVideoBtn").textContent=video.paused?"REPRODUCIR INSTRUCIÓNS":"PAUSAR VÍDEO";intro.classList.toggle("playing",!video.paused);}
+function toggleVideo(){if(video.paused){video.play().then(updateVideoButton).catch(()=>{$("videoNote").textContent="Preme REPRODUCIR INSTRUCIÓNS para activar o vídeo e o son.";});}else{video.pause();updateVideoButton();}}
+function closeIntro(){video.pause();intro.classList.add("hidden");introActive=false;scene("idle");}
+$("playVideoBtn").onclick=toggleVideo;$("startGameBtn").onclick=closeIntro;$("instructionsBtn").onclick=returnToIntro;video.onplay=updateVideoButton;video.onpause=updateVideoButton;
+video.onended=()=>{intro.classList.remove("playing");$("playVideoBtn").textContent="REPRODUCIR DE NOVO";$("videoNote").textContent="Instrucións rematadas. Podes comezar o xogo.";};
+video.onerror=()=>{$("videoNote").textContent="Non se atopou instrucions-xogo.mp4. Revisa que estea na mesma carpeta ca o HTML.";$("playVideoBtn").disabled=true;};
+
+/* ---------------- Mesas ---------------- */
+function renderTablesMap(){
+  const map=$("tablesMap");map.innerHTML="";
+  TABLES.forEach(t=>{const el=document.createElement("div");el.className="table-dot";el.dataset.tableId=t.id;el.textContent=t.name;el.style.left=`${t.x}%`;el.style.top=`${t.y}%`;map.appendChild(el);});refreshTableStates();
+}
+function tableEl(id){return $("tablesMap").querySelector(`[data-table-id="${CSS.escape(id)}"]`);}
+function refreshTableStates(){TABLES.forEach(t=>{const el=tableEl(t.id),s=tableState[t.id];if(!el||!s)return;el.textContent=t.name;el.style.left=`${t.x}%`;el.style.top=`${t.y}%`;el.classList.toggle("vip",s.vip);el.classList.toggle("tried",!s.vip&&!s.won&&s.attempts>0);el.classList.toggle("won",s.won);});}
+function weightFor(id){const s=tableState[id];if(!s||s.vip||s.won)return 0;return s.attempts>0?SETTINGS.failedTableWeight:1;}
+function eligibleTables(){return TABLES.map(t=>t.id).filter(id=>weightFor(id)>0);}
+function weightedWinner(){const items=eligibleTables().map(id=>({id,w:weightFor(id)}));const total=items.reduce((a,b)=>a+b.w,0);let r=randFloat()*total;for(const it of items){r-=it.w;if(r<=0)return it.id;}return items.at(-1)?.id||null;}
+
+async function showDrawAlert(){const a=$("drawAlert"),c=$("drawAlertCount");a.classList.add("show");a.setAttribute("aria-hidden","false");speak("Atención. Comeza o sorteo de mesas.");for(let n=5;n>=1;n--){c.textContent=String(n);beep("tick");await sleep(1000);}a.classList.remove("show");a.setAttribute("aria-hidden","true");c.textContent="5";}
+async function startSelection({skipUndo=false}={}){
+  if(running)return;if(gameComplete()){scene("finished");return;}if(!eligibleTables().length){showToast("Non quedan mesas dispoñibles");return;}if(!skipUndo)pushUndo("Sorteo de mesa");
+  running=true;animationType="selection";skipAnimation=false;cancelTimer();scene("idle",{stable:false});await showDrawAlert();scene("rolling",{stable:false});refreshTableStates();
+  /* O gañador calcúlase UNHA soa vez e será exactamente o mesmo que se mostra ao final. */
+  const winner=weightedWinner(),candidates=eligibleTables();let previous="";const totalTicks=40,start=performance.now();
+  for(let tick=0;tick<totalTicks;tick++){
+    if(skipAnimation)break;
+    $("tablesMap").querySelectorAll(".active").forEach(el=>el.classList.remove("active"));
+    let id;do{id=candidates[randInt(candidates.length)];}while(candidates.length>1&&id===previous);
+    previous=id;tableEl(id)?.classList.add("active");
+    if(tick%2===0)beep("tick");
+    const p=tick/(totalTicks-1),delay=p<.20?75:p<.72?105:120+Math.pow((p-.72)/.28,2.7)*330;
+    await sleep(delay);
+    if(performance.now()-start>SETTINGS.selectionDurationMs+900)break;
+  }
+  /* Estado final do sorteo: a mesa realmente escollida queda iluminada 1 s no MAPA. */
+  $("tablesMap").querySelectorAll(".active").forEach(el=>el.classList.remove("active"));
+  currentTable=winner;
+  tableState[winner].attempts+=1;
+  tableEl(currentTable)?.classList.add("active");
+  beep("win");
+  await sleep(SETTINGS.finalTableHoldMs);
+  if(runtimeScene!=="rolling")return;
+  /* Só agora pasamos á pantalla co nome, derivado do MESMO currentTable. */
+  $("selectedTableName").textContent=tableName(currentTable);
+  running=false;animationType="";skipAnimation=false;
+  scene("selected");
+  speak(`Mesa ${tableName(currentTable)}, seleccionada.`);
+  await sleep(SETTINGS.selectedHoldMs);
+  if(runtimeScene!=="selected")return;
+  tableEl(currentTable)?.classList.remove("active");
+  refreshTableStates();
+  showMission();
+}
+
+/* ---------------- Misións ---------------- */
+function chooseNextMission(){let pool=MISSIONS.filter(m=>!usedMissionIds.includes(m.id));if(!pool.length){usedMissionIds=[];pool=[...MISSIONS];}const m=pool[randInt(pool.length)];usedMissionIds.push(m.id);return m;}
+function assignMission(){const m=chooseNextMission();currentMissionId=m.id;timer={status:m.timed?"ready":"idle",totalMs:(m.duration||0)*1000,remainingMs:(m.duration||0)*1000};return m;}
+function showMission(){if(!currentMissionId)assignMission();renderMission();scene("mission");}
+function renderMission(){
+  const m=currentMission();if(!m)return;$("missionTable").textContent=tableName(currentTable);$("missionTitle").textContent=m.title;$("missionText").textContent=m.instruction;$("missionStartActions").innerHTML="";$("missionResultActions").hidden=true;$("timerWrap").hidden=true;$("timerInlineBtn").hidden=true;$("timerMessage").hidden=true;$("timerRing").classList.remove("timeup");
+  if(!m.timed){$("missionResultActions").hidden=false;return;}const ratio=timer.totalMs?Math.max(0,Math.min(100,(timer.remainingMs/timer.totalMs)*100)):100;$("timerRing").style.setProperty("--p",ratio);
+  if(timer.status==="ready"){const b=document.createElement("button");b.className="primary";b.textContent="COMEZAR RETO";b.onclick=startMissionTimer;$("missionStartActions").appendChild(b);return;}
+  $("timerWrap").hidden=false;$("missionResultActions").hidden=false;
+  if(timer.status==="running"){ $("timerInlineBtn").hidden=false;$("timerInlineBtn").textContent="PAUSAR TEMPO"; }
+  else if(timer.status==="paused"){ $("timerInlineBtn").hidden=false;$("timerInlineBtn").textContent="RETOMAR TEMPO"; }
+  else if(timer.status==="finished"){ $("timerRing").classList.add("timeup");$("timerMessage").hidden=false; }
+}
+function startMissionTimer(){pushUndo("Comezar tempo");const m=currentMission();if(!m?.timed)return;timer={status:"running",totalMs:m.duration*1000,remainingMs:m.duration*1000};runTimer();renderMission();saveSession();}
+function runTimer(){cancelTimer(false);timer.status="running";timerStartedAt=performance.now();timerStartRemaining=timer.remainingMs;lastTimerSave=0;$("timerWrap").hidden=false;$("missionResultActions").hidden=false;function frame(now){if(timer.status!=="running")return;const elapsed=now-timerStartedAt;timer.remainingMs=Math.max(0,timerStartRemaining-elapsed);const p=timer.totalMs?(timer.remainingMs/timer.totalMs)*100:0;$("timerRing").style.setProperty("--p",p);if(!lastTimerSave||now-lastTimerSave>1000){lastTimerSave=now;saveSession();}if(timer.remainingMs>0){timerRAF=requestAnimationFrame(frame);}else{timer.status="finished";timerRAF=null;$("timerRing").classList.add("timeup");$("timerInlineBtn").hidden=true;$("timerMessage").hidden=false;beep("softfail");saveSession();updateUI();}}timerRAF=requestAnimationFrame(frame);}
+function pauseTimer(){if(timer.status!=="running")return;syncTimerRemaining();timer.status=timer.remainingMs>0?"paused":"finished";cancelTimer(false);renderMission();saveSession();updateUI();}
+function resumeTimer(){if(timer.status!=="paused")return;pushUndo("Retomar tempo");runTimer();renderMission();}
+function restartTimer(){const m=currentMission();if(!m?.timed){showToast("Esta misión non leva temporizador");return;}pushUndo("Reiniciar tempo");cancelTimer();timer={status:"running",totalMs:m.duration*1000,remainingMs:m.duration*1000};renderMission();runTimer();showToast("Tempo reiniciado");}
+function togglePauseTimer(){if(timer.status==="running")pauseTimer();else if(timer.status==="paused")resumeTimer();else showToast("O temporizador non está activo");}
+$("timerInlineBtn").onclick=togglePauseTimer;
+function cancelTimer(setPaused=true){if(timerRAF){cancelAnimationFrame(timerRAF);timerRAF=null;}if(setPaused&&timer.status==="running"){syncTimerRemaining();timer.status="paused";}}
+function passMission(){if(running)return;pushUndo("Misión superada");cancelTimer();history.push({table:tableName(currentTable),result:"Misión superada",mission:currentMission()?.title||""});$("successTable").textContent=`MESA ${tableName(currentTable)}`;scene("success");beep("win");speak("Misión superada. Ruleta desbloqueada.");}
+function failMission(){if(running)return;pushUndo("Misión non superada");cancelTimer();history.push({table:tableName(currentTable),result:"Misión non superada",mission:currentMission()?.title||""});scene("fail");beep("softfail");speak("Case. O premio segue en xogo.");}
+function continueToWheel(){pushUndo("Ir á ruleta");$("captainTable").textContent=tableName(currentTable);scene("unlock");}
+function changeMission(){if(!currentTable||!["mission","selected"].includes(runtimeScene)){showToast("Non hai unha misión activa");return;}pushUndo("Cambiar misión");cancelTimer();currentMissionId="";assignMission();renderMission();scene("mission");showToast("Misión cambiada");}
+$("passMission").onclick=passMission;$("failMission").onclick=failMission;$("successContinueBtn").onclick=continueToWheel;$("selectAgainBtn").onclick=()=>{currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};startSelection();};
+
+/* ---------------- Pantalla de espera ---------------- */
+function goEspera(copy="Seguimos nun intre."){$("esperaCopy").textContent=copy;scene("espera");}
+function leaveEspera(){currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};scene("idle");}
+$("failEsperaBtn").onclick=()=>goEspera("En cando estedes preparados, seguimos");
+$("esperaReturnBtn").onclick=leaveEspera;
+
+/* ---------------- Ruleta ---------------- */
+function themeColors(theme,i){if(theme==="gold")return [i%2?"#F3CA12":"#f6d94f","#032821"];if(theme==="silver")return [i%2?"#FFFFFF":"#DDECE7","#032821"];return [i%2?"#007853":"#00AA81","#FFFFFF"];}
+function wheelCategoryLabel(category){return String(category||"").trim().toUpperCase();}
+function drawWheel(){
+  const items=wheelItems(),n=items.length,s=canvas.width,c=s/2,r=c-22;ctx.clearRect(0,0,s,s);if(!n)return;const arc=Math.PI*2/n;
+  items.forEach((p,i)=>{const a=-Math.PI/2+i*arc,[fill,text]=themeColors(p.theme,i);ctx.beginPath();ctx.moveTo(c,c);ctx.arc(c,c,r,a,a+arc);ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.lineWidth=n>14?4:7;ctx.strokeStyle="#032821";ctx.stroke();ctx.save();ctx.translate(c,c);ctx.rotate(a+arc/2);ctx.textAlign="right";ctx.textBaseline="middle";ctx.fillStyle=text;ctx.shadowColor="rgba(0,0,0,.16)";ctx.shadowBlur=3;const catSize=n>20?13:n>16?15:n>12?17:n>8?20:27;ctx.font=`800 ${catSize}px Open Sans, Tahoma, Arial`;let label=wheelCategoryLabel(p.category);const maxChars=n>20?18:n>16?20:n>12?22:n>8?26:32;if(label.length>maxChars)label=label.slice(0,maxChars-1)+"…";ctx.fillText(label,r-48,0);ctx.restore();});
+  ctx.beginPath();ctx.arc(c,c,r,0,Math.PI*2);ctx.lineWidth=18;ctx.strokeStyle="#FFFFFF";ctx.stroke();
+}
+function spinWheel(){
+  if(running)return;if(gameComplete()){scene("finished");return;}
+  const items=wheelItems();
+  if(!items.length){scene("finished");return;}
+  /* A xeometría e a orde visual da ruleta NON cambian durante a partida.
+     Só se pode deter nun segmento cuxo premio continúe pendente. */
+  const pendingIndexes=items.map((p,i)=>prizeStatus[p.id]==="pending"?i:-1).filter(i=>i>=0);
+  if(!pendingIndexes.length){scene("finished");return;}
+  pushUndo("Xirar ruleta");running=true;animationType="wheel";skipAnimation=false;scene("wheelScene",{stable:false});drawWheel();
+  const idx=pendingIndexes[randInt(pendingIndexes.length)],winner=items[idx],n=items.length,arc=360/n,target=360-((idx+.5)*arc),start=wheelRotation,norm=((start%360)+360)%360,fix=(target-norm+360)%360,end=start+(8+randInt(3))*360+fix,duration=SETTINGS.wheelDurationMs,startTime=performance.now();
+  function animate(now){let t=Math.min(1,(now-startTime)/duration);if(skipAnimation)t=1;const eased=1-Math.pow(1-t,4);wheelRotation=start+(end-start)*eased;canvas.style.transform=`rotate(${wheelRotation}deg)`;if(t<1){requestAnimationFrame(animate);}else{wheelRotation=end;canvas.style.transform=`rotate(${wheelRotation}deg)`;running=false;animationType="";skipAnimation=false;finishPrize(winner);}}requestAnimationFrame(animate);
+}
+function finishPrize(p){prizeStatus[p.id]="awarded";tableState[currentTable].won=true;currentPrizeId=p.id;history.push({table:tableName(currentTable),result:"Premio",prize:p.name,category:p.category});refreshTableStates();renderPrize();scene("prize");beep("win");confetti();speak(`Mesa ${tableName(currentTable)}. Parabéns. ${p.name}.`);}
+function renderPrize(){const p=currentPrize();if(!p)return;$("prizeCategory").textContent=p.category;$("prizeName").textContent=p.name;$("prizeTable").textContent=currentTable?`MESA ${tableName(currentTable)}`:"";$("prizeQuip").textContent=p.quip;$("continueBtn").textContent="CONTINUAR XOGANDO";}
+function prepareNextRound(){wheelRotation=0;canvas.style.transform="rotate(0deg)";currentTable="";currentMissionId="";currentPrizeId="";timer={status:"idle",totalMs:0,remainingMs:0};drawWheel();}
+function continueAfterPrize(){pushUndo("Continuar tras premio");document.querySelectorAll(".confetti").forEach(e=>e.remove());if(gameComplete()){scene("finished");return;}prepareNextRound();goEspera("En cando estedes preparados, seguimos");}
+function confetti(){const colors=["#F3CA12","#FFFFFF","#00AA81","#007853"];for(let i=0;i<90;i++){const e=document.createElement("i");e.className="confetti";e.style.setProperty("--c",colors[randInt(colors.length)]);e.style.left=randFloat()*100+"vw";e.style.setProperty("--d",(2.2+randFloat()*2.1)+"s");e.style.setProperty("--x",(-160+randFloat()*320)+"px");e.style.setProperty("--r",(-720+randFloat()*1440)+"deg");e.style.animationDelay=randFloat()*.4+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),5000);}}
+$("buzzer").onclick=spinWheel;$("continueBtn").onclick=continueAfterPrize;
+
+/* ---------------- Configuración ---------------- */
+function openConfig(){if(running){showToast("Agarda a que remate a animación");return;}configDraftTables=clone(TABLES);configDraftPrizes=clone(PRIZES);configDraftMissions=clone(MISSIONS);configDraftTotalAwards=GAME_TOTAL;renderConfigTables();renderConfigPrizes();renderConfigMissions();$("configTotalAwards").value=configDraftTotalAwards;activateConfigTab("tables");$("configPanel").classList.add("show");$("configPanel").setAttribute("aria-hidden","false");showCursor();}
+function closeConfig(){$("configPanel").classList.remove("show");$("configPanel").setAttribute("aria-hidden","true");}
+function renderConfigTables(){
+  const editor=$("configTableEditor"),list=$("configTableList");editor.innerHTML="";list.innerHTML="";
+  configDraftTables.forEach((t,i)=>{
+    const chip=document.createElement("div");chip.className="config-table-chip"+(t.vip?" vip":"");chip.dataset.id=t.id;chip.textContent=t.name;chip.style.left=`${t.x}%`;chip.style.top=`${t.y}%`;editor.appendChild(chip);attachTableDrag(chip,t);
+    const row=document.createElement("div");row.className="config-table-row";row.innerHTML=`<span class="num">Mesa ${i+1}</span><input class="config-input" value="${escapeHtml(t.name)}" aria-label="Nome da mesa ${i+1}"><label class="config-check"><input type="checkbox" ${t.vip?"checked":""}> VIP</label>`;const nameInput=row.querySelector("input.config-input"),vipInput=row.querySelector("input[type=checkbox]");nameInput.oninput=()=>{t.name=nameInput.value;chip.textContent=t.name||`MESA ${i+1}`;};vipInput.onchange=()=>{t.vip=vipInput.checked;chip.classList.toggle("vip",t.vip);};list.appendChild(row);
+  });
+}
+function attachTableDrag(chip,t){
+  let dragging=false;const move=e=>{if(!dragging)return;const rect=$("configTableEditor").getBoundingClientRect();let x=((e.clientX-rect.left)/rect.width)*100,y=((e.clientY-rect.top)/rect.height)*100;x=Math.max(5,Math.min(95,x));y=Math.max(7,Math.min(93,y));t.x=Math.round(x*10)/10;t.y=Math.round(y*10)/10;chip.style.left=`${t.x}%`;chip.style.top=`${t.y}%`;};
+  chip.addEventListener("pointerdown",e=>{dragging=true;chip.classList.add("dragging");chip.setPointerCapture(e.pointerId);move(e);});chip.addEventListener("pointermove",move);chip.addEventListener("pointerup",e=>{dragging=false;chip.classList.remove("dragging");try{chip.releasePointerCapture(e.pointerId);}catch(err){}});chip.addEventListener("pointercancel",()=>{dragging=false;chip.classList.remove("dragging");});
+}
+function escapeHtml(s){return String(s??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));}
+function renderConfigPrizes(){
+  const list=$("configPrizeList");list.innerHTML="";$("configPrizeCount").innerHTML=`Segmentos: <strong>${configDraftPrizes.length}</strong>`;
+  configDraftPrizes.forEach((p,i)=>{const row=document.createElement("div");row.className="config-prize-row";row.innerHTML=`<input class="config-input category" value="${escapeHtml(p.category)}" aria-label="Categoría"><input class="config-input name" value="${escapeHtml(p.name)}" aria-label="Premio"><select class="config-select theme"><option value="gold" ${p.theme==="gold"?"selected":""}>Ouro / amarelo</option><option value="silver" ${p.theme==="silver"?"selected":""}>Prata / branco</option><option value="green" ${p.theme==="green"?"selected":""}>Centeo / verde</option></select><div class="config-row-actions"><button class="config-mini duplicate">DUPLICAR</button><button class="config-mini remove">ELIMINAR</button></div><input class="config-input quip" value="${escapeHtml(p.quip)}" aria-label="Comentario do premio" placeholder="Comentario opcional">`;
+    row.querySelector(".category").oninput=e=>p.category=e.target.value;row.querySelector(".name").oninput=e=>p.name=e.target.value;row.querySelector(".theme").onchange=e=>p.theme=e.target.value;row.querySelector(".quip").oninput=e=>p.quip=e.target.value;
+    row.querySelector(".duplicate").onclick=()=>{const copy=clone(p);copy.id=uid("p");configDraftPrizes.splice(i+1,0,copy);renderConfigPrizes();};row.querySelector(".remove").onclick=()=>{if(configDraftPrizes.length<=1){showToast("Debe quedar polo menos un premio");return;}configDraftPrizes.splice(i,1);renderConfigPrizes();};list.appendChild(row);});
+}
+function addPrize(){configDraftPrizes.push({id:uid("p"),category:"ESPIGA CENTEO",name:"NOVO PREMIO",quip:"",theme:"green"});renderConfigPrizes();setTimeout(()=>{$("configPrizeList").scrollTop=$("configPrizeList").scrollHeight;},0);}
+function renderConfigMissions(){
+  const list=$("configMissionList");list.innerHTML="";$("configMissionCount").innerHTML=`Retos: <strong>${configDraftMissions.length}</strong>`;
+  configDraftMissions.forEach((m,i)=>{const row=document.createElement("div");row.className="config-mission-row";row.innerHTML=`<input class="config-input title" value="${escapeHtml(m.title)}" aria-label="Título do reto"><input class="config-input type" value="${escapeHtml(m.type||"xeral")}" aria-label="Tipo do reto"><input class="config-input duration" type="number" min="1" max="300" value="${Math.max(1,Number(m.duration)||15)}" aria-label="Duración"><div class="config-row-actions"><button class="config-mini duplicate">DUPLICAR</button><button class="config-mini remove">ELIMINAR</button></div><input class="config-input instruction" value="${escapeHtml(m.instruction)}" aria-label="Instrución do reto" placeholder="Instrución"><label class="timed-wrap"><input class="timed" type="checkbox" ${m.timed!==false?"checked":""}> Con tempo</label>`;
+    row.querySelector(".title").oninput=e=>m.title=e.target.value;row.querySelector(".type").oninput=e=>m.type=e.target.value;row.querySelector(".duration").oninput=e=>m.duration=Math.max(1,Number(e.target.value)||1);row.querySelector(".instruction").oninput=e=>m.instruction=e.target.value;row.querySelector(".timed").onchange=e=>m.timed=e.target.checked;
+    row.querySelector(".duplicate").onclick=()=>{const copy=clone(m);copy.id=uid("m");configDraftMissions.splice(i+1,0,copy);renderConfigMissions();};row.querySelector(".remove").onclick=()=>{if(configDraftMissions.length<=1){showToast("Debe quedar polo menos un reto");return;}configDraftMissions.splice(i,1);renderConfigMissions();};list.appendChild(row);});
+}
+function addMission(){configDraftMissions.push({id:uid("m"),title:"NOVO RETO",instruction:"Describe aquí a proba.",duration:15,timed:true,type:"xeral"});renderConfigMissions();setTimeout(()=>{$("configMissionList").scrollTop=$("configMissionList").scrollHeight;},0);}
+function activateConfigTab(name){document.querySelectorAll(".config-tab").forEach(b=>b.classList.toggle("active",b.dataset.configTab===name));document.querySelectorAll(".config-tab-panel").forEach(p=>p.classList.remove("active"));const id={tables:"configTabTables",prizes:"configTabPrizes",missions:"configTabMissions"}[name];if(id)$(id).classList.add("active");}
+function applyConfiguration(tables,prizes,missions,totalAwards){
+  pushUndo("Cambiar configuración");const oldTable=clone(tableState),oldPrize=clone(prizeStatus);TABLES=clone(tables);PRIZES=clone(prizes);MISSIONS=clone(missions);GAME_TOTAL=Math.max(1,Number(totalAwards)||SETTINGS.defaultAwards);usedMissionIds=usedMissionIds.filter(id=>MISSIONS.some(m=>m.id===id));if(currentMissionId&&!MISSIONS.some(m=>m.id===currentMissionId))currentMissionId="";reconcileState(oldTable,oldPrize);rebuildWheelOrder();renderTablesMap();populateAdminSelects();drawWheel();updateUI();saveSession();
+}
+function saveConfiguration(){
+  configDraftTotalAwards=Math.max(1,Number($("configTotalAwards").value)||1);
+  const names=configDraftTables.map(t=>t.name.trim());if(names.some(n=>!n)){showToast("Todas as mesas deben ter nome");return;}if(new Set(names.map(n=>n.toLowerCase())).size!==names.length){showToast("Non pode haber nomes de mesa repetidos");return;}const participantCount=configDraftTables.filter(t=>!t.vip).length;if(!participantCount){showToast("Debe quedar polo menos unha mesa participante");return;}if(!configDraftPrizes.length){showToast("Debe haber polo menos un premio");return;}if(configDraftPrizes.some(p=>!p.name.trim()||!p.category.trim())){showToast("Todos os premios necesitan categoría e nome");return;}if(configDraftTotalAwards>configDraftPrizes.length){showToast("Os premios totais do xogo non poden superar os segmentos cargados na ruleta");return;}if(!configDraftMissions.length){showToast("Debe haber polo menos un reto");return;}if(configDraftMissions.some(m=>!m.title.trim()||!m.instruction.trim())){showToast("Todos os retos necesitan título e instrución");return;}
+  try{localStorage.setItem(SETTINGS.configKey,JSON.stringify({tables:configDraftTables,prizes:configDraftPrizes,missions:configDraftMissions,totalAwards:configDraftTotalAwards}));}catch(e){showToast("Non se puido gardar a configuración");return;}applyConfiguration(configDraftTables,configDraftPrizes,configDraftMissions,configDraftTotalAwards);closeConfig();showToast("Configuración gardada neste navegador");
+}
+function resetConfigDraft(){if(!confirm("Restablecer mesas, premios e retos á configuración base?"))return;configDraftTables=clone(DEFAULT_TABLES);configDraftPrizes=clone(DEFAULT_PRIZES);configDraftMissions=clone(DEFAULT_MISSIONS);configDraftTotalAwards=SETTINGS.defaultAwards;$("configTotalAwards").value=configDraftTotalAwards;renderConfigTables();renderConfigPrizes();renderConfigMissions();}
+$("configBtn").onclick=openConfig;$("introConfigBtn").onclick=e=>{e.preventDefault();openConfig();};$("panelLink").onclick=e=>{e.preventDefault();openControlWindow();};$("introPanelBtn").onclick=e=>{e.preventDefault();openControlWindow();};$("addPrizeBtn").onclick=addPrize;$("addMissionBtn").onclick=addMission;document.querySelectorAll(".config-tab").forEach(b=>b.onclick=()=>activateConfigTab(b.dataset.configTab));$("saveConfigBtn").onclick=saveConfiguration;$("cancelConfigBtn").onclick=closeConfig;$("resetConfigBtn").onclick=resetConfigDraft;
+
+/* ---------------- Render / restauración ---------------- */
+function renderStableScene(){
+  if(stableScene==="mission"){renderMission();scene("mission",{stable:false});}
+  else if(stableScene==="selected"){$("selectedTableName").textContent=tableName(currentTable);scene("selected",{stable:false});setTimeout(()=>{if(runtimeScene==="selected")showMission();},1200);}
+  else if(stableScene==="success"){$("successTable").textContent=currentTable?`MESA ${tableName(currentTable)}`:"";scene("success",{stable:false});}
+  else if(stableScene==="fail")scene("fail",{stable:false});
+  else if(stableScene==="unlock"){$("captainTable").textContent=tableName(currentTable);scene("unlock",{stable:false});}
+  else if(stableScene==="prize"){renderPrize();scene("prize",{stable:false});}
+  else if(stableScene==="espera")scene("espera",{stable:false});
+  else if(stableScene==="finished")scene("finished",{stable:false});
+  else scene("idle",{stable:false});
+}
+
+
+/* ---------------- Panel en xanela auxiliar ---------------- */
+function controlWindowAlive(){return controlWindow && !controlWindow.closed;}
+function openControlWindow(){
+  if(controlWindowAlive()){controlWindow.focus();refreshControlWindow();return;}
+  controlWindow=window.open("","retoMesasPanel","popup=yes,width=500,height=860,resizable=yes,scrollbars=yes");
+  if(!controlWindow){showToast("O navegador bloqueou a xanela do panel");return;}
+  const d=controlWindow.document;
+  d.open();
+  d.write(`<!doctype html><html lang="gl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Panel · O Reto das Mesas</title><style>
+  :root{--dark:#032821;--mid:#004B3A;--fluor:#00AA81;--yellow:#F3CA12;--white:#fff;--soft:#DDECE7;--muted:rgba(255,255,255,.68)}*{box-sizing:border-box}body{margin:0;background:#021d18;color:#fff;font-family:Open Sans,Tahoma,Arial,sans-serif;padding:16px}h1{font-size:22px;margin:0 0 4px}p.note{margin:0 0 14px;color:var(--muted);font-size:12px;line-height:1.4}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.stat{padding:11px;border-radius:12px;background:rgba(255,255,255,.07);text-align:center}.stat b{display:block;color:var(--yellow);font-size:22px}.stat span{font-size:10px;color:var(--muted)}section{padding:12px;border:1px solid rgba(255,255,255,.11);border-radius:13px;background:rgba(255,255,255,.045);margin-bottom:10px}h2{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--fluor);margin:0 0 9px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.one{grid-template-columns:1fr}.btn{width:100%;padding:9px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#fff;color:var(--dark);font-weight:800;font-size:11px;cursor:pointer}.btn.alt{background:rgba(255,255,255,.08);color:#fff}.btn.warn{background:rgba(243,202,18,.12);color:var(--yellow);border-color:rgba(243,202,18,.34)}.btn.danger{background:rgba(150,20,20,.18);color:#ffdede;border-color:rgba(255,120,120,.25)}.btn:disabled{opacity:.4;cursor:not-allowed}select{width:100%;padding:9px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:#052f27;color:#fff;margin-bottom:7px}.status{font-size:11px;color:var(--soft);margin:0 0 8px}.toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:var(--soft);margin:6px 0}.toggle input{width:18px;height:18px}.log{margin:0;padding-left:18px;line-height:1.45;color:var(--soft);font-size:11px;max-height:180px;overflow:auto}.close{position:fixed;right:12px;top:12px;border:0;background:transparent;color:var(--muted);text-decoration:underline;cursor:pointer}
+  </style></head><body><button id="cwClose" class="close">Pechar</button><h1>Panel de control</h1><p class="note">Xanela auxiliar de control. A pantalla principal continúa proxectándose sen este panel.</p>
+  <div class="stats"><div class="stat"><b id="cwAwarded">0</b><span>premios entregados</span></div><div class="stat"><b id="cwRemainingRounds">0</b><span>roldas pendentes</span></div><div class="stat"><b id="cwTable">—</b><span>mesa actual</span></div><div class="stat"><b id="cwState">LISTOS</b><span>estado</span></div></div>
+  <section><h2>Seguridade e recuperación</h2><div class="grid"><button id="cwUndo" class="btn warn">DESFACER</button><button id="cwSkip" class="btn alt">SALTAR ANIMACIÓN</button><button id="cwRepeat" class="btn alt">REPETIR SORTEO</button><button id="cwMission" class="btn alt">CAMBIAR MISIÓN</button></div></section>
+  <section><h2>Temporizador</h2><div class="grid"><button id="cwPause" class="btn alt">PAUSAR / RETOMAR</button><button id="cwRestart" class="btn alt">REINICIAR TEMPO</button></div></section>
+  <section><h2>Audio</h2><label class="toggle"><span>Efectos de son</span><input id="cwSound" type="checkbox"></label><label class="toggle"><span>Voz sintética</span><input id="cwVoice" type="checkbox"></label></section>
+  <section><h2>Xestión manual de mesas</h2><select id="cwTableSelect"></select><p id="cwTableStatus" class="status"></p><div class="grid"><button id="cwFresh" class="btn alt">SEN PARTICIPAR</button><button id="cwTried" class="btn alt">XA PARTICIPOU</button><button id="cwWon" class="btn alt">PREMIADA</button></div></section>
+  <section><h2>Xestión manual de premios</h2><select id="cwPrizeSelect"></select><p id="cwPrizeStatus" class="status"></p><div class="grid"><button id="cwPending" class="btn alt">DEVOLVER Á RULETA</button><button id="cwAwardedBtn" class="btn alt">MARCAR ENTREGADO</button></div></section>
+  <section><h2>Historial</h2><ol id="cwLog" class="log"><li>Aínda non hai resultados.</li></ol></section>
+  <div class="grid one"><button id="cwEspera" class="btn alt">IR Á PANTALLA DE ESPERA</button><button id="cwIntro" class="btn alt">VOLVER ÁS INSTRUCIÓNS</button><button id="cwReset" class="btn danger">RESTABLECER TODA A PROBA</button></div>
+  </body></html>`);
+  d.close();
+  const q=id=>d.getElementById(id);
+  q("cwClose").onclick=()=>controlWindow.close();
+  q("cwUndo").onclick=undo;q("cwSkip").onclick=skipCurrentAnimation;q("cwRepeat").onclick=repeatSelection;q("cwMission").onclick=changeMission;
+  q("cwPause").onclick=togglePauseTimer;q("cwRestart").onclick=restartTimer;
+  q("cwSound").onchange=e=>setSoundEnabled(e.target.checked);q("cwVoice").onchange=e=>setVoiceEnabled(e.target.checked);
+  q("cwFresh").onclick=()=>{const id=q("cwTableSelect").value;if(id){$("tableAdminSelect").value=id;setTableManual("fresh");}};
+  q("cwTried").onclick=()=>{const id=q("cwTableSelect").value;if(id){$("tableAdminSelect").value=id;setTableManual("tried");}};
+  q("cwWon").onclick=()=>{const id=q("cwTableSelect").value;if(id){$("tableAdminSelect").value=id;setTableManual("won");}};
+  q("cwPending").onclick=()=>{const id=q("cwPrizeSelect").value;if(id){$("prizeAdminSelect").value=id;setPrizeManual("pending");}};
+  q("cwAwardedBtn").onclick=()=>{const id=q("cwPrizeSelect").value;if(id){$("prizeAdminSelect").value=id;setPrizeManual("awarded");}};
+  q("cwTableSelect").onchange=refreshControlWindow;q("cwPrizeSelect").onchange=refreshControlWindow;
+  q("cwEspera").onclick=()=>goEspera("En cando estedes preparados, seguimos");q("cwIntro").onclick=returnToIntro;q("cwReset").onclick=()=>hardReset(controlWindow);
+  controlWindow.addEventListener("beforeunload",()=>{controlWindow=null;});
+  refreshControlWindow();controlWindow.focus();
+}
+function refreshControlWindow(){
+  if(!controlWindowAlive())return;const d=controlWindow.document,q=id=>d.getElementById(id);if(!q("cwAwarded"))return;
+  const roundsRemaining=Math.max(0,gameTarget()-awardedCount());q("cwAwarded").textContent=awardedCount();q("cwRemainingRounds").textContent=roundsRemaining;q("cwTable").textContent=currentTable?tableName(currentTable):"—";q("cwState").textContent=stateLabel();
+  q("cwUndo").disabled=!undoStack.length||running;q("cwSkip").disabled=!running;q("cwRepeat").disabled=!currentTable||running;q("cwMission").disabled=!currentTable||!["mission","selected"].includes(runtimeScene)||running;q("cwPause").disabled=!["running","paused"].includes(timer.status);q("cwRestart").disabled=!currentMission()?.timed;
+  q("cwSound").checked=soundEnabled;q("cwVoice").checked=voiceEnabled;
+  const oldT=q("cwTableSelect").value,oldP=q("cwPrizeSelect").value;
+  q("cwTableSelect").innerHTML=TABLES.filter(t=>!t.vip).map(t=>`<option value="${escapeHtml(t.id)}">${escapeHtml(t.name)}</option>`).join("");if(TABLES.some(t=>t.id===oldT&&!t.vip))q("cwTableSelect").value=oldT;
+  const tid=q("cwTableSelect").value,s=tableState[tid];q("cwTableStatus").textContent=s?(s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1"):"";
+  q("cwPrizeSelect").innerHTML=PRIZES.map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.category)} · ${escapeHtml(p.name)}</option>`).join("");if(PRIZES.some(p=>p.id===oldP))q("cwPrizeSelect").value=oldP;
+  const pid=q("cwPrizeSelect").value;q("cwPrizeStatus").textContent=pid?(prizeStatus[pid]==="awarded"?"Entregado · non aparece na ruleta":"Pendente · aparece na ruleta"):"";
+  q("cwLog").innerHTML=history.length?history.map(h=>`<li><b>${escapeHtml(h.table)}</b>: ${escapeHtml(h.result)}${h.mission?` · ${escapeHtml(h.mission)}`:""}${h.prize?` · ${escapeHtml(h.prize)}`:""}</li>`).join(""):"<li>Aínda non hai resultados.</li>";
+}
+
+/* ---------------- Panel / administración ---------------- */
+function populateAdminSelects(){
+  const oldT=$("tableAdminSelect").value,oldP=$("prizeAdminSelect").value;$("tableAdminSelect").innerHTML=TABLES.filter(t=>!t.vip).map(t=>`<option value="${escapeHtml(t.id)}">${escapeHtml(t.name)}</option>`).join("");$("prizeAdminSelect").innerHTML=PRIZES.map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.category)} · ${escapeHtml(p.name)}</option>`).join("");if(TABLES.some(t=>t.id===oldT))$("tableAdminSelect").value=oldT;if(PRIZES.some(p=>p.id===oldP))$("prizeAdminSelect").value=oldP;
+}
+function updateAdminStatus(){const id=$("tableAdminSelect").value;if(id&&tableState[id]){const s=tableState[id];$("tableAdminStatus").textContent=s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1";}const pid=$("prizeAdminSelect").value;if(pid)$("prizeAdminStatus").textContent=prizeStatus[pid]==="awarded"?"Entregado · non aparece na ruleta":"Pendente · aparece na ruleta";}
+function setTableManual(mode){const id=$("tableAdminSelect").value;if(!id)return;pushUndo("Editar mesa");const s=tableState[id];if(mode==="fresh"){s.attempts=0;s.won=false;}if(mode==="tried"){s.attempts=Math.max(1,s.attempts);s.won=false;}if(mode==="won")s.won=true;refreshTableStates();updateUI();saveSession();showToast(`Mesa ${tableName(id)} actualizada`);}
+function setPrizeManual(status){const id=$("prizeAdminSelect").value;if(!id)return;pushUndo("Editar premio");prizeStatus[id]=status;rebuildWheelOrder();drawWheel();updateUI();saveSession();showToast(status==="pending"?"Premio devolto á ruleta":"Premio marcado como entregado");if(gameComplete()&&runtimeScene==="idle")scene("finished");}
+function repeatSelection(){if(running){showToast("Salta primeiro a animación actual");return;}if(!currentTable){showToast("Non hai unha mesa seleccionada para repetir");return;}if(tableState[currentTable]?.won){showToast("A mesa actual xa ten premio");return;}pushUndo("Repetir sorteo de mesa");tableState[currentTable].attempts=Math.max(0,tableState[currentTable].attempts-1);currentTable="";currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};$("presenterPanel").classList.remove("show");startSelection({skipUndo:true});}
+function skipCurrentAnimation(){if(!running||!["selection","wheel"].includes(animationType)){showToast("Non hai ningunha animación para saltar");return;}skipAnimation=true;showToast("Saltando animación");}
+function returnToIntro(){if(running){showToast("Agarda a que remate a animación");return;}pushUndo("Volver á intro");introActive=true;intro.classList.remove("hidden");video.currentTime=0;video.pause();updateVideoButton();saveSession();$("presenterPanel").classList.remove("show");}
+function hardReset(dialogWindow=window){if(!dialogWindow.confirm("Restablecer toda a proba? Eliminaranse resultados, premios entregados e historial. A configuración de mesas, premios e retos manterase."))return;cancelTimer();document.querySelectorAll(".confetti").forEach(e=>e.remove());undoStack=[];localStorage.removeItem(SETTINGS.undoKey);initFreshState();rebuildWheelOrder();introActive=false;intro.classList.add("hidden");renderTablesMap();populateAdminSelects();drawWheel();scene("idle");saveSession();showToast("Proba restablecida");}
+function updatePanelButtons(){$("undoBtn").disabled=!undoStack.length||running;$("skipAnimationBtn").disabled=!running;$("repeatSelectionBtn").disabled=!currentTable||running;$("changeMissionBtn").disabled=!currentTable||!["mission","selected"].includes(runtimeScene)||running;$("pauseTimerBtn").disabled=!["running","paused"].includes(timer.status);$("restartTimerBtn").disabled=!currentMission()?.timed;}
+function updateUI(){
+  const round=currentRound(),remaining=pendingPrizes().length,total=gameTarget(),done=gameComplete();$("roundCount").textContent=done?`${total} / ${total}`:`${round} / ${total}`;$("idleEyebrow").textContent=done?`${total} PREMIOS ENTREGADOS`:`PREMIO ${round} DE ${total}`;$("finishedCountText").textContent=`${total} PREMIOS ENTREGADOS`;
+  $("awardedStat").textContent=awardedCount();$("remainingStat").textContent=remaining;$("currentTableStat").textContent=currentTable?tableName(currentTable):"—";$("stateStat").textContent=stateLabel();$("log").innerHTML=history.length?history.map(h=>`<li><b>${escapeHtml(h.table)}</b>: ${escapeHtml(h.result)}${h.mission?` · ${escapeHtml(h.mission)}`:""}${h.prize?` · ${escapeHtml(h.prize)}`:""}</li>`).join(""):"<li>Aínda non hai resultados.</li>";
+  $("soundToggle").checked=soundEnabled;$("voiceToggle").checked=voiceEnabled;$("audioQuickBtn").textContent=soundEnabled?"AUDIO: ON":"AUDIO: OFF";$("audioQuickBtn").classList.toggle("audio-off",!soundEnabled);$("voiceQuickBtn").textContent=voiceEnabled?"VOZ: ON":"VOZ: OFF";$("voiceQuickBtn").classList.toggle("voice-off",!voiceEnabled);refreshTableStates();updateAdminStatus();updatePanelButtons();refreshControlWindow();
+}
+
+$("undoBtn").onclick=undo;$("skipAnimationBtn").onclick=skipCurrentAnimation;$("repeatSelectionBtn").onclick=repeatSelection;$("changeMissionBtn").onclick=changeMission;$("pauseTimerBtn").onclick=togglePauseTimer;$("restartTimerBtn").onclick=restartTimer;
+$("soundToggle").onchange=e=>setSoundEnabled(e.target.checked);$("voiceToggle").onchange=e=>setVoiceEnabled(e.target.checked);$("voiceQuickBtn").onclick=()=>setVoiceEnabled(!voiceEnabled);$("audioQuickBtn").onclick=()=>setSoundEnabled(!soundEnabled);
+$("tableAdminSelect").onchange=updateAdminStatus;$("prizeAdminSelect").onchange=updateAdminStatus;$("tableFreshBtn").onclick=()=>setTableManual("fresh");$("tableTriedBtn").onclick=()=>setTableManual("tried");$("tableWonBtn").onclick=()=>setTableManual("won");$("prizePendingBtn").onclick=()=>setPrizeManual("pending");$("prizeAwardedBtn").onclick=()=>setPrizeManual("awarded");
+$("panelEsperaBtn").onclick=()=>{$("presenterPanel").classList.remove("show");goEspera("En cando estedes preparados, seguimos");};$("returnIntroBtn").onclick=returnToIntro;$("reset").onclick=hardReset;$("closePanel").onclick=()=>$("presenterPanel").classList.remove("show");$("selectBtn").onclick=startSelection;
+
+/* ---------------- Teclado seguro ---------------- */
+document.addEventListener("keydown",e=>{
+  if($("configPanel").classList.contains("show")){if(e.key==="Escape")closeConfig();return;}
+  if(introActive){if(e.code==="Space"){e.preventDefault();toggleVideo();}if(e.key==="Enter"){e.preventDefault();closeIntro();}return;}
+  if(e.key==="Escape"){return;}
+});
+
+/* ---------------- Inicio ---------------- */
+renderTablesMap();populateAdminSelects();drawWheel();
+const restored=loadSession();if(restored){showToast("Sesión recuperada automaticamente");}else{updateUI();}
+})();
 </script>
-</body></html>
+</body>
+</html>
