@@ -376,7 +376,7 @@ button:focus-visible,select:focus-visible{outline:4px solid rgba(243,202,18,.42)
     <div class="config-head">
       <div>
         <h2>Configuración do xogo</h2>
-        <p>Os cambios gárdanse neste navegador. As mesas pódense renomear e mover arrastrándoas no plano. Na ruleta, cada fila de premio equivale exactamente a un segmento.</p>
+        <p>Os cambios gárdanse neste navegador. As mesas pódense renomear e mover arrastrándoas no plano. Na ruleta, cada fila de premio equivale exactamente a un segmento. Os sete segmentos permanecen visibles durante toda a partida.</p>
       </div>
     </div>
 
@@ -519,9 +519,9 @@ const SETTINGS={
   finalTableHoldMs:1000,
   selectedHoldMs:2100,
   wheelDurationMs:6200,
-  configKey:"reto-mesas-60-config-v7",
-  sessionKey:"reto-mesas-60-session-v7",
-  undoKey:"reto-mesas-60-undo-v7",
+  configKey:"reto-mesas-60-config-v8",
+  sessionKey:"reto-mesas-60-session-v8",
+  undoKey:"reto-mesas-60-undo-v8",
   maxUndo:12
 };
 
@@ -544,32 +544,16 @@ const DEFAULT_MISSIONS=[
   {id:"ymca",title:"YMCA",instruction:"Cando o operador poña a música, toda a mesa deberá levantarse e formar correctamente as letras Y-M-C-A cos brazos.",duration:25,timed:true,type:"baile"},
   {id:"muineira",title:"MUIÑEIRA EXPRESS",instruction:"Cando o operador poña a música, toda a mesa deberá bailar unha muiñeira.",duration:25,timed:true,type:"baile"}
 ];
-/* 24 premios = 24 segmentos iniciais. Pódense cambiar no panel. */
+
+/* 7 premios reais = 7 segmentos fixos. Permanecen visibles durante toda a partida. */
 const DEFAULT_PRIZES=[
   {id:"p01",category:"ESPIGA OURO",name:"CHEQUE AMAZON 50 €",quip:"Porque o futuro tamén se compra cun clic.",theme:"gold"},
-  {id:"p02",category:"ESPIGA OURO",name:"CHEQUE AMAZON 50 €",quip:"Porque o futuro tamén se compra cun clic.",theme:"gold"},
-  {id:"p03",category:"ESPIGA OURO",name:"CHEQUE AMAZON 50 €",quip:"Porque o futuro tamén se compra cun clic.",theme:"gold"},
-  {id:"p04",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
-  {id:"p05",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
-  {id:"p06",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
-  {id:"p07",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
-  {id:"p08",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
-  {id:"p09",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
-  {id:"p10",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
-  {id:"p11",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
-  {id:"p12",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
-  {id:"p13",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
-  {id:"p14",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
-  {id:"p15",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
-  {id:"p16",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
-  {id:"p17",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
-  {id:"p18",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
-  {id:"p19",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
-  {id:"p20",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
-  {id:"p21",category:"ESPIGA CENTEO",name:"CALCETÍNS DE OVOS FRITIDOS",quip:"Estilo indiscutible ata nos pés.",theme:"green"},
-  {id:"p22",category:"ESPIGA CENTEO",name:"CALCETÍNS DE OVOS FRITIDOS",quip:"Estilo indiscutible ata nos pés.",theme:"green"},
-  {id:"p23",category:"ESPIGA CENTEO",name:"MINI PANDEIRETA",quip:"Unha ferramenta oficial para manter a festa viva.",theme:"green"},
-  {id:"p24",category:"ESPIGA CENTEO",name:"MINI PANDEIRETA",quip:"Unha ferramenta oficial para manter a festa viva.",theme:"green"}
+  {id:"p02",category:"ESPIGA PRATA",name:"BOTELLA DE VIÑO",quip:"Para brindar polos próximos sesenta anos.",theme:"silver"},
+  {id:"p03",category:"ESPIGA PRATA",name:"SOBRE DE XAMÓN",quip:"Unha recompensa seria para unha misión ben resolta.",theme:"silver"},
+  {id:"p04",category:"ESPIGA PRATA",name:"PACK DE CONSERVAS",quip:"Un pequeno tesouro en lata.",theme:"silver"},
+  {id:"p05",category:"ESPIGA CENTEO",name:"MIRLITÓN",quip:"Por se a festa precisa un pouco máis de ruído.",theme:"green"},
+  {id:"p06",category:"ESPIGA CENTEO",name:"CALCETÍNS DE OVOS FRITIDOS",quip:"Estilo indiscutible ata nos pés.",theme:"green"},
+  {id:"p07",category:"ESPIGA CENTEO",name:"MINI PANDEIRETA",quip:"Unha ferramenta oficial para manter a festa viva.",theme:"green"}
 ];
 
 const $=id=>document.getElementById(id);
@@ -687,7 +671,7 @@ document.addEventListener("mousemove",showCursor);document.addEventListener("mou
 
 /* ---------------- Persistencia / undo ---------------- */
 function syncTimerRemaining(){if(timer.status==="running"){const elapsed=performance.now()-timerStartedAt;timer.remainingMs=Math.max(0,timerStartRemaining-elapsed);if(timer.remainingMs<=0)timer.status="finished";}}
-function captureState(){syncTimerRemaining();return {version:7,introActive,stableScene,wheelOrder:[...wheelOrder],tableState:clone(tableState),prizeStatus:clone(prizeStatus),usedMissionIds:[...usedMissionIds],history:clone(history),currentTable,currentMissionId,currentPrizeId,missionAttempt,challengeTableIds:[...challengeTableIds],wheelRotation,soundEnabled,voiceEnabled,timer:clone(timer)};}
+function captureState(){syncTimerRemaining();return {version:8,introActive,stableScene,wheelOrder:[...wheelOrder],tableState:clone(tableState),prizeStatus:clone(prizeStatus),usedMissionIds:[...usedMissionIds],history:clone(history),currentTable,currentMissionId,currentPrizeId,missionAttempt,challengeTableIds:[...challengeTableIds],wheelRotation,soundEnabled,voiceEnabled,timer:clone(timer)};}
 function saveSession(){try{localStorage.setItem(SETTINGS.sessionKey,JSON.stringify(captureState()));localStorage.setItem(SETTINGS.undoKey,JSON.stringify(undoStack.slice(-SETTINGS.maxUndo)));}catch(e){}}
 function pushUndo(label){const snap=captureState();snap._label=label;undoStack.push(snap);if(undoStack.length>SETTINGS.maxUndo)undoStack.shift();saveSession();updatePanelButtons();}
 function reconcileState(rawTableState={},rawPrizeStatus={}){
@@ -703,7 +687,7 @@ function restoreState(s,{fromUndo=false}={}){
   if(introActive){intro.classList.remove("hidden");}else{intro.classList.add("hidden");renderStableScene();}updateUI();saveSession();if(fromUndo)showToast("Acción desfeita");
 }
 function undo(){if(running){showToast("Agarda a que remate ou salta a animación");return;}const s=undoStack.pop();if(!s){showToast("Non hai accións para desfacer");return;}restoreState(s,{fromUndo:true});}
-function loadSession(){try{const raw=localStorage.getItem(SETTINGS.sessionKey);const u=localStorage.getItem(SETTINGS.undoKey);if(u)undoStack=JSON.parse(u)||[];if(!raw)return false;const s=JSON.parse(raw);if(!s||s.version!==7)return false;restoreState(s);return true;}catch(e){return false;}}
+function loadSession(){try{const raw=localStorage.getItem(SETTINGS.sessionKey);const u=localStorage.getItem(SETTINGS.undoKey);if(u)undoStack=JSON.parse(u)||[];if(!raw)return false;const s=JSON.parse(raw);if(!s||s.version!==8)return false;restoreState(s);return true;}catch(e){return false;}}
 window.addEventListener("beforeunload",saveSession);
 
 /* ---------------- Escenas ---------------- */
@@ -726,11 +710,7 @@ function renderTablesMap(){
 function tableEl(id){return $("tablesMap").querySelector(`[data-table-id="${CSS.escape(id)}"]`);}
 function refreshTableStates(){TABLES.forEach(t=>{const el=tableEl(t.id),s=tableState[t.id];if(!el||!s)return;el.textContent=t.name;el.style.left=`${t.x}%`;el.style.top=`${t.y}%`;el.classList.toggle("vip",s.vip);el.classList.toggle("tried",!s.vip&&!s.won&&s.attempts>0);el.classList.toggle("won",s.won);});}
 function weightFor(id){const s=tableState[id];if(!s||s.vip||s.won)return 0;return s.attempts>0?SETTINGS.failedTableWeight:1;}
-function eligibleTables(){
-  const base=TABLES.map(t=>t.id).filter(id=>weightFor(id)>0);
-  const freshForChallenge=base.filter(id=>!challengeTableIds.includes(id));
-  return freshForChallenge.length?freshForChallenge:base;
-}
+function eligibleTables(){const base=TABLES.map(t=>t.id).filter(id=>weightFor(id)>0);const fresh=base.filter(id=>!challengeTableIds.includes(id));return fresh.length?fresh:base;}
 function weightedWinner(){const items=eligibleTables().map(id=>({id,w:weightFor(id)}));const total=items.reduce((a,b)=>a+b.w,0);let r=randFloat()*total;for(const it of items){r-=it.w;if(r<=0)return it.id;}return items.at(-1)?.id||null;}
 
 async function showDrawAlert(){const a=$("drawAlert"),c=$("drawAlertCount");a.classList.add("show");a.setAttribute("aria-hidden","false");speak("Atención. Comeza o sorteo de mesas.");for(let n=5;n>=1;n--){c.textContent=String(n);beep("tick");await sleep(1000);}a.classList.remove("show");a.setAttribute("aria-hidden","true");c.textContent="5";}
@@ -773,9 +753,9 @@ async function startSelection({skipUndo=false}={}){
 /* ---------------- Misións ---------------- */
 function chooseNextMission(){let pool=MISSIONS.filter(m=>!usedMissionIds.includes(m.id));if(!pool.length){usedMissionIds=[];pool=[...MISSIONS];}const m=pool[randInt(pool.length)];usedMissionIds.push(m.id);return m;}
 function assignMission(){const m=chooseNextMission();currentMissionId=m.id;timer={status:m.timed?"ready":"idle",totalMs:(m.duration||0)*1000,remainingMs:(m.duration||0)*1000};return m;}
-function showMission(){if(!currentMissionId){assignMission();missionAttempt=1;challengeTableIds=currentTable?[currentTable]:[];}renderMission();scene("mission");const m=currentMission();if(m)speak(`Mesa ${tableName(currentTable)}. Intento ${Math.max(1,missionAttempt)} de tres. O reto é ${m.title}. ${m.instruction}`);}
+function showMission(){if(!currentMissionId){assignMission();missionAttempt=1;challengeTableIds=currentTable?[currentTable]:[];}renderMission();scene("mission");const m=currentMission();if(m)speak(`Mesa ${tableName(currentTable)}. O reto é ${m.title}. ${m.instruction}`);}
 function renderMission(){
-  const m=currentMission();if(!m)return;$("missionTable").textContent=`${tableName(currentTable)} · INTENTO ${Math.max(1,missionAttempt)} DE 3`;$("missionTitle").textContent=m.title;$("missionText").textContent=m.instruction;$("missionStartActions").innerHTML="";$("missionResultActions").hidden=true;$("timerWrap").hidden=true;$("timerInlineBtn").hidden=true;$("timerMessage").hidden=true;$("timerRing").classList.remove("timeup");
+  const m=currentMission();if(!m)return;$("missionTable").textContent=tableName(currentTable);$("missionTitle").textContent=m.title;$("missionText").textContent=m.instruction;$("missionStartActions").innerHTML="";$("missionResultActions").hidden=true;$("timerWrap").hidden=true;$("timerInlineBtn").hidden=true;$("timerMessage").hidden=true;$("timerRing").classList.remove("timeup");
   if(!m.timed){$("missionResultActions").hidden=false;return;}const ratio=timer.totalMs?Math.max(0,Math.min(100,(timer.remainingMs/timer.totalMs)*100)):100;$("timerRing").style.setProperty("--p",ratio);
   if(timer.status==="ready"){const b=document.createElement("button");b.className="primary";b.textContent="COMEZAR RETO";b.onclick=startMissionTimer;$("missionStartActions").appendChild(b);return;}
   $("timerWrap").hidden=false;$("missionResultActions").hidden=false;
@@ -792,25 +772,10 @@ function togglePauseTimer(){if(timer.status==="running")pauseTimer();else if(tim
 $("timerInlineBtn").onclick=togglePauseTimer;
 function cancelTimer(setPaused=true){if(timerRAF){cancelAnimationFrame(timerRAF);timerRAF=null;}if(setPaused&&timer.status==="running"){syncTimerRemaining();timer.status="paused";}}
 function passMission(){if(running)return;pushUndo("Misión superada");cancelTimer();history.push({table:tableName(currentTable),result:"Misión superada",mission:currentMission()?.title||""});$("successTable").textContent=`MESA ${tableName(currentTable)}`;scene("success");beep("win");speak("Misión superada. Ruleta desbloqueada.");}
-function failMission(){
-  if(running)return;pushUndo("Misión non superada");cancelTimer();
-  history.push({table:tableName(currentTable),result:`Misión non superada · intento ${missionAttempt} de 3`,mission:currentMission()?.title||""});
-  const last=missionAttempt>=3;
-  $("failStateSub").textContent=last?"TRES INTENTOS COMPLETADOS":"O PREMIO SEGUE EN XOGO";
-  $("failStateSmall").textContent=last?"O premio continúa, pero agora xogaremos cun novo reto.":`O mesmo reto rebota a outra mesa · intento ${missionAttempt+1} de 3.`;
-  $("selectAgainBtn").textContent=last?"NOVO RETO E OUTRA MESA":"REBOTE: OUTRA MESA";
-  scene("fail");beep("softfail");
-  speak(last?"Tres intentos completados. O premio segue en xogo cun novo reto.":`Case. O mesmo reto rebota a outra mesa. Intento ${missionAttempt+1} de tres.`);
-}
+function failMission(){if(running)return;pushUndo("Misión non superada");cancelTimer();history.push({table:tableName(currentTable),result:"Misión non superada",mission:currentMission()?.title||""});const last=missionAttempt>=3;$("failStateSub").textContent=last?"NINGUNHA MESA O CONSEGUIU":"O PREMIO SEGUE EN XOGO";$("failStateSmall").textContent=last?"O premio continúa, pero agora xogaremos cun novo reto.":missionAttempt===1?"O mesmo reto rebota a outra mesa.":"Última oportunidade para superar o mesmo reto.";$("selectAgainBtn").textContent=last?"NOVO RETO E OUTRA MESA":missionAttempt===1?"REBOTE: OUTRA MESA":"ÚLTIMA OPORTUNIDADE";scene("fail");beep("softfail");speak(last?"Ningunha mesa conseguiu superar o reto. O premio segue en xogo cun novo reto.":missionAttempt===1?"Case. O mesmo reto rebota a outra mesa.":"Case. Última oportunidade para superar o mesmo reto.");}
 function continueToWheel(){pushUndo("Ir á ruleta");$("captainTable").textContent=tableName(currentTable);scene("unlock");}
 function changeMission(){if(!currentTable||!["mission","selected"].includes(runtimeScene)){showToast("Non hai unha misión activa");return;}pushUndo("Cambiar misión");cancelTimer();currentMissionId="";assignMission();renderMission();scene("mission");showToast("Misión cambiada");}
-$("passMission").onclick=passMission;$("failMission").onclick=failMission;$("successContinueBtn").onclick=continueToWheel;
-$("selectAgainBtn").onclick=()=>{
-  if(missionAttempt>=3){currentMissionId="";missionAttempt=0;challengeTableIds=[];}
-  else{missionAttempt+=1;}
-  timer={status:"idle",totalMs:0,remainingMs:0};
-  startSelection();
-};
+$("passMission").onclick=passMission;$("failMission").onclick=failMission;$("successContinueBtn").onclick=continueToWheel;$("selectAgainBtn").onclick=()=>{if(missionAttempt>=3){currentMissionId="";missionAttempt=0;challengeTableIds=[];}else{missionAttempt+=1;}timer={status:"idle",totalMs:0,remainingMs:0};startSelection();};
 
 /* ---------------- Pantalla de espera ---------------- */
 function goEspera(copy="Seguimos nun intre."){$("esperaCopy").textContent=copy;scene("espera");}
@@ -945,7 +910,7 @@ function refreshControlWindow(){
   q("cwTableSelect").innerHTML=TABLES.filter(t=>!t.vip).map(t=>`<option value="${escapeHtml(t.id)}">${escapeHtml(t.name)}</option>`).join("");if(TABLES.some(t=>t.id===oldT&&!t.vip))q("cwTableSelect").value=oldT;
   const tid=q("cwTableSelect").value,s=tableState[tid];q("cwTableStatus").textContent=s?(s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1"):"";
   q("cwPrizeSelect").innerHTML=PRIZES.map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.category)} · ${escapeHtml(p.name)}</option>`).join("");if(PRIZES.some(p=>p.id===oldP))q("cwPrizeSelect").value=oldP;
-  const pid=q("cwPrizeSelect").value;q("cwPrizeStatus").textContent=pid?(prizeStatus[pid]==="awarded"?"Entregado · non aparece na ruleta":"Pendente · aparece na ruleta"):"";
+  const pid=q("cwPrizeSelect").value;q("cwPrizeStatus").textContent=pid?(prizeStatus[pid]==="awarded"?"Entregado · segue visible, pero non pode volver saír":"Pendente · pode saír na ruleta"):"";
   q("cwLog").innerHTML=history.length?history.map(h=>`<li><b>${escapeHtml(h.table)}</b>: ${escapeHtml(h.result)}${h.mission?` · ${escapeHtml(h.mission)}`:""}${h.prize?` · ${escapeHtml(h.prize)}`:""}</li>`).join(""):"<li>Aínda non hai resultados.</li>";
 }
 
@@ -953,10 +918,10 @@ function refreshControlWindow(){
 function populateAdminSelects(){
   const oldT=$("tableAdminSelect").value,oldP=$("prizeAdminSelect").value;$("tableAdminSelect").innerHTML=TABLES.filter(t=>!t.vip).map(t=>`<option value="${escapeHtml(t.id)}">${escapeHtml(t.name)}</option>`).join("");$("prizeAdminSelect").innerHTML=PRIZES.map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.category)} · ${escapeHtml(p.name)}</option>`).join("");if(TABLES.some(t=>t.id===oldT))$("tableAdminSelect").value=oldT;if(PRIZES.some(p=>p.id===oldP))$("prizeAdminSelect").value=oldP;
 }
-function updateAdminStatus(){const id=$("tableAdminSelect").value;if(id&&tableState[id]){const s=tableState[id];$("tableAdminStatus").textContent=s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1";}const pid=$("prizeAdminSelect").value;if(pid)$("prizeAdminStatus").textContent=prizeStatus[pid]==="awarded"?"Entregado · non aparece na ruleta":"Pendente · aparece na ruleta";}
+function updateAdminStatus(){const id=$("tableAdminSelect").value;if(id&&tableState[id]){const s=tableState[id];$("tableAdminStatus").textContent=s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1";}const pid=$("prizeAdminSelect").value;if(pid)$("prizeAdminStatus").textContent=prizeStatus[pid]==="awarded"?"Entregado · segue visible, pero non pode volver saír":"Pendente · pode saír na ruleta";}
 function setTableManual(mode){const id=$("tableAdminSelect").value;if(!id)return;pushUndo("Editar mesa");const s=tableState[id];if(mode==="fresh"){s.attempts=0;s.won=false;}if(mode==="tried"){s.attempts=Math.max(1,s.attempts);s.won=false;}if(mode==="won")s.won=true;refreshTableStates();updateUI();saveSession();showToast(`Mesa ${tableName(id)} actualizada`);}
 function setPrizeManual(status){const id=$("prizeAdminSelect").value;if(!id)return;pushUndo("Editar premio");prizeStatus[id]=status;rebuildWheelOrder();drawWheel();updateUI();saveSession();showToast(status==="pending"?"Premio devolto á ruleta":"Premio marcado como entregado");if(gameComplete()&&runtimeScene==="idle")scene("finished");}
-function repeatSelection(){if(running){showToast("Salta primeiro a animación actual");return;}if(!currentTable){showToast("Non hai unha mesa seleccionada para repetir");return;}if(tableState[currentTable]?.won){showToast("A mesa actual xa ten premio");return;}pushUndo("Repetir sorteo de mesa");tableState[currentTable].attempts=Math.max(0,tableState[currentTable].attempts-1);currentTable="";currentMissionId="";missionAttempt=0;challengeTableIds=[];timer={status:"idle",totalMs:0,remainingMs:0};$("presenterPanel").classList.remove("show");startSelection({skipUndo:true});}
+function repeatSelection(){if(running){showToast("Salta primeiro a animación actual");return;}if(!currentTable){showToast("Non hai unha mesa seleccionada para repetir");return;}if(tableState[currentTable]?.won){showToast("A mesa actual xa ten premio");return;}pushUndo("Repetir sorteo de mesa");tableState[currentTable].attempts=Math.max(0,tableState[currentTable].attempts-1);currentTable="";currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};$("presenterPanel").classList.remove("show");startSelection({skipUndo:true});}
 function skipCurrentAnimation(){if(!running||!["selection","wheel"].includes(animationType)){showToast("Non hai ningunha animación para saltar");return;}skipAnimation=true;showToast("Saltando animación");}
 function returnToIntro(){if(running){showToast("Agarda a que remate a animación");return;}pushUndo("Volver á intro");introActive=true;intro.classList.remove("hidden");video.currentTime=0;video.pause();updateVideoButton();saveSession();$("presenterPanel").classList.remove("show");}
 function hardReset(dialogWindow=window){if(!dialogWindow.confirm("Restablecer toda a proba? Eliminaranse resultados, premios entregados e historial. A configuración de mesas, premios e retos manterase."))return;cancelTimer();document.querySelectorAll(".confetti").forEach(e=>e.remove());undoStack=[];localStorage.removeItem(SETTINGS.undoKey);initFreshState();rebuildWheelOrder();introActive=false;intro.classList.add("hidden");renderTablesMap();populateAdminSelects();drawWheel();scene("idle");saveSession();showToast("Proba restablecida");}
