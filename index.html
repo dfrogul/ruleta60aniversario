@@ -87,7 +87,7 @@ button:focus-visible,select:focus-visible{outline:4px solid rgba(243,202,18,.42)
 .rolling-wrap{width:100%;height:100%;display:grid;grid-template-rows:auto minmax(0,1fr);gap:18px}
 .tables-map{width:100%;height:100%;min-height:0;position:relative;padding:8px}
 .table-dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(1);width:min(13.2vw,17vh,150px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;padding:10px;text-align:center;background:radial-gradient(circle at 34% 28%,#0b8e67,#007853 70%,#00563d);border:3px solid rgba(255,255,255,.36);color:#fff;font-size:clamp(10px,min(1.3vw,2vh),19px);font-weight:800;letter-spacing:.035em;box-shadow:0 10px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .16s ease,opacity .2s ease,filter .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}
-.table-dot.vip{opacity:.38;filter:saturate(.35);border-style:dashed}
+.table-dot.vip{}
 .table-dot.tried{background:radial-gradient(circle at 34% 28%,#087257,#004B3A 72%,#03362e);border-color:rgba(255,255,255,.22)}
 .table-dot.tried::before{content:"·";position:absolute;left:50%;bottom:5px;transform:translateX(-50%);font-size:28px;color:var(--yellow);line-height:1}
 .table-dot.won{background:radial-gradient(circle at 35% 28%,#fff6b7,#F3CA12 65%,#bb9708);border-color:#fff4a2;color:var(--dark);box-shadow:0 0 0 4px rgba(243,202,18,.12),0 10px 24px rgba(0,0,0,.26)}
@@ -124,6 +124,7 @@ button:focus-visible,select:focus-visible{outline:4px solid rgba(243,202,18,.42)
 .roulette-wrap{width:min(64vh,610px,86vw);aspect-ratio:1;position:relative;display:grid;place-items:center;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
 #wheel{width:100%;height:100%;border-radius:50%;will-change:transform}
 .pointer{position:absolute;z-index:5;top:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-top:54px solid var(--yellow);filter:drop-shadow(0 5px 4px rgba(0,0,0,.35))}
+.winner-reveal{position:absolute;z-index:8;left:50%;bottom:4%;transform:translate(-50%,18px) scale(.94);min-width:min(680px,88vw);padding:18px 28px;border-radius:20px;background:rgba(3,40,33,.96);border:2px solid var(--yellow);box-shadow:0 0 55px rgba(243,202,18,.42);opacity:0;pointer-events:none;transition:.28s ease}.winner-reveal.show{opacity:1;transform:translate(-50%,0) scale(1)}.winner-reveal-category{color:var(--yellow);font-size:clamp(16px,1.7vw,24px);font-weight:900;letter-spacing:.14em;text-transform:uppercase}.winner-reveal-name{margin-top:5px;color:#fff;font-size:clamp(25px,3vw,44px);font-weight:900;text-transform:uppercase}.roulette-wrap.winner-glow{animation:winnerGlow .72s ease-in-out 2}@keyframes winnerGlow{50%{filter:drop-shadow(0 0 34px rgba(243,202,18,.95));transform:scale(1.025)}}
 .hub{position:absolute;z-index:4;width:21%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--white);color:var(--dark);border:7px solid rgba(255,255,255,.45);font-weight:800;font-size:clamp(13px,1.7vw,22px);line-height:1.05;text-transform:uppercase}
 
 /* Premio */
@@ -335,6 +336,7 @@ button:focus-visible,select:focus-visible{outline:4px solid rgba(243,202,18,.42)
           <div class="pointer"></div>
           <canvas id="wheel" width="900" height="900"></canvas>
           <div class="hub">60<br>ANOS</div>
+          <div id="winnerReveal" class="winner-reveal"><div id="winnerRevealCategory" class="winner-reveal-category"></div><div id="winnerRevealName" class="winner-reveal-name"></div></div>
         </div>
       </div>
     </section>
@@ -376,7 +378,7 @@ button:focus-visible,select:focus-visible{outline:4px solid rgba(243,202,18,.42)
     <div class="config-head">
       <div>
         <h2>Configuración do xogo</h2>
-        <p>Os cambios gárdanse neste navegador. As mesas pódense renomear e mover arrastrándoas no plano. Na ruleta, cada fila de premio equivale exactamente a un segmento. Os sete segmentos permanecen visibles durante toda a partida.</p>
+        <p>Os cambios gárdanse neste navegador. As mesas pódense renomear e mover arrastrándoas no plano. Na ruleta, cada fila de premio equivale exactamente a un segmento.</p>
       </div>
     </div>
 
@@ -519,9 +521,9 @@ const SETTINGS={
   finalTableHoldMs:1000,
   selectedHoldMs:2100,
   wheelDurationMs:6200,
-  configKey:"reto-mesas-60-config-v8",
-  sessionKey:"reto-mesas-60-session-v8",
-  undoKey:"reto-mesas-60-undo-v8",
+  configKey:"reto-mesas-60-config-v9",
+  sessionKey:"reto-mesas-60-session-v9",
+  undoKey:"reto-mesas-60-undo-v9",
   maxUndo:12
 };
 
@@ -671,7 +673,7 @@ document.addEventListener("mousemove",showCursor);document.addEventListener("mou
 
 /* ---------------- Persistencia / undo ---------------- */
 function syncTimerRemaining(){if(timer.status==="running"){const elapsed=performance.now()-timerStartedAt;timer.remainingMs=Math.max(0,timerStartRemaining-elapsed);if(timer.remainingMs<=0)timer.status="finished";}}
-function captureState(){syncTimerRemaining();return {version:8,introActive,stableScene,wheelOrder:[...wheelOrder],tableState:clone(tableState),prizeStatus:clone(prizeStatus),usedMissionIds:[...usedMissionIds],history:clone(history),currentTable,currentMissionId,currentPrizeId,missionAttempt,challengeTableIds:[...challengeTableIds],wheelRotation,soundEnabled,voiceEnabled,timer:clone(timer)};}
+function captureState(){syncTimerRemaining();return {version:9,introActive,stableScene,wheelOrder:[...wheelOrder],tableState:clone(tableState),prizeStatus:clone(prizeStatus),usedMissionIds:[...usedMissionIds],history:clone(history),currentTable,currentMissionId,currentPrizeId,missionAttempt,challengeTableIds:[...challengeTableIds],wheelRotation,soundEnabled,voiceEnabled,timer:clone(timer)};}
 function saveSession(){try{localStorage.setItem(SETTINGS.sessionKey,JSON.stringify(captureState()));localStorage.setItem(SETTINGS.undoKey,JSON.stringify(undoStack.slice(-SETTINGS.maxUndo)));}catch(e){}}
 function pushUndo(label){const snap=captureState();snap._label=label;undoStack.push(snap);if(undoStack.length>SETTINGS.maxUndo)undoStack.shift();saveSession();updatePanelButtons();}
 function reconcileState(rawTableState={},rawPrizeStatus={}){
@@ -687,7 +689,7 @@ function restoreState(s,{fromUndo=false}={}){
   if(introActive){intro.classList.remove("hidden");}else{intro.classList.add("hidden");renderStableScene();}updateUI();saveSession();if(fromUndo)showToast("Acción desfeita");
 }
 function undo(){if(running){showToast("Agarda a que remate ou salta a animación");return;}const s=undoStack.pop();if(!s){showToast("Non hai accións para desfacer");return;}restoreState(s,{fromUndo:true});}
-function loadSession(){try{const raw=localStorage.getItem(SETTINGS.sessionKey);const u=localStorage.getItem(SETTINGS.undoKey);if(u)undoStack=JSON.parse(u)||[];if(!raw)return false;const s=JSON.parse(raw);if(!s||s.version!==8)return false;restoreState(s);return true;}catch(e){return false;}}
+function loadSession(){try{const raw=localStorage.getItem(SETTINGS.sessionKey);const u=localStorage.getItem(SETTINGS.undoKey);if(u)undoStack=JSON.parse(u)||[];if(!raw)return false;const s=JSON.parse(raw);if(!s||s.version!==9)return false;restoreState(s);return true;}catch(e){return false;}}
 window.addEventListener("beforeunload",saveSession);
 
 /* ---------------- Escenas ---------------- */
@@ -716,7 +718,7 @@ function weightedWinner(){const items=eligibleTables().map(id=>({id,w:weightFor(
 async function showDrawAlert(){const a=$("drawAlert"),c=$("drawAlertCount");a.classList.add("show");a.setAttribute("aria-hidden","false");speak("Atención. Comeza o sorteo de mesas.");for(let n=5;n>=1;n--){c.textContent=String(n);beep("tick");await sleep(1000);}a.classList.remove("show");a.setAttribute("aria-hidden","true");c.textContent="5";}
 async function startSelection({skipUndo=false}={}){
   if(running)return;if(gameComplete()){scene("finished");return;}if(!eligibleTables().length){showToast("Non quedan mesas dispoñibles");return;}if(!skipUndo)pushUndo("Sorteo de mesa");
-  running=true;animationType="selection";skipAnimation=false;cancelTimer();scene("idle",{stable:false});await showDrawAlert();scene("rolling",{stable:false});refreshTableStates();
+  running=true;animationType="selection";skipAnimation=false;cancelTimer();scene("idle",{stable:false});if(missionAttempt<=1)await showDrawAlert();scene("rolling",{stable:false});refreshTableStates();
   /* O gañador calcúlase UNHA soa vez e será exactamente o mesmo que se mostra ao final. */
   const winner=weightedWinner(),candidates=eligibleTables();let previous="";const totalTicks=40,start=performance.now();
   for(let tick=0;tick<totalTicks;tick++){
@@ -753,9 +755,10 @@ async function startSelection({skipUndo=false}={}){
 /* ---------------- Misións ---------------- */
 function chooseNextMission(){let pool=MISSIONS.filter(m=>!usedMissionIds.includes(m.id));if(!pool.length){usedMissionIds=[];pool=[...MISSIONS];}const m=pool[randInt(pool.length)];usedMissionIds.push(m.id);return m;}
 function assignMission(){const m=chooseNextMission();currentMissionId=m.id;timer={status:m.timed?"ready":"idle",totalMs:(m.duration||0)*1000,remainingMs:(m.duration||0)*1000};return m;}
-function showMission(){if(!currentMissionId){assignMission();missionAttempt=1;challengeTableIds=currentTable?[currentTable]:[];}renderMission();scene("mission");const m=currentMission();if(m)speak(`Mesa ${tableName(currentTable)}. O reto é ${m.title}. ${m.instruction}`);if(missionAttempt>1){$("missionStartActions").innerHTML="";$("timerWrap").hidden=true;$("missionResultActions").hidden=false;}}
+function showMission(){if(!currentMissionId){assignMission();missionAttempt=1;challengeTableIds=currentTable?[currentTable]:[];}renderMission();scene("mission");const m=currentMission();if(m)speak(`Mesa ${tableName(currentTable)}. O reto é ${m.title}. ${m.instruction}`);}
 function renderMission(){
   const m=currentMission();if(!m)return;$("missionTable").textContent=tableName(currentTable);$("missionTitle").textContent=m.title;$("missionText").textContent=m.instruction;$("missionStartActions").innerHTML="";$("missionResultActions").hidden=true;$("timerWrap").hidden=true;$("timerInlineBtn").hidden=true;$("timerMessage").hidden=true;$("timerRing").classList.remove("timeup");
+  if(missionAttempt>1){$("missionStartActions").innerHTML="";$("timerWrap").hidden=true;$("timerInlineBtn").hidden=true;$("timerMessage").hidden=true;$("missionResultActions").hidden=false;return;}
   if(!m.timed){$("missionResultActions").hidden=false;return;}const ratio=timer.totalMs?Math.max(0,Math.min(100,(timer.remainingMs/timer.totalMs)*100)):100;$("timerRing").style.setProperty("--p",ratio);
   if(timer.status==="ready"){const b=document.createElement("button");b.className="primary";b.textContent="COMEZAR RETO";b.onclick=startMissionTimer;$("missionStartActions").appendChild(b);return;}
   $("timerWrap").hidden=false;$("missionResultActions").hidden=false;
@@ -791,7 +794,6 @@ function drawWheel(){
   items.forEach((p,i)=>{const a=-Math.PI/2+i*arc,[fill,text]=themeColors(p.theme,i);ctx.beginPath();ctx.moveTo(c,c);ctx.arc(c,c,r,a,a+arc);ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.lineWidth=n>14?4:7;ctx.strokeStyle="#032821";ctx.stroke();ctx.save();ctx.translate(c,c);ctx.rotate(a+arc/2);ctx.textAlign="right";ctx.textBaseline="middle";ctx.fillStyle=text;ctx.shadowColor="rgba(0,0,0,.16)";ctx.shadowBlur=3;const catSize=n>20?13:n>16?15:n>12?17:n>8?20:27;ctx.font=`800 ${catSize}px Open Sans, Tahoma, Arial`;let label=wheelCategoryLabel(p.category);const maxChars=n>20?18:n>16?20:n>12?22:n>8?26:32;if(label.length>maxChars)label=label.slice(0,maxChars-1)+"…";ctx.fillText(label,r-48,0);ctx.restore();});
   ctx.beginPath();ctx.arc(c,c,r,0,Math.PI*2);ctx.lineWidth=18;ctx.strokeStyle="#FFFFFF";ctx.stroke();
 }
-let lastWheelTick=-1;
 function spinWheel(){
   if(running)return;if(gameComplete()){scene("finished");return;}
   const items=wheelItems();
@@ -802,10 +804,8 @@ function spinWheel(){
   if(!pendingIndexes.length){scene("finished");return;}
   pushUndo("Xirar ruleta");running=true;animationType="wheel";skipAnimation=false;scene("wheelScene",{stable:false});drawWheel();
   const idx=pendingIndexes[randInt(pendingIndexes.length)],winner=items[idx],n=items.length,arc=360/n,target=360-((idx+.5)*arc),start=wheelRotation,norm=((start%360)+360)%360,fix=(target-norm+360)%360,end=start+(8+randInt(3))*360+fix,duration=SETTINGS.wheelDurationMs,startTime=performance.now();
-  function animate(now){let t=Math.min(1,(now-startTime)/duration);if(skipAnimation)t=1;const eased=1-Math.pow(1-t,4);wheelRotation=start+(end-start)*eased;canvas.style.transform=`rotate(${wheelRotation}deg)`;
-const seg=360/n; const tick=Math.floor((((wheelRotation%360)+360)%360)/seg);
-if(tick!==lastWheelTick){lastWheelTick=tick;beep("tick");}
-if(t<1){requestAnimationFrame(animate);}else{beep("win");wheelRotation=end;canvas.style.transform=`rotate(${wheelRotation}deg)`;running=false;animationType="";skipAnimation=false;finishPrize(winner);}}requestAnimationFrame(animate);
+  let lastBoundary=Math.floor(start/arc);
+  function animate(now){let t=Math.min(1,(now-startTime)/duration);if(skipAnimation)t=1;const eased=1-Math.pow(1-t,4);wheelRotation=start+(end-start)*eased;canvas.style.transform=`rotate(${wheelRotation}deg)`;const boundary=Math.floor(wheelRotation/arc);if(boundary!==lastBoundary){lastBoundary=boundary;beep("tick");}if(t<1){requestAnimationFrame(animate);}else{wheelRotation=end;canvas.style.transform=`rotate(${wheelRotation}deg)`;beep("win");const wrap=document.querySelector(".roulette-wrap");wrap.classList.add("winner-glow");$("winnerRevealCategory").textContent=winner.category;$("winnerRevealName").textContent=winner.name;$("winnerReveal").classList.add("show");setTimeout(()=>{wrap.classList.remove("winner-glow");$("winnerReveal").classList.remove("show");running=false;animationType="";skipAnimation=false;finishPrize(winner);},1700);}}requestAnimationFrame(animate);
 }
 function finishPrize(p){prizeStatus[p.id]="awarded";tableState[currentTable].won=true;currentPrizeId=p.id;history.push({table:tableName(currentTable),result:"Premio",prize:p.name,category:p.category});refreshTableStates();renderPrize();scene("prize");beep("win");confetti();speak(`Mesa ${tableName(currentTable)}. Parabéns. ${p.name}.`);}
 function renderPrize(){const p=currentPrize();if(!p)return;$("prizeCategory").textContent=p.category;$("prizeName").textContent=p.name;$("prizeTable").textContent=currentTable?`MESA ${tableName(currentTable)}`:"";$("prizeQuip").textContent=p.quip;$("continueBtn").textContent="CONTINUAR XOGANDO";}
@@ -914,7 +914,7 @@ function refreshControlWindow(){
   q("cwTableSelect").innerHTML=TABLES.filter(t=>!t.vip).map(t=>`<option value="${escapeHtml(t.id)}">${escapeHtml(t.name)}</option>`).join("");if(TABLES.some(t=>t.id===oldT&&!t.vip))q("cwTableSelect").value=oldT;
   const tid=q("cwTableSelect").value,s=tableState[tid];q("cwTableStatus").textContent=s?(s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1"):"";
   q("cwPrizeSelect").innerHTML=PRIZES.map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.category)} · ${escapeHtml(p.name)}</option>`).join("");if(PRIZES.some(p=>p.id===oldP))q("cwPrizeSelect").value=oldP;
-  const pid=q("cwPrizeSelect").value;q("cwPrizeStatus").textContent=pid?(prizeStatus[pid]==="awarded"?"Entregado · segue visible, pero non pode volver saír":"Pendente · pode saír na ruleta"):"";
+  const pid=q("cwPrizeSelect").value;q("cwPrizeStatus").textContent=pid?(prizeStatus[pid]==="awarded"?"Entregado · non aparece na ruleta":"Pendente · aparece na ruleta"):"";
   q("cwLog").innerHTML=history.length?history.map(h=>`<li><b>${escapeHtml(h.table)}</b>: ${escapeHtml(h.result)}${h.mission?` · ${escapeHtml(h.mission)}`:""}${h.prize?` · ${escapeHtml(h.prize)}`:""}</li>`).join(""):"<li>Aínda non hai resultados.</li>";
 }
 
@@ -922,7 +922,7 @@ function refreshControlWindow(){
 function populateAdminSelects(){
   const oldT=$("tableAdminSelect").value,oldP=$("prizeAdminSelect").value;$("tableAdminSelect").innerHTML=TABLES.filter(t=>!t.vip).map(t=>`<option value="${escapeHtml(t.id)}">${escapeHtml(t.name)}</option>`).join("");$("prizeAdminSelect").innerHTML=PRIZES.map(p=>`<option value="${escapeHtml(p.id)}">${escapeHtml(p.category)} · ${escapeHtml(p.name)}</option>`).join("");if(TABLES.some(t=>t.id===oldT))$("tableAdminSelect").value=oldT;if(PRIZES.some(p=>p.id===oldP))$("prizeAdminSelect").value=oldP;
 }
-function updateAdminStatus(){const id=$("tableAdminSelect").value;if(id&&tableState[id]){const s=tableState[id];$("tableAdminStatus").textContent=s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1";}const pid=$("prizeAdminSelect").value;if(pid)$("prizeAdminStatus").textContent=prizeStatus[pid]==="awarded"?"Entregado · segue visible, pero non pode volver saír":"Pendente · pode saír na ruleta";}
+function updateAdminStatus(){const id=$("tableAdminSelect").value;if(id&&tableState[id]){const s=tableState[id];$("tableAdminStatus").textContent=s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1";}const pid=$("prizeAdminSelect").value;if(pid)$("prizeAdminStatus").textContent=prizeStatus[pid]==="awarded"?"Entregado · non aparece na ruleta":"Pendente · aparece na ruleta";}
 function setTableManual(mode){const id=$("tableAdminSelect").value;if(!id)return;pushUndo("Editar mesa");const s=tableState[id];if(mode==="fresh"){s.attempts=0;s.won=false;}if(mode==="tried"){s.attempts=Math.max(1,s.attempts);s.won=false;}if(mode==="won")s.won=true;refreshTableStates();updateUI();saveSession();showToast(`Mesa ${tableName(id)} actualizada`);}
 function setPrizeManual(status){const id=$("prizeAdminSelect").value;if(!id)return;pushUndo("Editar premio");prizeStatus[id]=status;rebuildWheelOrder();drawWheel();updateUI();saveSession();showToast(status==="pending"?"Premio devolto á ruleta":"Premio marcado como entregado");if(gameComplete()&&runtimeScene==="idle")scene("finished");}
 function repeatSelection(){if(running){showToast("Salta primeiro a animación actual");return;}if(!currentTable){showToast("Non hai unha mesa seleccionada para repetir");return;}if(tableState[currentTable]?.won){showToast("A mesa actual xa ten premio");return;}pushUndo("Repetir sorteo de mesa");tableState[currentTable].attempts=Math.max(0,tableState[currentTable].attempts-1);currentTable="";currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};$("presenterPanel").classList.remove("show");startSelection({skipUndo:true});}
