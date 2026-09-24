@@ -314,9 +314,9 @@ button:focus-visible,select:focus-visible{outline:4px solid rgba(243,202,18,.42)
     <section id="fail" class="scene">
       <div class="hero-card accent">
         <div class="case-word">Case!</div>
-        <div class="state-sub">O PREMIO SEGUE EN XOGO</div>
-        <div class="state-small">O sorteo segue aberto.</div>
-        <div class="actions"><button id="selectAgainBtn" class="primary">SELECCIONAR OUTRA MESA</button><button id="failEsperaBtn" class="secondary">IR Á PANTALLA DE ESPERA</button></div>
+        <div id="failStateSub" class="state-sub">O PREMIO SEGUE EN XOGO</div>
+        <div id="failStateSmall" class="state-small">O reto rebota a outra mesa.</div>
+        <div class="actions"><button id="selectAgainBtn" class="primary">REBOTE: OUTRA MESA</button><button id="failEsperaBtn" class="secondary">IR Á PANTALLA DE ESPERA</button></div>
       </div>
     </section>
 
@@ -519,9 +519,9 @@ const SETTINGS={
   finalTableHoldMs:1000,
   selectedHoldMs:2100,
   wheelDurationMs:6200,
-  configKey:"reto-mesas-60-config-v6",
-  sessionKey:"reto-mesas-60-session-v6",
-  undoKey:"reto-mesas-60-undo-v6",
+  configKey:"reto-mesas-60-config-v7",
+  sessionKey:"reto-mesas-60-session-v7",
+  undoKey:"reto-mesas-60-undo-v7",
   maxUndo:12
 };
 
@@ -533,26 +533,17 @@ const DEFAULT_TABLES=[
 ];
 
 const DEFAULT_MISSIONS=[
-  {id:"cancion",title:"RETROUSO EXPRESS",instruction:"Toda a mesa debe cantar xunta durante uns segundos o retrouso dunha canción coñecida.",duration:12,timed:true,type:"musical"},
-  {id:"lema",title:"LEMA 60",instruction:"Inventade e berrade xuntos un lema para celebrar o 60 aniversario.",duration:20,timed:true,type:"creativa"},
-  {id:"onda",title:"A ONDA",instruction:"Facede unha onda perfecta dun extremo ao outro da mesa.",duration:12,timed:true,type:"coordinacion"},
-  {id:"brinde",title:"POR OUTROS 60",instruction:"Toda a mesa debe brindar e berrar ao mesmo tempo: Por outros 60 anos!",duration:12,timed:true,type:"celebracion"},
-  {id:"mimica",title:"ATENCIÓN SEN PALABRAS",instruction:"Representade unha pequena escena de atención a un cliente sen utilizar palabras.",duration:15,timed:true,type:"representacion"},
-  {id:"aplauso",title:"CONTAXIA A SALA",instruction:"Conseguide que o resto da sala siga o voso aplauso.",duration:15,timed:true,type:"sala"},
-  {id:"localidades",title:"10 LOCALIDADES",instruction:"Nomeade entre toda a mesa dez localidades de Galicia.",duration:20,timed:true,type:"galicia"},
-  {id:"anuncio",title:"SPOT EXPRESS",instruction:"Creade e representade un anuncio de Caixa Rural Galega en poucos segundos.",duration:15,timed:true,type:"creativa"},
-  {id:"pose",title:"60 ANOS XUNTOS",instruction:"Creade unha pose conxunta que represente 60 anos xuntos e mantédea uns segundos.",duration:15,timed:true,type:"visual"},
-  {id:"xesto",title:"MESMO XESTO",instruction:"Sen poñervos de acordo falando, intentade rematar todos facendo o mesmo xesto.",duration:15,timed:true,type:"coordinacion"},
-  {id:"seispalabras",title:"EN 6 PALABRAS",instruction:"Definide entre toda a mesa os próximos 60 anos utilizando exactamente seis palabras.",duration:20,timed:true,type:"creativa"},
-  {id:"grito",title:"GRITO DE MESA",instruction:"Inventade un grito de celebración propio e facédeo todos á vez.",duration:15,timed:true,type:"celebracion"},
-  {id:"tresverdes",title:"TRES COUSAS VERDES",instruction:"Nomeade rapidamente tres cousas verdes que non teñan relación coa banca.",duration:10,timed:true,type:"rapida"},
-  {id:"cadea",title:"CADEA GALEGA",instruction:"Construíde unha cadea de cinco palabras relacionadas con Galicia, unha persoa tras outra.",duration:18,timed:true,type:"galicia"},
-  {id:"silencio",title:"BRINDE EN SILENCIO",instruction:"Facede un brinde perfectamente coordinado sen pronunciar unha soa palabra.",duration:12,timed:true,type:"coordinacion"},
-  {id:"memoria",title:"UNHA PALABRA",instruction:"Escollede entre todos unha única palabra que resuma estes 60 anos e berrádea xuntos.",duration:15,timed:true,type:"creativa"},
-  {id:"ritmo",title:"RITMO DE MESA",instruction:"Creade un ritmo curto usando só palmas e golpes suaves sobre a mesa e repetídeo xuntos.",duration:15,timed:true,type:"musical"},
-  {id:"saludo",title:"SAÚDO OFICIAL",instruction:"Inventade un saúdo propio da mesa e executádeo todos ao mesmo tempo.",duration:15,timed:true,type:"visual"}
+  {id:"aplauso",title:"O APLAUSO SINCRONIZADO",instruction:"Toda a mesa debe dar un único aplauso perfectamente coordinado, seguindo o sinal da persoa capitá.",duration:15,timed:true,type:"coordinacion"},
+  {id:"carolina",title:"A CAROLINA",instruction:"Toda a mesa debe cantar un retrouso de A Carolina.",duration:20,timed:true,type:"canto"},
+  {id:"brinde60",title:"O BRINDE DOS 60 ANOS",instruction:"Inventade, en menos de 30 segundos, un brindis orixinal polos 60 anos de Caixa Rural Galega. Unha persoa proclamarao en voz alta e o resto rematará cun sonoro: Saúde!",duration:30,timed:true,type:"creativa"},
+  {id:"miudino",title:"O MIUDIÑO",instruction:"Toda a mesa debe cantar un retrouso de O Miudiño.",duration:20,timed:true,type:"canto"},
+  {id:"onda",title:"A ONDA",instruction:"Facede unha onda perfecta dun extremo ao outro da mesa.",duration:15,timed:true,type:"coordinacion"},
+  {id:"rianxeira",title:"A RIANXEIRA",instruction:"Toda a mesa debe cantar un retrouso de A Rianxeira.",duration:20,timed:true,type:"canto"},
+  {id:"macarena",title:"A MACARENA",instruction:"Cando o operador poña a música, toda a mesa deberá levantarse e bailar A Macarena.",duration:25,timed:true,type:"baile"},
+  {id:"tren",title:"A CONGA DO CHA-CHA-CHÁ DO TREN",instruction:"Cando o operador poña a música, toda a mesa deberá levantarse, formar un tren e facer unha volta arredor da mesa.",duration:30,timed:true,type:"baile"},
+  {id:"ymca",title:"YMCA",instruction:"Cando o operador poña a música, toda a mesa deberá levantarse e formar correctamente as letras Y-M-C-A cos brazos.",duration:25,timed:true,type:"baile"},
+  {id:"muineira",title:"MUIÑEIRA EXPRESS",instruction:"Cando o operador poña a música, toda a mesa deberá bailar unha muiñeira.",duration:25,timed:true,type:"baile"}
 ];
-
 /* 24 premios = 24 segmentos iniciais. Pódense cambiar no panel. */
 const DEFAULT_PRIZES=[
   {id:"p01",category:"ESPIGA OURO",name:"CHEQUE AMAZON 50 €",quip:"Porque o futuro tamén se compra cun clic.",theme:"gold"},
@@ -603,6 +594,7 @@ const intro=$("videoIntro"),video=$("instructionsVideo");
 
 let tableState={},prizeStatus={},usedMissionIds=[],history=[];
 let currentTable="",currentMissionId="",currentPrizeId="";
+let missionAttempt=0,challengeTableIds=[];
 let stableScene="idle",runtimeScene="idle",introActive=true,running=false,animationType="",skipAnimation=false,wheelRotation=0;
 let soundEnabled=true,voiceEnabled=true,undoStack=[],wheelOrder=[];
 let timer={status:"idle",totalMs:0,remainingMs:0};
@@ -615,7 +607,7 @@ function tableName(id){return tableById(id)?.name||"—";}
 function initFreshState(){
   tableState=Object.fromEntries(TABLES.map(t=>[t.id,{attempts:0,won:false,vip:!!t.vip}]));
   prizeStatus=Object.fromEntries(PRIZES.map(p=>[p.id,"pending"]));
-  usedMissionIds=[];history=[];currentTable="";currentMissionId="";currentPrizeId="";stableScene="idle";runtimeScene="idle";introActive=true;running=false;animationType="";skipAnimation=false;wheelRotation=0;soundEnabled=true;voiceEnabled=true;timer={status:"idle",totalMs:0,remainingMs:0};
+  usedMissionIds=[];history=[];currentTable="";currentMissionId="";currentPrizeId="";missionAttempt=0;challengeTableIds=[];stableScene="idle";runtimeScene="idle";introActive=true;running=false;animationType="";skipAnimation=false;wheelRotation=0;soundEnabled=true;voiceEnabled=true;timer={status:"idle",totalMs:0,remainingMs:0};
 }
 initFreshState();
 rebuildWheelOrder?.();
@@ -695,7 +687,7 @@ document.addEventListener("mousemove",showCursor);document.addEventListener("mou
 
 /* ---------------- Persistencia / undo ---------------- */
 function syncTimerRemaining(){if(timer.status==="running"){const elapsed=performance.now()-timerStartedAt;timer.remainingMs=Math.max(0,timerStartRemaining-elapsed);if(timer.remainingMs<=0)timer.status="finished";}}
-function captureState(){syncTimerRemaining();return {version:6,introActive,stableScene,wheelOrder:[...wheelOrder],tableState:clone(tableState),prizeStatus:clone(prizeStatus),usedMissionIds:[...usedMissionIds],history:clone(history),currentTable,currentMissionId,currentPrizeId,wheelRotation,soundEnabled,voiceEnabled,timer:clone(timer)};}
+function captureState(){syncTimerRemaining();return {version:7,introActive,stableScene,wheelOrder:[...wheelOrder],tableState:clone(tableState),prizeStatus:clone(prizeStatus),usedMissionIds:[...usedMissionIds],history:clone(history),currentTable,currentMissionId,currentPrizeId,missionAttempt,challengeTableIds:[...challengeTableIds],wheelRotation,soundEnabled,voiceEnabled,timer:clone(timer)};}
 function saveSession(){try{localStorage.setItem(SETTINGS.sessionKey,JSON.stringify(captureState()));localStorage.setItem(SETTINGS.undoKey,JSON.stringify(undoStack.slice(-SETTINGS.maxUndo)));}catch(e){}}
 function pushUndo(label){const snap=captureState();snap._label=label;undoStack.push(snap);if(undoStack.length>SETTINGS.maxUndo)undoStack.shift();saveSession();updatePanelButtons();}
 function reconcileState(rawTableState={},rawPrizeStatus={}){
@@ -706,12 +698,12 @@ function reconcileState(rawTableState={},rawPrizeStatus={}){
 }
 function restoreState(s,{fromUndo=false}={}){
   cancelTimer();document.querySelectorAll(".confetti").forEach(e=>e.remove());running=false;animationType="";skipAnimation=false;
-  introActive=!!s.introActive;stableScene=s.stableScene||"idle";wheelOrder=[...(s.wheelOrder||[])];usedMissionIds=[...(s.usedMissionIds||[])];history=clone(s.history||[]);currentTable=s.currentTable||"";currentMissionId=s.currentMissionId||"";currentPrizeId=s.currentPrizeId||"";wheelRotation=Number(s.wheelRotation)||0;soundEnabled=s.soundEnabled!==false;voiceEnabled=s.voiceEnabled!==false;timer=clone(s.timer||{status:"idle",totalMs:0,remainingMs:0});
+  introActive=!!s.introActive;stableScene=s.stableScene||"idle";wheelOrder=[...(s.wheelOrder||[])];usedMissionIds=[...(s.usedMissionIds||[])];history=clone(s.history||[]);currentTable=s.currentTable||"";currentMissionId=s.currentMissionId||"";currentPrizeId=s.currentPrizeId||"";missionAttempt=Number(s.missionAttempt)||0;challengeTableIds=[...(s.challengeTableIds||[])];wheelRotation=Number(s.wheelRotation)||0;soundEnabled=s.soundEnabled!==false;voiceEnabled=s.voiceEnabled!==false;timer=clone(s.timer||{status:"idle",totalMs:0,remainingMs:0});
   reconcileState(s.tableState||{},s.prizeStatus||{});if(timer.status==="running")timer.status="paused";canvas.style.transform=`rotate(${wheelRotation}deg)`;renderTablesMap();populateAdminSelects();rebuildWheelOrder();drawWheel();
   if(introActive){intro.classList.remove("hidden");}else{intro.classList.add("hidden");renderStableScene();}updateUI();saveSession();if(fromUndo)showToast("Acción desfeita");
 }
 function undo(){if(running){showToast("Agarda a que remate ou salta a animación");return;}const s=undoStack.pop();if(!s){showToast("Non hai accións para desfacer");return;}restoreState(s,{fromUndo:true});}
-function loadSession(){try{const raw=localStorage.getItem(SETTINGS.sessionKey);const u=localStorage.getItem(SETTINGS.undoKey);if(u)undoStack=JSON.parse(u)||[];if(!raw)return false;const s=JSON.parse(raw);if(!s||s.version!==6)return false;restoreState(s);return true;}catch(e){return false;}}
+function loadSession(){try{const raw=localStorage.getItem(SETTINGS.sessionKey);const u=localStorage.getItem(SETTINGS.undoKey);if(u)undoStack=JSON.parse(u)||[];if(!raw)return false;const s=JSON.parse(raw);if(!s||s.version!==7)return false;restoreState(s);return true;}catch(e){return false;}}
 window.addEventListener("beforeunload",saveSession);
 
 /* ---------------- Escenas ---------------- */
@@ -734,7 +726,11 @@ function renderTablesMap(){
 function tableEl(id){return $("tablesMap").querySelector(`[data-table-id="${CSS.escape(id)}"]`);}
 function refreshTableStates(){TABLES.forEach(t=>{const el=tableEl(t.id),s=tableState[t.id];if(!el||!s)return;el.textContent=t.name;el.style.left=`${t.x}%`;el.style.top=`${t.y}%`;el.classList.toggle("vip",s.vip);el.classList.toggle("tried",!s.vip&&!s.won&&s.attempts>0);el.classList.toggle("won",s.won);});}
 function weightFor(id){const s=tableState[id];if(!s||s.vip||s.won)return 0;return s.attempts>0?SETTINGS.failedTableWeight:1;}
-function eligibleTables(){return TABLES.map(t=>t.id).filter(id=>weightFor(id)>0);}
+function eligibleTables(){
+  const base=TABLES.map(t=>t.id).filter(id=>weightFor(id)>0);
+  const freshForChallenge=base.filter(id=>!challengeTableIds.includes(id));
+  return freshForChallenge.length?freshForChallenge:base;
+}
 function weightedWinner(){const items=eligibleTables().map(id=>({id,w:weightFor(id)}));const total=items.reduce((a,b)=>a+b.w,0);let r=randFloat()*total;for(const it of items){r-=it.w;if(r<=0)return it.id;}return items.at(-1)?.id||null;}
 
 async function showDrawAlert(){const a=$("drawAlert"),c=$("drawAlertCount");a.classList.add("show");a.setAttribute("aria-hidden","false");speak("Atención. Comeza o sorteo de mesas.");for(let n=5;n>=1;n--){c.textContent=String(n);beep("tick");await sleep(1000);}a.classList.remove("show");a.setAttribute("aria-hidden","true");c.textContent="5";}
@@ -756,6 +752,7 @@ async function startSelection({skipUndo=false}={}){
   /* Estado final do sorteo: a mesa realmente escollida queda iluminada 1 s no MAPA. */
   $("tablesMap").querySelectorAll(".active").forEach(el=>el.classList.remove("active"));
   currentTable=winner;
+  if(!challengeTableIds.includes(winner))challengeTableIds.push(winner);
   tableState[winner].attempts+=1;
   tableEl(currentTable)?.classList.add("active");
   beep("win");
@@ -776,9 +773,9 @@ async function startSelection({skipUndo=false}={}){
 /* ---------------- Misións ---------------- */
 function chooseNextMission(){let pool=MISSIONS.filter(m=>!usedMissionIds.includes(m.id));if(!pool.length){usedMissionIds=[];pool=[...MISSIONS];}const m=pool[randInt(pool.length)];usedMissionIds.push(m.id);return m;}
 function assignMission(){const m=chooseNextMission();currentMissionId=m.id;timer={status:m.timed?"ready":"idle",totalMs:(m.duration||0)*1000,remainingMs:(m.duration||0)*1000};return m;}
-function showMission(){if(!currentMissionId)assignMission();renderMission();scene("mission");}
+function showMission(){if(!currentMissionId){assignMission();missionAttempt=1;challengeTableIds=currentTable?[currentTable]:[];}renderMission();scene("mission");const m=currentMission();if(m)speak(`Mesa ${tableName(currentTable)}. Intento ${Math.max(1,missionAttempt)} de tres. O reto é ${m.title}. ${m.instruction}`);}
 function renderMission(){
-  const m=currentMission();if(!m)return;$("missionTable").textContent=tableName(currentTable);$("missionTitle").textContent=m.title;$("missionText").textContent=m.instruction;$("missionStartActions").innerHTML="";$("missionResultActions").hidden=true;$("timerWrap").hidden=true;$("timerInlineBtn").hidden=true;$("timerMessage").hidden=true;$("timerRing").classList.remove("timeup");
+  const m=currentMission();if(!m)return;$("missionTable").textContent=`${tableName(currentTable)} · INTENTO ${Math.max(1,missionAttempt)} DE 3`;$("missionTitle").textContent=m.title;$("missionText").textContent=m.instruction;$("missionStartActions").innerHTML="";$("missionResultActions").hidden=true;$("timerWrap").hidden=true;$("timerInlineBtn").hidden=true;$("timerMessage").hidden=true;$("timerRing").classList.remove("timeup");
   if(!m.timed){$("missionResultActions").hidden=false;return;}const ratio=timer.totalMs?Math.max(0,Math.min(100,(timer.remainingMs/timer.totalMs)*100)):100;$("timerRing").style.setProperty("--p",ratio);
   if(timer.status==="ready"){const b=document.createElement("button");b.className="primary";b.textContent="COMEZAR RETO";b.onclick=startMissionTimer;$("missionStartActions").appendChild(b);return;}
   $("timerWrap").hidden=false;$("missionResultActions").hidden=false;
@@ -795,14 +792,29 @@ function togglePauseTimer(){if(timer.status==="running")pauseTimer();else if(tim
 $("timerInlineBtn").onclick=togglePauseTimer;
 function cancelTimer(setPaused=true){if(timerRAF){cancelAnimationFrame(timerRAF);timerRAF=null;}if(setPaused&&timer.status==="running"){syncTimerRemaining();timer.status="paused";}}
 function passMission(){if(running)return;pushUndo("Misión superada");cancelTimer();history.push({table:tableName(currentTable),result:"Misión superada",mission:currentMission()?.title||""});$("successTable").textContent=`MESA ${tableName(currentTable)}`;scene("success");beep("win");speak("Misión superada. Ruleta desbloqueada.");}
-function failMission(){if(running)return;pushUndo("Misión non superada");cancelTimer();history.push({table:tableName(currentTable),result:"Misión non superada",mission:currentMission()?.title||""});scene("fail");beep("softfail");speak("Case. O premio segue en xogo.");}
+function failMission(){
+  if(running)return;pushUndo("Misión non superada");cancelTimer();
+  history.push({table:tableName(currentTable),result:`Misión non superada · intento ${missionAttempt} de 3`,mission:currentMission()?.title||""});
+  const last=missionAttempt>=3;
+  $("failStateSub").textContent=last?"TRES INTENTOS COMPLETADOS":"O PREMIO SEGUE EN XOGO";
+  $("failStateSmall").textContent=last?"O premio continúa, pero agora xogaremos cun novo reto.":`O mesmo reto rebota a outra mesa · intento ${missionAttempt+1} de 3.`;
+  $("selectAgainBtn").textContent=last?"NOVO RETO E OUTRA MESA":"REBOTE: OUTRA MESA";
+  scene("fail");beep("softfail");
+  speak(last?"Tres intentos completados. O premio segue en xogo cun novo reto.":`Case. O mesmo reto rebota a outra mesa. Intento ${missionAttempt+1} de tres.`);
+}
 function continueToWheel(){pushUndo("Ir á ruleta");$("captainTable").textContent=tableName(currentTable);scene("unlock");}
 function changeMission(){if(!currentTable||!["mission","selected"].includes(runtimeScene)){showToast("Non hai unha misión activa");return;}pushUndo("Cambiar misión");cancelTimer();currentMissionId="";assignMission();renderMission();scene("mission");showToast("Misión cambiada");}
-$("passMission").onclick=passMission;$("failMission").onclick=failMission;$("successContinueBtn").onclick=continueToWheel;$("selectAgainBtn").onclick=()=>{currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};startSelection();};
+$("passMission").onclick=passMission;$("failMission").onclick=failMission;$("successContinueBtn").onclick=continueToWheel;
+$("selectAgainBtn").onclick=()=>{
+  if(missionAttempt>=3){currentMissionId="";missionAttempt=0;challengeTableIds=[];}
+  else{missionAttempt+=1;}
+  timer={status:"idle",totalMs:0,remainingMs:0};
+  startSelection();
+};
 
 /* ---------------- Pantalla de espera ---------------- */
 function goEspera(copy="Seguimos nun intre."){$("esperaCopy").textContent=copy;scene("espera");}
-function leaveEspera(){currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};scene("idle");}
+function leaveEspera(){currentMissionId="";missionAttempt=0;challengeTableIds=[];timer={status:"idle",totalMs:0,remainingMs:0};scene("idle");}
 $("failEsperaBtn").onclick=()=>goEspera("En cando estedes preparados, seguimos");
 $("esperaReturnBtn").onclick=leaveEspera;
 
@@ -828,7 +840,7 @@ function spinWheel(){
 }
 function finishPrize(p){prizeStatus[p.id]="awarded";tableState[currentTable].won=true;currentPrizeId=p.id;history.push({table:tableName(currentTable),result:"Premio",prize:p.name,category:p.category});refreshTableStates();renderPrize();scene("prize");beep("win");confetti();speak(`Mesa ${tableName(currentTable)}. Parabéns. ${p.name}.`);}
 function renderPrize(){const p=currentPrize();if(!p)return;$("prizeCategory").textContent=p.category;$("prizeName").textContent=p.name;$("prizeTable").textContent=currentTable?`MESA ${tableName(currentTable)}`:"";$("prizeQuip").textContent=p.quip;$("continueBtn").textContent="CONTINUAR XOGANDO";}
-function prepareNextRound(){wheelRotation=0;canvas.style.transform="rotate(0deg)";currentTable="";currentMissionId="";currentPrizeId="";timer={status:"idle",totalMs:0,remainingMs:0};drawWheel();}
+function prepareNextRound(){wheelRotation=0;canvas.style.transform="rotate(0deg)";currentTable="";currentMissionId="";currentPrizeId="";missionAttempt=0;challengeTableIds=[];timer={status:"idle",totalMs:0,remainingMs:0};drawWheel();}
 function continueAfterPrize(){pushUndo("Continuar tras premio");document.querySelectorAll(".confetti").forEach(e=>e.remove());if(gameComplete()){scene("finished");return;}prepareNextRound();goEspera("En cando estedes preparados, seguimos");}
 function confetti(){const colors=["#F3CA12","#FFFFFF","#00AA81","#007853"];for(let i=0;i<90;i++){const e=document.createElement("i");e.className="confetti";e.style.setProperty("--c",colors[randInt(colors.length)]);e.style.left=randFloat()*100+"vw";e.style.setProperty("--d",(2.2+randFloat()*2.1)+"s");e.style.setProperty("--x",(-160+randFloat()*320)+"px");e.style.setProperty("--r",(-720+randFloat()*1440)+"deg");e.style.animationDelay=randFloat()*.4+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),5000);}}
 $("buzzer").onclick=spinWheel;$("continueBtn").onclick=continueAfterPrize;
@@ -944,7 +956,7 @@ function populateAdminSelects(){
 function updateAdminStatus(){const id=$("tableAdminSelect").value;if(id&&tableState[id]){const s=tableState[id];$("tableAdminStatus").textContent=s.won?"Premiada · fóra do sorteo":s.attempts>0?`Xa participou · peso ${SETTINGS.failedTableWeight}`:"Aínda non participou · peso 1";}const pid=$("prizeAdminSelect").value;if(pid)$("prizeAdminStatus").textContent=prizeStatus[pid]==="awarded"?"Entregado · non aparece na ruleta":"Pendente · aparece na ruleta";}
 function setTableManual(mode){const id=$("tableAdminSelect").value;if(!id)return;pushUndo("Editar mesa");const s=tableState[id];if(mode==="fresh"){s.attempts=0;s.won=false;}if(mode==="tried"){s.attempts=Math.max(1,s.attempts);s.won=false;}if(mode==="won")s.won=true;refreshTableStates();updateUI();saveSession();showToast(`Mesa ${tableName(id)} actualizada`);}
 function setPrizeManual(status){const id=$("prizeAdminSelect").value;if(!id)return;pushUndo("Editar premio");prizeStatus[id]=status;rebuildWheelOrder();drawWheel();updateUI();saveSession();showToast(status==="pending"?"Premio devolto á ruleta":"Premio marcado como entregado");if(gameComplete()&&runtimeScene==="idle")scene("finished");}
-function repeatSelection(){if(running){showToast("Salta primeiro a animación actual");return;}if(!currentTable){showToast("Non hai unha mesa seleccionada para repetir");return;}if(tableState[currentTable]?.won){showToast("A mesa actual xa ten premio");return;}pushUndo("Repetir sorteo de mesa");tableState[currentTable].attempts=Math.max(0,tableState[currentTable].attempts-1);currentTable="";currentMissionId="";timer={status:"idle",totalMs:0,remainingMs:0};$("presenterPanel").classList.remove("show");startSelection({skipUndo:true});}
+function repeatSelection(){if(running){showToast("Salta primeiro a animación actual");return;}if(!currentTable){showToast("Non hai unha mesa seleccionada para repetir");return;}if(tableState[currentTable]?.won){showToast("A mesa actual xa ten premio");return;}pushUndo("Repetir sorteo de mesa");tableState[currentTable].attempts=Math.max(0,tableState[currentTable].attempts-1);currentTable="";currentMissionId="";missionAttempt=0;challengeTableIds=[];timer={status:"idle",totalMs:0,remainingMs:0};$("presenterPanel").classList.remove("show");startSelection({skipUndo:true});}
 function skipCurrentAnimation(){if(!running||!["selection","wheel"].includes(animationType)){showToast("Non hai ningunha animación para saltar");return;}skipAnimation=true;showToast("Saltando animación");}
 function returnToIntro(){if(running){showToast("Agarda a que remate a animación");return;}pushUndo("Volver á intro");introActive=true;intro.classList.remove("hidden");video.currentTime=0;video.pause();updateVideoButton();saveSession();$("presenterPanel").classList.remove("show");}
 function hardReset(dialogWindow=window){if(!dialogWindow.confirm("Restablecer toda a proba? Eliminaranse resultados, premios entregados e historial. A configuración de mesas, premios e retos manterase."))return;cancelTimer();document.querySelectorAll(".confetti").forEach(e=>e.remove());undoStack=[];localStorage.removeItem(SETTINGS.undoKey);initFreshState();rebuildWheelOrder();introActive=false;intro.classList.add("hidden");renderTablesMap();populateAdminSelects();drawWheel();scene("idle");saveSession();showToast("Proba restablecida");}
